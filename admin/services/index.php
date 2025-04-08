@@ -5,12 +5,16 @@
         object-fit:scale-down;
         object-position:center center;
     }
+	.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}
 </style>
-<div class="card card-outline card-warning rounded-0 shadow">
+<div class="card card-outline rounded-0 shadow">
 	<div class="card-header">
 		<h3 class="card-title">List of Services</h3>
 		<div class="card-tools">
-			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm btn-warning"><span class="fas fa-plus"></span>  Add New Service</a>
+			<a href="javascript:void(0)" id="create_new" class="btn btn-flat btn-sm "><span class="fas fa-plus"></span>  Add New Service</a>
 		</div>
 	</div>
 	<div class="card-body">

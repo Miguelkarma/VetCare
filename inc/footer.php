@@ -68,7 +68,7 @@
         </strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-          <b><?php echo $_settings->info('short_name') ?> (by: <a href="" target="blank">VETCLINIC-SYSTEM</a> )</b> v1.0
+          <b><?php echo $_settings->info('short_name') ?> (by: <a href="" target="blank">Short Tail Veterinary Services</a> )</b>
         </div>
       </div>
       </footer>

@@ -1,6 +1,6 @@
 <?php require_once('./config.php'); ?>
  <!DOCTYPE html>
-<html lang="en" class="" style="height: auto;">
+<html lang="en" class="" >
 <style>
   #header{
     height:70vh;
@@ -40,7 +40,7 @@
   }
 </style>
 <?php require_once('inc/header.php') ?>
-  <body class="layout-top-nav layout-fixed layout-navbar-fixed" style="height: auto;">
+  <body class="layout-top-nav  mb-5 style="height: auto;">
     <div class="wrapper">
      <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home';  ?>
      <?php require_once('inc/topBarNav.php') ?>
@@ -50,7 +50,7 @@
       </script>
       <?php endif;?>    
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper pt-5" style="">
+      <div class="content-wrapper " style="">
         <?php if($page == "home" || $page == "about_us"): ?>
           <div id="header" class="shadow mb-4">
               <div class="d-flex justify-content-center h-100 w-100 align-items-center flex-column px-3">

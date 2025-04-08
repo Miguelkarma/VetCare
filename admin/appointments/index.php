@@ -1,6 +1,11 @@
-<div class="card card-outline card-warning">
+<style>.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}</style>
+
+<div class="card card-outline">
 	<div class="card-header">
-		<h3 class="card-title">List of Appoitments</h3>
+		<h3 class="card-title">List of Appointments</h3>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">
@@ -59,7 +64,7 @@
 				                    <a class="dropdown-item" href="./?page=appointments/view_details&id=<?php echo $row['id'] ?>" data-id=""><span class="fa fa-window-restore text-gray"></span> View</a>
 									<div class="dropdown-divider"></div>
 									<?php if($row['status'] == 1){ ?>
-									<a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-warning"></span> Add Doctor's Note</a>
+									<a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-warning"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
 									<?php } ?>
 				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>

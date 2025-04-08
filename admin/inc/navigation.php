@@ -1,9 +1,26 @@
+<style>
+  .main-sidebar {
+    background-color: #eacda3 !important;
+     overflow: hidden !important;
+  }
+  .nav-link{
+    color:rgb(75, 49, 12) !important;
+  }
+   .nav-header{
+    color:rgb(75, 49, 12) !important;
+  }
+  .brand-link{
+    border: none !important;
+    background-color: #eacda3 !important;
+  }
+
 </style>
+
 <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-light levation-4 sidebar-no-expand" style="background-color:#b5651d">
+      <aside class="main-sidebar sidebar-dark-light levation-8 " >
         <!-- Brand Logo -->
-        <a href="<?php echo base_url ?>admin" class="brand-link bg-transparent text-sm border-info shadow-sm bg-light">
-        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
+        <a href="<?php echo base_url ?>admin" class="brand-link  text-sm  border-0 ">
+        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-2 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
         <span class="brand-text font-weight-bold text-color-black" style="color:#333;"><?php echo $_settings->info('short_name') ?></span>
         </a>
         <!-- Sidebar -->
@@ -41,7 +58,7 @@
                     </li>
                     <li class="nav-item">
                       <a href="<?php echo base_url ?>admin/?page=pet_records" class="nav-link nav-pet_records">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-paw"></i>
                         <p>
                         Your Pet Records 
                         </p>
@@ -50,7 +67,7 @@
                     <?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2 ): ?>
                       <li class="nav-item">
                       <a href="<?php echo base_url ?>admin/?page=pet_records/pet_all" class="nav-link nav-pet_records-pet_all">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                         All Pet Records 
                         </p>
@@ -105,7 +122,7 @@
                       <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
-                          Admin User List
+                          User List
                         </p>
                       </a>
                     </li>
@@ -143,7 +160,7 @@
         var page;
     $(document).ready(function(){
       page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
-      page = page.replace(/\//gi,'_');
+      page = page.replace(/\//gi,'-');
 
       if($('.nav-link.nav-'+page).length > 0){
              $('.nav-link.nav-'+page).addClass('active')

@@ -5,7 +5,6 @@
 // Select2 Variant
 @mixin select2-variant($name, $color) {
   .select2-#{$name} {
-
     + .select2-container--default {
       &.select2-container--open {
         .select2-selection--single {
@@ -51,14 +50,14 @@
           }
 
           .select2-selection__choice {
-            background-color: $color;
+            background-color: #eacda3 !important;
             border-color: darken($color, 5%);
-            color: color-yiq($color);
+            color: #4b310c !important;
           }
 
           .select2-selection__choice__remove {
-            color: rgba(color-yiq($color), 0.7);
-
+            background-color: #eacda3 !important;
+            color: #4b310c !important;
             &:hover {
               color: color-yiq($color);
             }

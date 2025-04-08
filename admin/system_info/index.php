@@ -72,7 +72,7 @@
 					<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo $_settings->info('email') ?>">
 				</div>
 				<div class="form-group">
-					<label for="contact" class="control-label">Contact #</label>
+					<label for="contact" class="control-label">Contact Number</label>
 					<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo $_settings->info('contact') ?>">
 				</div>
 				<div class="form-group">

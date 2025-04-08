@@ -18,10 +18,11 @@ if(isset($_GET['id'])){
 <?php endif; ?>
         <input type="hidden" name="delete_flag" value="0"> 
         <div class="form-group">
-            <?php $name = $_settings->userdata('id'); ?>
-            <label for="owner_id" class="control-label">Owners Name</label>
-            <input type="text" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="Enter owner" value ="<?php echo isset($name) ? $name  : '' ?>" required>
-        </div>
+    <?php $owner_name = $_settings->userdata('firstname'); ?>
+    <label for="owner_firstname" class="control-label">Owners Name</label>
+    <div class="form-control-static"><?php echo isset($owner_name) ? $owner_name : ''; ?></div>
+    <input type="hidden" name="owner_id" id="owner_id" value="<?php echo $_settings->userdata('id'); ?>" required>
+</div>
         <fieldset>
                     <legend class="text-muted">Pet Information</legend>
                     <div class="form-group">
@@ -100,24 +101,26 @@ if(isset($_GET['id'])){
 					alert_toast("An error occured",'error');
 					end_loader();
 				},
-				success:function(resp){
-					if(resp.status == 'success'){
-						// location.reload()
-						alert_toast(resp.msg, 'success')
-						location.reload()
-					}else if(resp.status == 'failed' && !!resp.msg){
-                        var el = $('<div>')
-                            el.addClass("alert alert-danger err-msg").text(resp.msg)
-                            _this.prepend(el)
-                            el.show('slow')
-                            $("html, body").scrollTop(0);
-                            end_loader()
-                    }else{
-						alert_toast("An error occured",'error');
-						end_loader();
-                        console.log(resp)
-					}
-				}
+                success:function(resp){
+    if(resp.status == 'success'){
+        alert_toast(resp.msg, 'success')
+        // Add a delay before reloading to allow the toast to display
+        setTimeout(function(){
+            location.reload()
+        }, 1500); // 1.5 seconds delay
+    }else if(resp.status == 'failed' && !!resp.msg){
+        var el = $('<div>')
+            el.addClass("alert alert-danger err-msg").text(resp.msg)
+            _this.prepend(el)
+            el.show('slow')
+            $("html, body").scrollTop(0);
+            end_loader()
+    }else{
+        alert_toast("An error occured",'error');
+        end_loader();
+        console.log(resp)
+    }
+}
 			})
 		})
 

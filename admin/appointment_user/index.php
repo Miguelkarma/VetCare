@@ -1,8 +1,21 @@
-<div class="card card-outline card-warning">
+<style>
+	.card-outline{
+		border:#000 !important
+	}
+	.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}
+	.table-striped{
+
+	}
+	</style>
+
+<div class="card card-outline ">
 	<div class="card-header">
-		<h3 class="card-title">List of Appoitments</h3>
+		<h3 class="card-title">List of Appointments</h3>
         <div class="card-tools">
-			<a href="http://localhost/ovas/?page=appointment"  class="btn btn-flat btn-sm btn-warning"><span class="fas fa-plus"></span>  Add New Appointment</a>
+			<a href="http://localhost/ovas/?page=appointment"  class="btn btn-flat btn-sm "><span class="fas fa-plus"></span>  Add New Appointment</a>
 		</div>
 	</div>
 	<div class="card-body">
@@ -15,7 +28,7 @@
 					<col width="20%">
 					<col width="25%">
 					<col width="30%">
-		
+
 				</colgroup>
 				<thead>
 					<tr>
@@ -60,7 +73,7 @@
 				                  		Action
 				                    <span class="sr-only">Toggle Dropdown</span>
 				                  </button>
-								
+
 				                  <div class="dropdown-menu" role="menu">
 								  <a class="dropdown-item" href="./?page=appointment_user/view_details&id=<?php echo $row['id'] ?>" data-id=""><span class="fa fa-window-restore text-gray"></span> View</a>
 								  <?php if($row['status'] <= 0): ?> 
@@ -68,9 +81,9 @@
 				                  <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Cancel</a>
 									<?php endif; ?>  
 								</div>
-								 
+
 							</td>
-						
+
 						</tr>
 					<?php endwhile; ?>
 				</tbody>

@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <form action="" id="update-form">
         <input type="hidden" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>">
@@ -11,7 +10,7 @@
                             $category_id = $row['category_id'];
                             $service_ids = $row['service_ids'];
                             $status = $row['status'];
-                            
+
 
 
 $service = "";
@@ -31,11 +30,11 @@ $service = (empty($service)) ? "N/A" : $service;
                 <select name="status" id="status" class="form-control form-control-sm form-control-border" required>
                     <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Pending</option>
                     <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Confirmed</option>
-                    <option value="2" <?= isset($status) && $status == 2 ? "selected" : "" ?>>Cancelled</option>
+                    <option value="3" <?= isset($status) && $status == 3 ? "selected" : "" ?>>Cancelled</option>
                 </select>
             </div>
             <fieldset>
-             
+
 
                     <div class="form-group">
                         <label for="time_sched" class="control-label">Schedule Date</label>
@@ -45,9 +44,9 @@ $service = (empty($service)) ? "N/A" : $service;
                         <label for="time_sched" class="control-label">Schedule Time</label>
                         <input type="time" name="time_sched" id="time_sched" class="form-control form-control-border" placeholder="1 yr. old" value ="<?php echo isset($row['time_sched']) ? $row['time_sched'] : '' ?>" required>
                     </div>
-             
-            
-               
+
+
+
                 </fieldset>
         <?php endwhile; ?>
     </form>

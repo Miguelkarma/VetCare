@@ -6,7 +6,10 @@
   <style>
     :root{
       --bg-img:url('<?php echo validate_image($_settings->info('cover')) ?>');
+      
     }
+    
+  
   </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,6 +69,7 @@
         position:relative;
         background: rgb(0,0,0)!important;
         background: radial-gradient(circle, rgba(0,0,0,0.48503151260504207) 22%, rgba(0,0,0,0.39539565826330536) 49%, rgba(0,212,255,0) 100%)!important;
+        margin-top:2em;
     }
     #main-header:before{
         content:"";

@@ -1,6 +1,30 @@
-<div class="col-12">
+<style>
+   html, body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            height: 90%;
+        }
+        .card {
+            height: 100% !important;
+        }
+        .card-body {
+            height: 100% !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+}
+</style>
+
+<div class="col-12 ">
     <div class="row my-5 ">
-        <div class="col-md-5">
+        <div class="col-md-5 mt-5">
             <div class="card card-outline card-navy rounded-0 shadow">
                 <div class="card-header">
                     <h4 class="card-title">Contact</h4>
@@ -9,7 +33,7 @@
                     <dl>
                         <dt class="text-muted"><i class="fa fa-envelope"></i> Email</dt>
                         <dd class="pl-4"><?= $_settings->info('email') ?></dd>
-                        <dt class="text-muted"><i class="fa fa-phone"></i> Contact #</dt>
+                        <dt class="text-muted"><i class="fa fa-phone"></i> Contact Number</dt>
                         <dd class="pl-4"><?= $_settings->info('contact') ?></dd>
                         <dt class="text-muted"><i class="fa fa-map-marked-alt"></i> Location</dt>
                         <dd class="pl-4"><?= $_settings->info('address') ?></dd>
@@ -21,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 mt-5">
             <div class="card rounded-0 card-outline card-navy shadow" >
                 <div class="card-body rounded-0">
                     <h2 class="text-center">About</h2>

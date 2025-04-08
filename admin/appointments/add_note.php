@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
     <form action="" id="update-form">
         <input type="hidden" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>">
@@ -61,15 +60,7 @@ $service = (empty($service)) ? "N/A" : $service;
                                                 </tr>
                             </div>
 
-                    <div class="form-group">
-                        <label for="time_sched" class="control-label">Schedule Date</label>
-                        <input type="date" name="schedule" id="schedule" class="form-control form-control-border" value ="<?php echo isset($row['schedule']) ? $row['schedule'] : '' ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="time_sched" class="control-label">Schedule Time</label>
-                        <input type="time" name="time_sched" id="time_sched" class="form-control form-control-border" placeholder="1 yr. old" value ="<?php echo isset($row['time_sched']) ? $row['time_sched'] : '' ?>" required>
-                    </div>
-               
+                    
                     <div class="form-group">
 				    <label for="notes" class="control-label">Doctor's Note</label>
 				    <textarea type="text" class="form-control form-control-sm summernote" name="notes" id="notes"></textarea>
