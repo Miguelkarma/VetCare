@@ -13,7 +13,10 @@ if(isset($_GET['id'])){
 ?>
 <div class="container-fluid">
     <form action="" id="category-form" >
-        <input type="hidden" name="pet_id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
+    <?php if(isset($_GET['id']) && !empty($_GET['id'])): ?>
+    <input type="hidden" name="pet_id" value="<?php echo $_GET['id']; ?>">
+<?php endif; ?>
+        <input type="hidden" name="delete_flag" value="0"> 
         <div class="form-group">
             <?php $name = $_settings->userdata('id'); ?>
             <label for="owner_id" class="control-label">Owners Name</label>
@@ -24,7 +27,7 @@ if(isset($_GET['id'])){
                     <div class="form-group">
                         <label for="category_id" class="control-label">Pet Type</label>
                         <select name="category_id" id="category_id" class="form-control form-control-border select2">
-                            <option value="" selected disabled></option>
+                            <option value="" ></option>
                             <?php 
                             $categories = $conn->query("SELECT * FROM category_list where delete_flag = 0 ".(isset($category_id) && !empty($category_id) ? " or id = '{$category_id}'" : "")." order by name asc");
                             while($row = $categories->fetch_assoc()):
