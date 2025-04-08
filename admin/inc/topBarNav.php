@@ -11,7 +11,10 @@
         border-radius: 50px;
   }
   .main-header{
-    background-color: #eacda3 !important;
+    background-color: #fffffc;
+    background-image: linear-gradient(400deg, #fffffc 0%, #beb7a4 74%);
+
+
   }
 </style>
 <!-- Navbar -->

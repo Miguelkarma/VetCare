@@ -1,6 +1,8 @@
 <style>
   .main-sidebar {
-    background-color: #eacda3 !important;
+    background-color: #fffffc;
+    background-image: linear-gradient(200deg, #fffffc 0%, #beb7a4 74%);
+
      overflow: hidden !important;
   }
   .nav-link{
@@ -9,18 +11,19 @@
    .nav-header{
     color:rgb(75, 49, 12) !important;
   }
-  .brand-link{
+  .active{
+    background-color: #fffffc;
+    background-image: linear-gradient(200deg,rgb(255, 255, 252) 0%,rgb(150, 149, 148) 74%);
     border: none !important;
-    background-color: #eacda3 !important;
   }
 
 </style>
 
 <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-light levation-8 " >
+      <aside class="main-sidebar sidebar-light levation-8 " >
         <!-- Brand Logo -->
         <a href="<?php echo base_url ?>admin" class="brand-link  text-sm  border-0 ">
-        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-2 bg-black" style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
+        <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-2 " style="width: 1.8rem;height: 1.8rem;max-height: unset;object-fit:scale-down;object-position:center center">
         <span class="brand-text font-weight-bold text-color-black" style="color:#333;"><?php echo $_settings->info('short_name') ?></span>
         </a>
         <!-- Sidebar -->
