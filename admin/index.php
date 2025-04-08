@@ -42,8 +42,8 @@
         <div id="delete_content"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning btn-flat" id='confirm' onclick="">Continue</button>
-        <button type="button" class="btn btn-secondary btn-flat" data-dismiss="modal">Close</button>
+        <button type="button" class="btn  btn-flat" id='confirm' onclick="">Continue</button>
+        <button type="button" class="btn  btn-flat" data-dismiss="modal">Close</button>
       </div>
       </div>
     </div>
@@ -57,8 +57,8 @@
       <div class="modal-body rounded-0">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning btn-flat" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-        <button type="button" class="btn btn-secondary btn-flat" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn  btn-flat" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
+        <button type="button" class="btn  btn-flat" data-dismiss="modal">Cancel</button>
       </div>
       </div>
     </div>

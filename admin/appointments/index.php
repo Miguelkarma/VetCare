@@ -1,3 +1,8 @@
+<style>.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}</style>
+
 <div class="card card-outline">
 	<div class="card-header">
 		<h3 class="card-title">List of Appointments</h3>

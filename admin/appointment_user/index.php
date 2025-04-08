@@ -2,13 +2,20 @@
 	.card-outline{
 		border:#000 !important
 	}
+	.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}
+	.table-striped{
+		
+	}
 	</style>
 
 <div class="card card-outline ">
 	<div class="card-header">
 		<h3 class="card-title">List of Appointments</h3>
         <div class="card-tools">
-			<a href="http://vet-care.free.nf/?page=appointment"  class="btn btn-flat btn-sm btn-warning"><span class="fas fa-plus"></span>  Add New Appointment</a>
+			<a href="http://localhost/ovas"  class="btn btn-flat btn-sm "><span class="fas fa-plus"></span>  Add New Appointment</a>
 		</div>
 	</div>
 	<div class="card-body">

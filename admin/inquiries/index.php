@@ -6,6 +6,10 @@
         object-position:center center;
         border-radius:100%;
     }
+	.btn{
+	background-color: #eacda3!important;
+	border-radius:0.5em!important;
+	}
 </style>
 <div class="card card-outline  rounded-0">
 	<div class="card-header">

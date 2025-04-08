@@ -44,7 +44,7 @@ while($row = $appointments->fetch_assoc()){
 }
 ?>
 <h1>Welcome to <?php echo $_settings->info('name') ?> - Short Tail Veterinary Services </h1>
-<hr class="border-info">
+<hr >
 <?php if($_settings->userdata('type') == 1): ?>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
