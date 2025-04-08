@@ -12,21 +12,12 @@
         object-position:center center;
         border-radius:100%;
     }
-	.new{
-		background-color: #eacda3 !important;
-		border:none !important;
-		   color:rgb(75, 49, 12) !important;
-	}
-	.btn{
-	background-color: #eacda3!important;
-	border-radius:0.5em!important;
-	}
 </style>
-<div class="card card-outline ">
+<div class="card card-outline card-primary">
 	<div class="card-header">
 		<h3 class="card-title">List of System Users</h3>
 		<div class="card-tools">
-			<a href="?page=user/manage_user" class="new btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
+			<a href="?page=user/manage_user" class="btn btn-flat btn-primary"><span class="fas fa-plus"></span>  Create New</a>
 		</div>
 	</div>
 	<div class="card-body">

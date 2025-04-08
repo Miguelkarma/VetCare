@@ -1,78 +1,6 @@
-<style>
-
-body {
-  height: 100vh;
-  margin: 0;
-
-}
-
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; 
-}
-
-
-
-
-#top-Nav .container {
-  width: 100%;
-  max-width: 1320px;
-  padding: 0 15px;
-}
-
-
-#top-Nav .navbar-nav {
-  width: auto;
-}
-
-
-.user-section {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-
-#top-Nav .contact-info {
-  white-space: nowrap;
-}
-
-
-#navbarCollapse {
-  justify-content: space-between;
-}
-
-
-@media (min-width: 992px) {
-  .navbar-nav {
-    margin-right: 1rem;
-  }
-}
-
-
-@media (max-width: 991px) {
-  #top-Nav .container {
-    padding: 0 10px;
-  }
-  
-  #navbarCollapse {
-    align-items: flex-start;
-  }
-  
-  .user-section {
-    width: 100%;
-    justify-content: flex-start;
-    margin-top: 10px;
-  }
-}
-
-</style>
 <div class="col-12">
     <div class="row my-5 ">
-        <div class="col-md-5 mt-5">
+        <div class="col-md-5">
             <div class="card card-outline card-navy rounded-0 shadow">
                 <div class="card-header">
                     <h4 class="card-title">Contact Information</h4>
@@ -81,7 +9,7 @@ body {
                     <dl>
                         <dt class="text-muted"><i class="fa fa-envelope"></i> Email</dt>
                         <dd class="pl-4"><?= $_settings->info('email') ?></dd>
-                        <dt class="text-muted"><i class="fa fa-phone"></i> Contact Number</dt>
+                        <dt class="text-muted"><i class="fa fa-phone"></i> Contact #</dt>
                         <dd class="pl-4"><?= $_settings->info('contact') ?></dd>
                         <dt class="text-muted"><i class="fa fa-map-marked-alt"></i> Location</dt>
                         <dd class="pl-4"><?= $_settings->info('address') ?></dd>
@@ -93,7 +21,7 @@ body {
                 </div>
             </div>
         </div>
-        <div class="col-md-7 mt-5">
+        <div class="col-md-7">
             <div class="card rounded-0 card-outline card-navy shadow" >
                 <div class="card-body rounded-0">
                     <h2 class="text-center">Message Us</h2>
@@ -112,17 +40,17 @@ body {
                         <input type="hidden" name="id">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control form-control-sm form-control-border" id="fullname" name="fullname" required placeholder="First and last name">
+                                <input type="text" class="form-control form-control-sm form-control-border" id="fullname" name="fullname" required placeholder="John Smith">
                                 <small class="px-3 text-muted">Full Name</small>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control form-control-sm form-control-border" id="contact" name="contact" required placeholder="09xxxxxxxx">
+                                <input type="text" class="form-control form-control-sm form-control-border" id="contact" name="contact" required placeholder="xxxxxxxxxxxxx">
                                 <small class="px-3 text-muted">Contact #</small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="email" class="form-control form-control-sm form-control-border" id="email" name="email" required placeholder="vetcare@sample.com">
+                                <input type="email" class="form-control form-control-sm form-control-border" id="email" name="email" required placeholder="xxxxxx@xxxxxx.xxx">
                                 <small class="px-3 text-muted">Email</small>
                             </div>
                         </div>

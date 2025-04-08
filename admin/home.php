@@ -1,33 +1,13 @@
 <style>
-	.fc-event-title-container{
-      background-color: #eacda3!important;
+    #cover-img{
+        object-fit:cover;
+        object-position:center center;
+        width: 100%;
+        height: 100%;
+    }
+    .fc-event-title-container{
         text-align:center;
-        color:#5C4033 !important;
-       border: none !important;
     }
-    .fc-daygrid-event{
-        border: none !important;
-    }
-    .fc-today-button{
-          background-color: #eacda3!important;
-          color: #000 !important;
-          border: none !important;
-    }
-    .fc-prev-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-          border: none !important;
-    }
-     .fc-next-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-           border: none !important;
-    }
-    .fc-event-title.fc-sticky{
-        font-size:2em;
-      
-    }
-   
     .fc-event-title.fc-sticky{
         font-size:2em;
     }
@@ -43,8 +23,8 @@ while($row = $appointments->fetch_assoc()){
     $appoinment_arr[$row['schedule']] += 1;
 }
 ?>
-<h1>Welcome to <?php echo $_settings->info('name') ?> - Short Tail Veterinary Services </h1>
-<hr >
+<h1>Welcome to <?php echo $_settings->info('name') ?> - Admin Panel </h1>
+<hr class="border-info">
 <?php if($_settings->userdata('type') == 1): ?>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
@@ -167,7 +147,7 @@ while($row = $appointments->fetch_assoc()){
 <?php endif; ?>
 <hr>
 <?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2): ?>
-<div class="card card-outline  rounded-0 shadow">
+<div class="card card-outline card-warning rounded-0 shadow">
     <div class="card-header rounded-0">
             <h4 class="card-title">Appointment Requests</h4>
     </div>

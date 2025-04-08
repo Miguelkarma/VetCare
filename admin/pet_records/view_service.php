@@ -68,11 +68,6 @@ $result = $conn->query($sql);
             border-radius: 0.5rem;
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
         }
-        .bg{
-            background-color: #eacda3!important;
-	border-radius:0.5em!important;
-    color:rgb(75, 49, 12) !important;
-        }
     </style>
 </head>
 <body>
@@ -101,7 +96,7 @@ $result = $conn->query($sql);
                           echo "  <p><strong>Pet Type:</strong>{$row2['name']} </p> ";
                             echo "<p><strong>Pet Name:</strong> {$row['pet_name']}</p>
                             <p><strong>Pet Age:</strong> {$row['age']}</p>
-                            <p class='py-3 px-4 text-light bg'>Service(s)</p>";
+                            <p class='py-1 px-2 text-light bg-gradient-navy'>Service(s)</p>";
                             
                             $services = $conn->query("SELECT * FROM `service_list` where id in ({$service_data}) order by `name` asc");
                             $service = "";

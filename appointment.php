@@ -1,33 +1,7 @@
 <style>
-     .fc-event-title-container{
-      background-color: #eacda3!important;
+    .fc-event-title-container{
         text-align:center;
-        color:#5C4033 !important;
-       border: none !important;
     }
-    .fc-daygrid-event{
-        border: none !important;
-    }
-    .fc-today-button{
-          background-color: #eacda3!important;
-          color: #000 !important;
-          border: none !important;
-    }
-    .fc-prev-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-          border: none !important;
-    }
-     .fc-next-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-           border: none !important;
-    }
-    .fc-event-title.fc-sticky{
-        font-size:2em;
-      
-    }
-   
     .fc-event-title.fc-sticky{
         font-size:2em;
     }

@@ -15,14 +15,9 @@ if(isset($_GET['id'])){
     <form action="" id="category-form" >
         <input type="hidden" name="pet_id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
         <div class="form-group">
-            <?php $name = $_settings->userdata('firstname'); ?>
-            <label for="owner_firstname" class="control-label">Owners Name</label>
-            <input type="text"  class="form-control form-control-border" placeholder="Enter owner" value ="<?php echo isset($name) ? $name  : '' ?>" required>
-        </div>
-        <div class="form-group">
             <?php $name = $_settings->userdata('id'); ?>
-            <label for="owner_id" class="control-label">Owners ID</label>
-            <input type="text" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="Enter ID" value ="<?php echo isset($name) ? $name  : '' ?>" readonly>
+            <label for="owner_id" class="control-label">Owners Name</label>
+            <input type="text" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="Enter owner" value ="<?php echo isset($name) ? $name  : '' ?>" required>
         </div>
         <fieldset>
                     <legend class="text-muted">Pet Information</legend>

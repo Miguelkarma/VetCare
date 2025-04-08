@@ -26,25 +26,25 @@ $schedule = $_GET['schedule'];
                             $owner_name = $owner_firstname." ".$owner_lastname;
                             ?>
                            
-                            <input type="hidden" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="First and last name" value ="<?php echo isset($owner_id) ? $owner_id : '' ?>" required>
-                            <input type="text" name="owner_name" id="owner_name" class="form-control form-control-border" placeholder="First and last name" value ="<?php echo isset($owner_name) ? $owner_name : '' ?>" required>
+                            <input type="hidden" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="John D Smith" value ="<?php echo isset($owner_id) ? $owner_id : '' ?>" required>
+                            <input type="text" name="owner_name" id="owner_name" class="form-control form-control-border" placeholder="John D Smith" value ="<?php echo isset($owner_name) ? $owner_name : '' ?>" required>
                         <?php }else{ ?>
                         <label for="owner_name" class="control-label">Name</label>
-                        <input type="text" name="owner_name" id="owner_name" class="form-control form-control-border" placeholder="First and last name" value ="<?php echo isset($owner_name) ? $owner_name : '' ?>" required>
+                        <input type="text" name="owner_name" id="owner_name" class="form-control form-control-border" placeholder="John D Smith" value ="<?php echo isset($owner_name) ? $owner_name : '' ?>" required>
                       <?php  } ?>
                         
                     </div>
                     <div class="form-group">
-                        <label for="contact" class="control-label">Contact Number</label>
+                        <label for="contact" class="control-label">Contact #</label>
                         <input type="text" name="contact" id="contact" class="form-control form-control-border" placeholder="09xxxxxxxx" value ="<?php echo isset($contact) ? $contact : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="control-label">Email</label>
-                        <input type="email" name="email" id="email" class="form-control form-control-border" placeholder="vetcare@sample.com" value ="<?php echo isset($email) ? $email : '' ?>" required>
+                        <input type="email" name="email" id="email" class="form-control form-control-border" placeholder="jsmith@sample.com" value ="<?php echo isset($email) ? $email : '' ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="address" class="control-label">Address</label>
-                        <textarea type="email" name="address" id="address" class="form-control form-control-sm rounded-0" rows="3" placeholder="Street number, Barangay, City, and Province" required><?php echo isset($address) ? $address : '' ?></textarea>
+                        <textarea type="email" name="address" id="address" class="form-control form-control-sm rounded-0" rows="3" placeholder="Lot 2 Block 23, Here Subd., Over There City, Anywhere, 2306" required><?php echo isset($address) ? $address : '' ?></textarea>
                     </div>
                 </fieldset>
             </div>

@@ -1,11 +1,5 @@
-<style>
-  .navbar{
-    background-color: #eacda3 !important;
-  }
-</style>
-
 <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white ">
+  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
       <a href="<?php echo base_url ?>index3.html" class="navbar-brand">
         <img src="<?php echo base_url ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

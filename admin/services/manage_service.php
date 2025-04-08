@@ -18,10 +18,6 @@ if(isset($_GET['id'])){
         height:200px;
         width:200px;
     }
-  #form{
-    border:1px solid white!important;
-    color:#4B310C!important;
-  }
 </style>
 <div class="container-fluid">
     <form action="" id="service-form">
@@ -32,7 +28,7 @@ if(isset($_GET['id'])){
         </div>
         <div class="form-group">
             <label for="category_ids" class="control-label">For Category <small><em>(Pet Types)</em></small></label>
-            <select name="category_ids[]" id="category_ids" class="form-control select2 " multiple>
+            <select name="category_ids[]" id="category_ids" class="form-control form-control-border select2" multiple>
                 <?php 
                 $categories = $conn->query("SELECT * FROM category_list where delete_flag = 0 ".(isset($category_ids) && !empty($category_ids) ? " or id in ({$category_ids})" : "")." order by name asc");
                 while($row = $categories->fetch_assoc()):

@@ -1,14 +1,6 @@
-<style>.card-outline{
-		background-color:#000 !important
-	}
-	.btn{
-	background-color: #eacda3!important;
-	border-radius:0.5em!important;
-	}</style>
-
-<div class="card card-outline ">
+<div class="card card-outline card-warning">
 	<div class="card-header">
-		<h3 class="card-title">List of Appointments</h3>
+		<h3 class="card-title">List of Appoitments</h3>
 	</div>
 	<div class="card-body">
 		<div class="container-fluid">

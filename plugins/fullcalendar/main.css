@@ -284,7 +284,6 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
   }
 .fc .fc-toolbar.fc-header-toolbar {
     margin-bottom: 1.5em;
@@ -298,7 +297,6 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
   }
 .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
     margin-left: .75em; /* space between */
-    
   }
 .fc-direction-rtl .fc-toolbar > * > :not(:first-child) {
     margin-right: .75em; /* space between */
@@ -578,7 +576,7 @@ A HORIZONTAL event
 */
 .fc-h-event { /* allowed to be top-level */
   display: block;
-  border: 1px solid #04080c;
+  border: 1px solid #3788d8;
   border: 1px solid var(--fc-event-border-color, #3788d8);
   background-color: #3788d8;
   background-color: var(--fc-event-bg-color, #3788d8)
@@ -711,7 +709,6 @@ A HORIZONTAL event
   display: table; }
 .fc .fc-daygrid-body { /* a <div> that wraps the table */
     position: relative;
-    
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
   }
 .fc .fc-daygrid-day.fc-day-today {
@@ -720,7 +717,6 @@ A HORIZONTAL event
     }
 .fc .fc-daygrid-day-frame {
     position: relative;
-    
     min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */
   }
 .fc {
@@ -744,7 +740,6 @@ A HORIZONTAL event
     position: relative;
     z-index: 4;
     padding: 4px;
-    
   }
 .fc {
 
@@ -954,7 +949,6 @@ A VERTICAL event
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #151e27 !important;
   }
 
 .fc-v-event .fc-event-time {

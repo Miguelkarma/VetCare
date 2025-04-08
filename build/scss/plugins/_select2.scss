@@ -80,11 +80,11 @@
   }
 
   .select2-results__option {
-    &[aria-disabled="true"] {
+    &[aria-disabled='true'] {
       color: $gray-600;
     }
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       $color: $gray-300;
 
       background-color: $color;
@@ -135,6 +135,7 @@
           }
         }
 
+
         .select2-search.select2-search--inline {
           .select2-search__field {
             border: 0;
@@ -144,15 +145,15 @@
       }
 
       .select2-selection__choice {
-        background-color: #eacda3 !important;
+        background-color: $primary;
         border-color: darken($primary, 5%);
-        color: #4b310c !important;
+        color: color-yiq($primary);
         padding: 0 10px;
-        margin-top: 0.31rem;
+        margin-top: .31rem;
       }
 
       .select2-selection__choice__remove {
-        color: #4b310c !important;
+        color: rgba(255, 255, 255, 0.7);
         float: right;
         margin-left: 5px;
         margin-right: -2px;
@@ -171,9 +172,7 @@
         }
 
         .select2-selection__choice {
-          margin-top: 0.4rem;
-          background-color: #eacda3 !important;
-          color: #4b310c !important;
+          margin-top: .4rem;
         }
       }
     }
@@ -230,11 +229,11 @@ select.form-control-sm ~ {
       height: $input-height-sm;
 
       .select2-selection__rendered {
-        margin-top: -0.4rem;
+        margin-top: -.4rem;
       }
 
       .select2-selection__arrow {
-        top: -0.12rem;
+        top: -.12rem;
       }
     }
 
@@ -312,9 +311,7 @@ select.form-control-sm ~ {
     color: $white;
   }
 
-  .select2-container--bootstrap4
-    .select2-selection--multiple
-    .select2-selection__choice {
-    color: #4b310c !important;
+  .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+    color: $white;
   }
 }

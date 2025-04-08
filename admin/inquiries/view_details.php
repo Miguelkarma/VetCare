@@ -23,20 +23,20 @@ if(isset($_GET['id'])){
     <div class="row">
         <div class="col-md-12">
             <dl>
-                <dt class="">Inquirer</dt>
+                <dt class="text-warning">Inquirer</dt>
                 <dd class="pl-4"><?= isset($fullname) ? $fullname : "" ?></dd>
-                <dt class="">Email</dt>
+                <dt class="text-warning">Email</dt>
                 <dd class="pl-4"><?= isset($email) ? $email : "" ?></dd>
-                <dt class="">Contact Number</dt>
+                <dt class="text-warning">Contact #</dt>
                 <dd class="pl-4"><?= isset($contact) ? $contact : "" ?></dd>
-                <dt class="">Message</dt>
+                <dt class="text-warning">Message</dt>
                 <dd class="pl-4"><?= isset($message) ? $message : "" ?></dd>
             </dl>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-right">
-            <button class="btn btn-flat btn-sm " type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            <button class="btn btn-flat btn-sm btn-dark" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
         </div>
     </div>
 </div>
