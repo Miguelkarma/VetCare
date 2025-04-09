@@ -55,6 +55,12 @@
     }
   })
 </script>
+<style>
+  .main-footer{
+     background-color:#F5EFE7!important;
+     border:none!important;
+  }
+</style>
 <footer class="main-footer text-sm">
         <strong>Copyright © <?php echo date('Y') ?>. 
         <!-- <a href=""></a> -->

@@ -1,6 +1,4 @@
-<style>
 
-</style>
 
 <?php require_once('../config.php'); ?>
  <!DOCTYPE html>
@@ -93,4 +91,12 @@
       <!-- /.content-wrapper -->
       <?php require_once('inc/footer.php') ?>
   </body>
+  <style>
+    .content-wrapper{
+        background-color:#F5EFE7!important;
+    }
+    .wrapper{
+        background-color:#F5EFE7!important;
+    }
+  </style>
 </html>

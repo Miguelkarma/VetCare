@@ -63,7 +63,7 @@ $result = $conn->query($sql);
             margin-left: calc(50% + 1.5rem);
         }
         .timeline-content {
-            background: #f8f9fa;
+            background: #F5EFE7;
             padding: 1rem;
             border-radius: 0.5rem;
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -72,6 +72,11 @@ $result = $conn->query($sql);
             background-color: #eacda3!important;
 	border-radius:0.5em!important;
     color:rgb(75, 49, 12) !important;
+        }
+        .modal-content{
+            
+ background-color:#ebe5dd!important;
+
         }
         body{
         font-family: "Abel", sans-serif;

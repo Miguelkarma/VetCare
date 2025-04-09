@@ -52,6 +52,7 @@ body.text-sm {
   .content-wrapper,
   .main-footer {
     @include transition(margin-right $transition-speed $transition-fn);
+    
   }
 }
 

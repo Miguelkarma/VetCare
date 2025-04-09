@@ -2,7 +2,9 @@
         font-family: "Abel", sans-serif;
   font-weight: 400;
   font-style: normal;
-  }</style>
+  }
+
+        </style>
 
 <?php
 require_once('../../config.php');

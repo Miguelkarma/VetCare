@@ -1,8 +1,6 @@
 <style>
   .main-sidebar {
-    background-color: #fffffc;
-    background-image: linear-gradient(200deg, #fffffc 0%,rgb(223, 207, 163) 74%);
-
+ background-color:#F5EFE7!important;
      overflow: hidden !important;
   }
   .nav-link{
@@ -17,7 +15,7 @@
   }
   .active{
     background-color: #fffffc;
-    background-image: linear-gradient(300deg,rgb(155, 151, 140) 0%,rgb(250, 246, 241) 74%);
+    background-image: linear-gradient(300deg,rgba(234, 205, 163, 0.89) 0%,rgb(224, 209, 191) 74%);
     border: none !important;
   }
 
@@ -59,7 +57,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointment_user" class="nav-link nav-appointment_user">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                          Admin Bookings
+                          Admin Booking Logs
                         </p>
                       </a>
                     </li>
@@ -94,7 +92,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointments" class="nav-link nav-appointments">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                         Clients Bookings
+                         Appointments
                         </p>
                       </a>
                     </li>

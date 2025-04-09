@@ -5,10 +5,28 @@
         object-fit:scale-down;
         object-position:center center;
     }
-	.btn{
-	background-color: #eacda3!important;
+		.btn{
+	background-color: #C7B299!important;
 	border-radius:0.5em!important;
+	      color:rgb(10, 7, 2) !important;
 	}
+	  	.card{
+ background-color:#ebe5dd!important;
+	}
+  .table {
+    border: 1px solid #675640; /* Set the border for the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+ color:rgb(37, 24, 6) !important;
+}
+
+.table th, .table td {
+    border: 1px solid #675640; /* Set borders for table cells */
+}
+  .modal-content{
+            
+ background-color:#ebe5dd!important;
+
+        }
 	body{
         font-family: "Abel", sans-serif;
   font-weight: 400;
@@ -27,11 +45,11 @@
         <div class="table-responsive">
 			<table class="table table-sm table-hover table-striped table-bordered">
 				<colgroup>
-					<col width="5%">
-					<col width="20%">
-					<col width="20%">
-					<col width="30%">
+					<col width="8%">
+					<col width="10%">
 					<col width="15%">
+					<col width="20%">
+					<col width="20%">
 				</colgroup>
 				<thead>
 					<tr>

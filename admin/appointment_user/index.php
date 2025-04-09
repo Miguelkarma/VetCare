@@ -3,17 +3,28 @@
 		border:#000 !important
 	}
 	.btn{
-	background-color: #eacda3!important;
+	background-color: #C7B299!important;
 	border-radius:0.5em!important;
+	      color:rgb(10, 7, 2) !important;
 	}
-	.table-striped{
 
-	}
 	 body{
         font-family: "Abel", sans-serif;
   font-weight: 400;
   font-style: normal;
   }
+  	.card{
+ background-color:#ebe5dd!important;
+	}
+  .table {
+    border: 1px solid #675640; /* Set the border for the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+ color:rgb(37, 24, 6) !important;
+}
+
+.table th, .table td {
+    border: 1px solid #675640; /* Set borders for table cells */
+}
 	</style>
 
 <div class="card card-outline ">

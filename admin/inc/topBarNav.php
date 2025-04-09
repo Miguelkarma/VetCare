@@ -11,15 +11,14 @@
         border-radius: 50px;
   }
   .main-header{
-    background-color: #fffffc;
-    background-image: linear-gradient(400deg, #fffffc 0%,rgb(223, 207, 163) 74%);
-
+     background-color:#F5EFE7!important;
+border:1px solid #F5EFE7 !important;
 
   }
   
 </style>
 <!-- Navbar -->
-      <nav class="main-header navbar navbar-expand  text-sm shadow-md">
+      <nav class="main-header navbar navbar-expand  text-sm d">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">

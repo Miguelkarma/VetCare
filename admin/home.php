@@ -1,13 +1,16 @@
 <style>
 	.fc-event-title-container{
-      background-color: #eacda3!important;
+       background-color:rgb(212, 199, 181)!important;
         text-align:center;
         color:#5C4033 !important;
        border: none !important;
+      
     }
     .fc-daygrid-event{
         border: none !important;
     }
+ 
+
     .fc-today-button{
           background-color: #eacda3!important;
           color: #000 !important;
@@ -31,11 +34,36 @@
     .fc-event-title.fc-sticky{
         font-size:2em;
     }
+    .info-box {
+    background-color: #ebe5dd !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+        color:rgb(75, 49, 12) !important;
+        font-weight:bold;
+}
+.distinct {
+    background-color:#E3D6C2 !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
      body{
         font-family: "Abel", sans-serif;
   font-weight: 400;
   font-style: normal;
   }
+  .card-header{
+     background-color:#D6C5AE!important;
+  border-top-left-radius: 1em !important;
+  border-top-right-radius: 1em !important;
+  border:none!important;
+      color:rgb(75, 49, 12) !important;
+  }
+  .card{
+    border-radius:1em!important;
+        background-color:rgba(243, 241, 239, 0.94) !important;
+  }
+
+.btn{
+    background-color:#C7B299;
+}
 </style>
 <?php 
 
@@ -52,7 +80,7 @@ while($row = $appointments->fetch_assoc()){
 <?php if($_settings->userdata('type') == 1): ?>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box distinct">
             <span class="info-box-icon bg-gradient-info elevation-1"><i class="fas fa-th-list"></i></span>
 
             <div class="info-box-content">
@@ -68,7 +96,7 @@ while($row = $appointments->fetch_assoc()){
         <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box ">
             <span class="info-box-icon bg-gradient-warning elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
@@ -84,11 +112,11 @@ while($row = $appointments->fetch_assoc()){
         <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box distinct">
             <span class="info-box-icon bg-gradient-success elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
-            <span class="info-box-text">Confirmed Request</span>
+            <span class="info-box-text ">Confirmed Request</span>
             <span class="info-box-number text-right">
                 <?php 
                     echo $conn->query("SELECT * FROM `appointment_list` where `status` = 1 ")->num_rows;
@@ -100,7 +128,7 @@ while($row = $appointments->fetch_assoc()){
         <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box ">
             <span class="info-box-icon bg-gradient-danger elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
@@ -120,7 +148,7 @@ while($row = $appointments->fetch_assoc()){
 <?php if($_settings->userdata('type') == 3): ?>
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box ">
             <span class="info-box-icon bg-gradient-warning elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
@@ -136,7 +164,7 @@ while($row = $appointments->fetch_assoc()){
         <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box ">
             <span class="info-box-icon bg-gradient-success elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
@@ -152,7 +180,7 @@ while($row = $appointments->fetch_assoc()){
         <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
-        <div class="info-box bg-gradient-light shadow">
+        <div class="info-box ">
             <span class="info-box-icon bg-gradient-danger elevation-1"><i class="fas fa-calendar-day"></i></span>
 
             <div class="info-box-content">
@@ -173,7 +201,7 @@ while($row = $appointments->fetch_assoc()){
 <?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2): ?>
 <div class="card card-outline  rounded-0 shadow">
     <div class="card-header rounded-0">
-            <h4 class="card-title">Appointment Requests</h4>
+            <h4 class="card-title" style="font-weight:bold;">Appointment Requests</h4>
     </div>
     <div class="card-body">
         <div id="appointmentCalendar"></div>

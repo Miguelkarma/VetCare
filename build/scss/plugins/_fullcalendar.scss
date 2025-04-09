@@ -19,7 +19,7 @@
 
 // Calendar title
 .fc-header-title h2 {
-  color: #666;
+  color: #802222;
   font-size: 15px;
   line-height: 1.6em;
   margin-left: 10px;
@@ -59,6 +59,7 @@
   margin: 0;
   padding: 1rem;
 }
+
 
 @include media-breakpoint-down(xs) {
   .fc-toolbar {
