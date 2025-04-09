@@ -23,16 +23,16 @@
     .car-item:hover .banner-img{
         transform:scale(1.3)
     }
-    .welcome-content img{
-        margin:.5em;
-    }
-  body{
     
+  body{
+        font-family: "Abel", sans-serif;
+  font-style: normal;
   }
 </style>
-<div class="col-lg-12 py-5">
+ <link rel="stylesheet"  href="./inc/css/nav.css">
+<div class="col-lg-12 ">
     <div class="contain-fluid">
-        <div class="card card-outline card-warning shadow rounded-0">
+        <div class="card card-outline  shadow rounded-0">
             <div class="card-body rounded-0">
                 <div class="container-fluid">
                     <h3 class="text-center">Welcome</h3>
@@ -45,3 +45,4 @@
         </div>
     </div>
 </div>
+<script src="./inc/js/nav.js"></script>

@@ -1,3 +1,7 @@
+<style>
+ 
+</style>
+
 <script>
   $(document).ready(function(){
     $('.list-group').each(function(){

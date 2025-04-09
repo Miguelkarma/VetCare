@@ -1,9 +1,11 @@
 <?php require_once('./config.php'); ?>
  <!DOCTYPE html>
+ 
 <html lang="en" class="" >
 <style>
+
   #header{
-    height:70vh;
+    height:60vh;
     width:calc(100%);
     position:relative;
     top:-1em;
@@ -25,22 +27,13 @@
     z-index:2;
   }
 
-  #top-Nav a.nav-link.active {
-      color: #f8f9fa;
-      font-weight: 900;
-      position: relative;
-  }
-  #top-Nav a.nav-link.active:before {
-    content: "";
-    position: absolute;
-    border-bottom: 2px solid #f8f9fa;
-    width: 33.33%;
-    left: 33.33%;
-    bottom: 0;
+  .title-hero{
+    
   }
 </style>
+ <link rel="stylesheet"  href="./inc/css/nav.css">
 <?php require_once('inc/header.php') ?>
-  <body class="layout-top-nav  mb-5 style="height: auto;">
+  <body class="layout-top-nav  mb-5" style="height: auto;">
     <div class="wrapper">
      <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home';  ?>
      <?php require_once('inc/topBarNav.php') ?>
@@ -54,7 +47,7 @@
         <?php if($page == "home" || $page == "about_us"): ?>
           <div id="header" class="shadow mb-4">
               <div class="d-flex justify-content-center h-100 w-100 align-items-center flex-column px-3">
-                  <h1 class="w-100 text-center site-title px-5"><?php echo $_settings->info('name') ?></h1>
+                  <h1 class="w-auto text-center title-hero px-5"><?php echo $_settings->info('name') ?></h1>
                   <!-- <h3 class="w-100 text-center px-5 site-subtitle"><?php echo $_settings->info('name') ?></h3> -->
               </div>
           </div>
@@ -125,7 +118,7 @@
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
               <button type="button" class="btn-close" data-dismiss="modal"><span class="fa fa-times"></span></button>
-              <img src="" alt="">
+           
       </div>
     </div>
   </div>
@@ -133,4 +126,14 @@
       <!-- /.content-wrapper -->
       <?php require_once('inc/footer.php') ?>
   </body>
+  <style>
+       .content-wrapper{
+        background-color:#F5EFE7!important;
+    }
+    .wrapper{
+        background-color:#F5EFE7!important;
+    }
+   
+  </style>
+  <script src="./inc/js/nav.js"></script>
 </html>
