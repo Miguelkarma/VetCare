@@ -44,7 +44,11 @@ $service = (empty($service)) ? "N/A" : $service;
         color:rgb(46, 30, 7) !important;
     }
     	.card{
- background-color:#ebe5dd!important;
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
 	}
      .table {
     border: 1px solid #675640; /* Set the border for the table */

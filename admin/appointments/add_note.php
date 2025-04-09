@@ -35,7 +35,7 @@ $service = (empty($service)) ? "N/A" : $service;
 
    
             <fieldset>
-                    <legend class="text-muted">Pet Information</legend>
+                    <legend class="">Pet Information</legend>
                     <div class="form-group">
                     <input type="hidden" name="owner_id" id="owner_id" class="form-control form-control-border" placeholder="Siberian Husky" value ="<?php echo isset($row['owner_id']) ? $row['owner_id']: '' ?>" required>
                     </div>

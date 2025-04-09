@@ -14,17 +14,19 @@ if(isset($_GET['id'])){
 <style>
     #uni_modal .modal-footer{
         display:none !important;
+        
     }
+  
 </style>
 <div class="container-fluid">
     <dl>
-        <dt class="text-muted">Service</dt>
+        <dt style="color:rgb(37, 24, 6) !important;">Service</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($service) ? $service : '' ?></dd>
-        <dt class="text-muted">Description</dt>
+        <dt class="">Description</dt>
         <dd class='pl-4'>
             <p class=""><small><?= isset($description) ? html_entity_decode($description) : '' ?></small></p>
         </dd>
-        <dt class="text-muted">Fee</dt>
+        <dt class="">Fee</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($cost) ? number_format($cost,2) : '0.00' ?></dd>
     </dl>
     <div class="col-12 text-right">

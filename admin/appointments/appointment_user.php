@@ -1,15 +1,12 @@
 <style>.card-outline{
 		background-color:#000 !important
 	}
-	.btn{
-	background-color: #eacda3!important;
+		.btn{
+	background-color:rgb(212, 197, 176)!important;
 	border-radius:0.5em!important;
+	      color:rgb(10, 7, 2) !important;
 	}
-	body{
-        font-family: "Abel", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  }</style>
+	</style>
 
 <div class="card card-outline ">
 	<div class="card-header">

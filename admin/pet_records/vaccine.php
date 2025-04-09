@@ -94,6 +94,19 @@ if ($result->num_rows > 0) {
   font-weight: 400;
   font-style: normal;
   }
+  .table {
+    border: 1px solid #675640; /* Set the border for the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+ color:rgb(37, 24, 6) !important;
+}
+.table th, .table td {
+    border: 1px solid #675640; /* Set borders for table cells */
+}
+		.btn{
+	background-color:rgb(212, 197, 176)!important;
+	border-radius:0.5em!important;
+	      color:rgb(10, 7, 2) !important;
+	}
 </style>
  <div class="container my-5">
         <h1 class="text-center">Vet Clinic Vaccination Schedule</h1>
@@ -121,12 +134,12 @@ if ($result->num_rows > 0) {
                 <label for="start_date" class="form-label">Start Date:</label>
                 <input type="date" id="start_date" name="start_date" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-warning">Generate Schedule</button>
+            <button type="submit" class="btn ">Generate Schedule</button>
         </form>
         <h2 class="text-center">All Scheduled Vaccinations</h2>
         <?php if (!empty($schedules)): ?>
             <table class="table table-bordered table-striped">
-                <thead class="table-dark">
+                <thead class="table" style="background-color:rgb(230, 212, 191)">
                     <tr>
                         <th>Pet Name</th>
                         <th>Vaccine Type</th>

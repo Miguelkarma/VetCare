@@ -49,6 +49,35 @@ $service = (empty($service)) ? "N/A" : $service;
         border-radius:0.3em!important;
         border:none!important;
     }
+     
+    
+   .card{
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
+	}
+     .table {
+    border: 1px solid #675640; /* Set the border for the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+ color:rgb(37, 24, 6) !important;
+}
+
+.table th, .table td {
+    border: 1px solid #675640; /* Set borders for table cells */
+}
+
+.modal-content{
+ background-color:#ebe5dd!important;
+ 	      color:rgb(10, 7, 2) !important;
+        }
+		.modal-header{
+			border:none!important;
+		}
+		.modal-footer{
+			border:none!important;
+		}
     body{
         font-family: "Abel", sans-serif;
   font-weight: 400;
@@ -72,7 +101,7 @@ $service = (empty($service)) ? "N/A" : $service;
                                         <col width="70%">
                                     </colgroup>
                                     <tr>
-                                        <th class="text-muted  px-2 py-1 det" style="background-color: #eacda3;">Appointment Request Code</th>
+                                        <th class=" px-2 py-1 det" style="background-color:#C7B299;">Appointment Request Code</th>
                                         <td><?= ($code) ?></td>
                                     </tr>
                                 </table>
@@ -89,26 +118,26 @@ $service = (empty($service)) ? "N/A" : $service;
                                             </colgroup>
                                             <tbody>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Name</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Name</th>
                                                     <td class="py-1 px-2 text-right"><?= ucwords($owner_name) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Contact Number</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Contact Number</th>
                                                     <td class="py-1 px-2 text-right"><?= ($contact) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Email</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Email</th>
                                                     <td class="py-1 px-2 text-right"><?= ($email) ?></td>
                                                 </tr><tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Address</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Address</th>
                                                     <td class="py-1 px-2 text-right"><?= ($address) ?></td>
                                                 </tr>
                                                 </tr><tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Clinic Schedule</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Clinic Schedule</th>
                                                     <td class="py-1 px-2 text-right"><?= ($schedule) ?></td>
                                                 </tr>
                                                 </tr><tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Time Schedule</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Time Schedule</th>
                                                     <td class="py-1 px-2 text-right"><?= ($time_sched) ?></td>
                                                 </tr>
                                             </tbody>
@@ -125,23 +154,23 @@ $service = (empty($service)) ? "N/A" : $service;
                                             </colgroup>
                                             <tbody>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Pet Type</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Pet Type</th>
                                                     <td class="py-1 px-2 text-right"><?= ($pet_type) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Breed</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Breed</th>
                                                     <td class="py-1 px-2 text-right"><?= ($breed) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Age</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Age</th>
                                                     <td class="py-1 px-2 text-right"><?= ($age) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Service(s) Needed</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Service(s) Needed</th>
                                                     <td class="py-1 px-2 text-right"><?= ($service) ?></td>
                                                 </tr>
                                                 <tr class="border-warning">
-                                                    <th class="py-1 px-2 det" style="background-color: #eacda3;">Total Fee</th>
+                                                    <th class="py-1 px-2 det" style="background-color:#C7B299;">Total Fee</th>
                                                     <td class="py-1 px-2 text-right">Php <?= ($total) ?></td>
                                                 </tr>
                                             </tbody>
@@ -151,7 +180,7 @@ $service = (empty($service)) ? "N/A" : $service;
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <small class="text-muted px-2">Status</small><br>
+                                    <small class=" px-2">Status</small><br>
                                     <?php 
 									switch ($status){
 										case 0:

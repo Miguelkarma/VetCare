@@ -39,17 +39,17 @@ if(empty($for)){
 </style>
 <div class="container-fluid">
     <dl>
-        <dt class="text-muted">Service</dt>
+        <dt class="">Service</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($name) ? $name : '' ?></dd>
-        <dt class="text-muted">Service For:</dt>
+        <dt class="">Service For:</dt>
         <dd class='pl-4'>
             <p class=""><small><?= isset($for) ? ($for) : '' ?></small></p>
         </dd>
-        <dt class="text-muted">Description</dt>
+        <dt class="">Description</dt>
         <dd class='pl-4'>
             <p class=""><small><?= isset($description) ? html_entity_decode($description) : '' ?></small></p>
         </dd>
-        <dt class="text-muted">Fee</dt>
+        <dt class="">Fee</dt>
         <dd class='pl-4 fs-4 fw-bold'><?= isset($fee) ? number_format($fee,2) : '0.00' ?></dd>
     </dl>
     <div class="col-12 text-right">

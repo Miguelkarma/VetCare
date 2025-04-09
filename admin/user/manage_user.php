@@ -12,6 +12,19 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
 </script>
 <?php endif;?>
+
+<style>
+		
+	  	.card{
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
+	}
+  
+
+</style>
 <div class="card card-outline card-primary">
 	<div class="card-body">
 		<div class="container-fluid">

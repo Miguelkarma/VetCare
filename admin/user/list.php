@@ -17,10 +17,38 @@
 		border:none !important;
 		   color:rgb(75, 49, 12) !important;
 	}
-	.btn{
-	background-color: #eacda3!important;
+		.btn{
+	background-color:rgb(212, 197, 176)!important;
 	border-radius:0.5em!important;
+	      color:rgb(10, 7, 2) !important;
 	}
+	  	.card{
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
+	}
+  .table {
+    border: 1px solid #675640; /* Set the border for the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+ color:rgb(37, 24, 6) !important;
+}
+
+
+.table th, .table td {
+    border: 1px solid #675640; /* Set borders for table cells */
+}
+  .modal-content{
+ background-color:#ebe5dd!important;
+ 	      color:rgb(10, 7, 2) !important;
+        }
+		.modal-header{
+			border:none!important;
+		}
+		.modal-footer{
+			border:none!important;
+		}
 </style>
 <div class="card card-outline ">
 	<div class="card-header">

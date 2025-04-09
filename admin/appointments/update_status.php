@@ -34,7 +34,7 @@ $service = (empty($service)) ? "N/A" : $service;
 					?>
 
             <div class="form-group">
-                <small class="text-muted ">Status</small>
+                <small style="font-weight:700; font-size:1rem">Status</small>
                 <select name="status" id="status" class="form-control form-control-sm form-control-border" required>
                     <option value="0" <?= isset($status) && $status == 0 ? "selected" : "" ?>>Pending</option>
                     <option value="1" <?= isset($status) && $status == 1 ? "selected" : "" ?>>Confirmed</option>

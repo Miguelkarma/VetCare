@@ -1,13 +1,15 @@
 <style>
-     .fc-event-title-container{
-      background-color: #eacda3!important;
+    .fc-event-title-container{
+       background-color:rgb(212, 199, 181)!important;
         text-align:center;
         color:#5C4033 !important;
        border: none !important;
+      
     }
     .fc-daygrid-event{
         border: none !important;
     }
+
     .fc-today-button{
           background-color: #eacda3!important;
           color: #000 !important;
@@ -31,6 +33,20 @@
     .fc-event-title.fc-sticky{
         font-size:2em;
     }
+    .card-header{
+     background-color:#D6C5AE!important;
+  border-top-left-radius: 1em !important;
+  border-top-right-radius: 1em !important;
+  border:none!important;
+      color:rgb(75, 49, 12) !important;
+  }
+  .card{
+    border-radius:1em!important;
+        background-color:rgba(243, 241, 239, 0.94) !important;
+  }
+  .card-title{
+    font-weight:700;
+  }
 </style>
 <?php 
 $appointments = $conn->query("SELECT * FROM `appointment_list` where `status` in (0,1) and date(schedule) >= '".date("Y-m-d")."' ");
@@ -43,7 +59,7 @@ while($row = $appointments->fetch_assoc()){
 <div class="content py-5">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card card-outline card-primary rounded-0 shadow">
+            <div class="card card-outline rounded-0 shadow">
                 <div class="card-header rounded-0">
                         <h4 class="card-title">Appointment Availablity</h4>
                 </div>

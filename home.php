@@ -26,7 +26,9 @@
     .welcome-content img{
         margin:.5em;
     }
-  
+  body{
+    
+  }
 </style>
 <div class="col-lg-12 py-5">
     <div class="contain-fluid">

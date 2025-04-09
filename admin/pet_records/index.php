@@ -6,12 +6,16 @@
         object-position:center center;
     }
 		.btn{
-	background-color: #C7B299!important;
+	background-color:rgb(212, 197, 176)!important;
 	border-radius:0.5em!important;
 	      color:rgb(10, 7, 2) !important;
 	}
 	  	.card{
- background-color:#ebe5dd!important;
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
 	}
   .table {
     border: 1px solid #675640; /* Set the border for the table */
@@ -23,17 +27,21 @@
     border: 1px solid #675640; /* Set borders for table cells */
 }
   .modal-content{
-            
  background-color:#ebe5dd!important;
-
         }
+		.modal-header{
+			border:none!important;
+		}
+		.modal-footer{
+			border:none!important;
+		}
 	body{
         font-family: "Abel", sans-serif;
   font-weight: 400;
   font-style: normal;
   }
 </style>
-<div class="card card-outline rounded-0 shadow">
+<div class="card card-outline rounded-0 ">
 	<div class="card-header">
 		<h3 class="card-title">List of Pets Data <small><em>(Pet Types)</em></small></h3>
 		<div class="card-tools">

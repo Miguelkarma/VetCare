@@ -22,6 +22,13 @@
   font-weight: 400;
   font-style: normal;
   }
+  .card{
+ background-color:rgb(255, 246, 235)!important;
+box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+-moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+   border-radius:0.5em!important;
+	}
 </style>
 <div class="col-lg-12">
 	<div class="card card-outline rounded-0 shadow">

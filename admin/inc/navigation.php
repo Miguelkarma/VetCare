@@ -124,7 +124,7 @@
                       </a>
                     </li>
                     <li class="nav-item dropdown">
-                      <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
+                      <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user-list">
                         <i class="nav-icon fas fa-users-cog"></i>
                         <p>
                           User List
@@ -166,7 +166,7 @@
     $(document).ready(function(){
       page = '<?php echo isset($_GET['page']) ? $_GET['page'] : 'home' ?>';
       page = page.replace(/\//gi,'-');
-
+console.log(page);
       if($('.nav-link.nav-'+page).length > 0){
              $('.nav-link.nav-'+page).addClass('active')
         if($('.nav-link.nav-'+page).hasClass('tree-item') == true){
