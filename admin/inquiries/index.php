@@ -10,6 +10,11 @@
 	background-color: #eacda3!important;
 	border-radius:0.5em!important;
 	}
+	body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 <div class="card card-outline  rounded-0">
 	<div class="card-header">

@@ -11,6 +11,11 @@ if(isset($_GET['id'])){
     }
 }
 ?>
+<style>body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }</style>
 <div class="container-fluid">
     <form action="" id="category-form">
         <input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">

@@ -17,9 +17,14 @@
 		object-fit: contain;
 		/* border-radius: 100% 100%; */
 	}
+	body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 <div class="col-lg-12">
-	<div class="card card-outline card-dark rounded-0 shadow">
+	<div class="card card-outline rounded-0 shadow">
 		<div class="card-header">
 			<h5 class="card-title">System information</h5>
 			<!-- <div class="card-tools">

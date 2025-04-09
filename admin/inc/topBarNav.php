@@ -12,10 +12,11 @@
   }
   .main-header{
     background-color: #fffffc;
-    background-image: linear-gradient(400deg, #fffffc 0%, #beb7a4 74%);
+    background-image: linear-gradient(400deg, #fffffc 0%,rgb(223, 207, 163) 74%);
 
 
   }
+  
 </style>
 <!-- Navbar -->
       <nav class="main-header navbar navbar-expand  text-sm shadow-md">

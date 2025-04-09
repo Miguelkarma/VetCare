@@ -73,6 +73,11 @@ $result = $conn->query($sql);
 	border-radius:0.5em!important;
     color:rgb(75, 49, 12) !important;
         }
+        body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
     </style>
 </head>
 <body>

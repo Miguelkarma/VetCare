@@ -2,6 +2,11 @@
   .navbar{
     background-color: #eacda3 !important;
   }
+  body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 
 <!-- Navbar -->

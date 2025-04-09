@@ -1,3 +1,9 @@
+<style>body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }</style>
+
 <?php
 require_once('../../config.php');
 if(isset($_GET['id'])){

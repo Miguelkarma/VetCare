@@ -43,6 +43,11 @@ $service = (empty($service)) ? "N/A" : $service;
     .det{
         color:rgb(75, 49, 12) !important;
     }
+    body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 <div class="content py-3">
     <div class="card card-outline rounded-0">

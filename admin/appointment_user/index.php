@@ -9,6 +9,11 @@
 	.table-striped{
 
 	}
+	 body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 	</style>
 
 <div class="card card-outline ">

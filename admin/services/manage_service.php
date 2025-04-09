@@ -22,6 +22,11 @@ if(isset($_GET['id'])){
     border:1px solid white!important;
     color:#4B310C!important;
   }
+  body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 <div class="container-fluid">
     <form action="" id="service-form">

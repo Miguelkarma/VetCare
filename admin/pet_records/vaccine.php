@@ -88,6 +88,13 @@ if ($result->num_rows > 0) {
     }
 }
 ?>
+<style>
+    body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
+</style>
  <div class="container my-5">
         <h1 class="text-center">Vet Clinic Vaccination Schedule</h1>
         <form method="POST" class="mb-5">

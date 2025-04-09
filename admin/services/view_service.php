@@ -31,6 +31,11 @@ if(empty($for)){
     #uni_modal .modal-footer{
         display:none !important;
     }
+    body{
+        font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  }
 </style>
 <div class="container-fluid">
     <dl>

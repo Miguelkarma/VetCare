@@ -1,19 +1,23 @@
 <style>
   .main-sidebar {
     background-color: #fffffc;
-    background-image: linear-gradient(200deg, #fffffc 0%, #beb7a4 74%);
+    background-image: linear-gradient(200deg, #fffffc 0%,rgb(223, 207, 163) 74%);
 
      overflow: hidden !important;
   }
   .nav-link{
     color:rgb(75, 49, 12) !important;
+           font-family: "Abel", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  }
   }
    .nav-header{
     color:rgb(75, 49, 12) !important;
   }
   .active{
     background-color: #fffffc;
-    background-image: linear-gradient(200deg,rgb(255, 255, 252) 0%,rgb(150, 149, 148) 74%);
+    background-image: linear-gradient(300deg,rgb(155, 151, 140) 0%,rgb(250, 246, 241) 74%);
     border: none !important;
   }
 
@@ -55,7 +59,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointment_user" class="nav-link nav-appointment_user">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                          Appointment Requests
+                          Admin Bookings
                         </p>
                       </a>
                     </li>
@@ -90,7 +94,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointments" class="nav-link nav-appointments">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                          Appointment Requests Clients
+                         Clients Bookings
                         </p>
                       </a>
                     </li>
