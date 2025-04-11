@@ -1,0 +1,80 @@
+.h-custom {
+  height: calc(100% - 73px);
+}
+.button {
+  padding: 8px 60px;
+  border: none;
+  outline: none;
+  background-color: #151515;
+  color: #eee;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-span {
+  color: #aaa;
+}
+/* Blob design styles */
+.blob {
+  position: absolute;
+  top: 8%;
+  right: -17%;
+  width: 400px;
+  height: 400px;
+  background: #b6aa94;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.blob-2 {
+  position: absolute;
+  bottom: 5%;
+  left: -15%;
+  width: 350px;
+  height: 350px;
+  background: #ceb48a;
+  border-radius: 50%;
+  z-index: 0;
+}
+@media (max-width: 991px) {
+  .blob {
+    width: 250px;
+    height: 250px;
+    top: 5%;
+    right: -16%;
+  }
+
+  .blob-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 2%;
+    left: -10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .blob {
+    width: 180px;
+    height: 180px;
+    top: 5%;
+    right: -30%;
+  }
+
+  .blob-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 2%;
+    left: -25%;
+  }
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
