@@ -31,7 +31,12 @@
     margin-top:10em;
   }
 </style>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
  <link rel="stylesheet"  href="./inc/css/nav.css">
+ <link rel="stylesheet"  href="./inc/css/button.css">
 <?php require_once('inc/header.php') ?>
   <body class="layout-top-nav  mb-5" style="height: auto;">
     <div class="wrapper">
@@ -45,14 +50,10 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper " style="">
         <?php if($page == "home" || $page == "about_us"): ?>
-          <div id="header" class="shadow mb-4">
-              <div class="d-flex justify-content-center h-100 w-100 align-items-center flex-column px-3">
-                  <h1 class="w-auto text-center title-hero px-5"><?php echo $_settings->info('name') ?></h1>
-                  <!-- <h3 class="w-100 text-center px-5 site-subtitle"><?php echo $_settings->info('name') ?></h3> -->
-              </div>
-          </div>
+      
         <?php endif; ?>
         <!-- Main content -->
+         
         <section class="content ">
           <div class="container">
             <?php 
@@ -127,6 +128,10 @@
       <?php require_once('inc/footer.php') ?>
   </body>
   <style>
+    body{
+      background-color:#F5EFE7!important;
+
+    }
        .content-wrapper{
         background-color:#F5EFE7!important;
     }

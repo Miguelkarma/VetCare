@@ -60,10 +60,6 @@
     transform: translateX(-50%) scale(1.03);
   }
 
-  #cs-navigation.cs-active .cs-toggle {
-    transform: rotate(180deg);
-  }
-
   #cs-navigation.cs-active .cs-ul-wrapper {
     transform: scaleY(1);
     transition-delay: 0.15s;
@@ -105,11 +101,9 @@
   }
 
   #cs-navigation .cs-toggle {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin: 0 0 0 auto;
-    background-color: #1a1a1a;
-    border: none;
     border-radius: 0.25rem;
     display: flex;
     justify-content: center;
@@ -117,6 +111,12 @@
     position: relative;
     z-index: 10;
     transition: transform 0.6s;
+    border: none;
+    background: none;
+  }
+
+  .cs-toggle:focus {
+    outline: none;
   }
 
   #cs-navigation .cs-nav {
@@ -179,7 +179,7 @@
   #cs-navigation .cs-line {
     width: 100%;
     height: 2px;
-    background-color: #fafbfc;
+    background-color: #473c2c;
     border-radius: 2px;
     position: absolute;
     left: 50%;
@@ -362,7 +362,7 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
       "Lucida Sans", Arial, sans-serif;
     font-weight: 900;
-    background-image: linear-gradient(45deg, #476b05, #0f0d0b);
+    background-image: linear-gradient(90deg, #7a4e2a, #e5ae80) !important;
     /* Gradient colors */
     background-clip: text;
     /* Clip the background to the text */
@@ -393,7 +393,9 @@
     opacity: 1;
     visibility: visible;
   }
-
+  #cs-navigation .cs-logo {
+    font-size: 1.3em;
+  }
   #cs-navigation .cs-dropdown.cs-active .cs-drop-link {
     opacity: 1;
   }
@@ -611,10 +613,19 @@
   #cs-navigation .cs-toggle {
     display: none;
   }
-
+  .name {
+    background-image: linear-gradient(90deg, #7a4e2a, #e5ae80) !important;
+    /* Gradient colors */
+    background-clip: text;
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    /* Safari fix for clipping the background */
+    color: transparent;
+    /* Make the text color transparent so the gradient shows */
+  }
   #cs-navigation .cs-logo {
-    width: 18.4%;
-    max-width: 21.875rem;
+    width: 50%;
+    max-width: 70rem;
     height: 2rem;
     /* margin-right auto pushes everything away from it to the right */
     margin: 0 auto 0 0;
@@ -623,17 +634,8 @@
     justify-content: flex-start;
     align-items: center;
     z-index: 100;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
     font-weight: 900;
-    background-image: linear-gradient(45deg, #476b05, #0f0d0b);
-    /* Gradient colors */
-    background-clip: text;
-    /* Clip the background to the text */
-    -webkit-background-clip: text;
-    /* Safari fix for clipping the background */
-    color: transparent;
-    /* Make the text color transparent so the gradient shows */
+
     font-size: x-large;
   }
 
@@ -709,16 +711,12 @@
     display: block;
     transition: opacity 0.3s;
   }
-
   #cs-navigation .cs-ul-wrapper {
     height: 100%;
     display: flex;
     align-items: center;
-    /* absolutely positioned to be dead center */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    justify-content: flex-end; /* push nav items to the right */
+    flex-grow: 1; /* allow it to take available space */
   }
 
   #cs-navigation .cs-ul {
@@ -748,18 +746,23 @@
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
-    color: var(--headerColor);
+    color: rgb(112, 89, 46);
     display: block;
     position: relative;
     transition: color 0.3s;
   }
 
   #cs-navigation .cs-li-link:hover {
-    color: var(--primary);
+    color: rgba(116, 104, 88, 0.438);
   }
 
   #cs-navigation .cs-li-link.cs-active {
-    background-color: antiquewhite;
+    background: radial-gradient(
+        65.28% 65.28% at 50% 100%,
+        rgba(247, 227, 202, 0.644) 0%,
+        /* Tan color */ rgba(210, 180, 140, 0) 100%
+      ),
+      linear-gradient(0deg, #f1d2bd, #ddc3b2); /* Beige color */
     padding: 0.5em;
     border-radius: 0.5em;
   }

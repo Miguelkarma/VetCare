@@ -1,4 +1,6 @@
+
 <style>
+    
     .car-cover{
         width:10em;
     }
@@ -23,26 +25,51 @@
     .car-item:hover .banner-img{
         transform:scale(1.3)
     }
-    
+
+
   body{
         font-family: "Abel", sans-serif;
   font-style: normal;
   }
 </style>
  <link rel="stylesheet"  href="./inc/css/nav.css">
-<div class="col-lg-12 ">
-    <div class="contain-fluid">
-        <div class="card card-outline  shadow rounded-0">
-            <div class="card-body rounded-0">
-                <div class="container-fluid">
-                    <h3 class="text-center">Welcome</h3>
-                    <hr>
-                    <div class="welcome-content">
-                        <?php include("welcome.html") ?>
+ <link rel="stylesheet"  href="./css/hero.css">
+
+ <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">Protect your health and take care of your health</h1>
+                    <p class="hero-text">Lorem ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
+                    <div class="buttons">
+                        <a href="#" class="btn btn-appointment">Book an Appointment <i class="fa-regular fa-bookmark"></i></a>
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="circle-image-container">
+                        <div class="circle-image">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jLJHkaadoVDBniOeM14tSCm5CsrtE0.png" alt="Veterinarian examining a dog">
+                        </div>
+                        <div class="scissors-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="rating-badge">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                       
+                            </div>
+                          
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
+  
 <script src="./inc/js/nav.js"></script>

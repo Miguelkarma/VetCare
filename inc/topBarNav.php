@@ -2,6 +2,7 @@
 <nav id="cs-navigation">
   <div class="cs-container">
     <!-- Logo -->
+     
     <a href="./" class="cs-logo" aria-label="back to home">
       <img class="brand-logo" src="<?php echo validate_image($_settings->info('logo')) ?>" alt="Site Logo">
       <span class="name ml-2"><?= $_settings->info('short_name') ?></span>
@@ -42,19 +43,8 @@
               <a href="./?page=profile" class="cs-li-link <?= isset($page) && $page == 'profile' ? 'cs-active' : '' ?>">Profile</a>
             </li>
           <?php endif; ?>
-        
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Contact Group -->
-    <div class="cs-contact-group">
-      <!-- <a href="tel:<?= $_settings->info('contact') ?>" class="cs-phone">
-        <img class="cs-phone-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" alt="phone" width="24" height="24" aria-hidden="true" decoding="async">
-        <span class="phone-number"><?= $_settings->info('contact') ?></span>
-      </a> -->
-      
-      <!-- User Section -->
+          <li class="cs-li ml-auto">
+           <!-- User Section -->
       <?php if ($_settings->userdata('id') > 0): ?>
         <div class="user-info">
           <span class="d-flex align-items-center">
@@ -65,26 +55,110 @@
           <a href="<?= base_url . 'classes/Login.php?f=logout' ?>" class="btn btn-icon text-danger"><i class="fa fa-power-off"></i></a>
         </div>
       <?php else: ?>
-        <button class="login-btn" onClick="window.location.href='./admin'">
-          <span class="text">Login</span><span>Now!</span>
-        </button>
+        <button type="button" class="button" onClick="window.location.href='./admin'">
+  <span class="fold"></span>
+
+  <div class="points_wrapper">
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+    <i class="point"></i>
+  </div>
+
+  <span class="inner">
+
+    Log in
+    <i class="fas fa-arrow-circle-right icon"></i>
+  </span>
+</button>
       <?php endif; ?>
+      </li>
+ 
+
+        </ul>
+      </div>
+      
     </div>
+    
+    
+    <!-- Contact Group -->
+    <!-- <div class="cs-contact-group"> -->
+      <!-- <a href="tel:<?= $_settings->info('contact') ?>" class="cs-phone">
+        <img class="cs-phone-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/phone-1a.svg" alt="phone" width="24" height="24" aria-hidden="true" decoding="async">
+        <span class="phone-number"><?= $_settings->info('contact') ?></span>
+      </a> -->
+      
+   
+    <!-- </div> -->
   </div>
 </nav>
 
 <style>
 /* Integrating styles from both navbars */
+/* ------ Navigation ------ */
+.cs-nav {
+  display: flex;
+  align-items: center;
+  
+}
+
+.cs-ul-wrapper {
+  width: 100%;
+  
+}
+
+.cs-ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  
+}
+
+.cs-li {
+  position: relative;
+}
+
+.cs-li-link {
+  display: block;
+  text-decoration: none;
+  color: var(--headerColor);
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  transition: var(--transition);
+  white-space: nowrap;
+  
+}
+
+.cs-li-link:hover, .cs-li-link.cs-active {
+  color: var(--primary);
+}
+
+/* ------ Auth Item ------ */
+.auth-item {
+  margin-left: auto;
+}
 
 /* Base Styles */
 :root {
   --primary: #5C4033;
-  --headerColor: #1a1a1a;
+  --headerColor: #1a1a1a;                                                                   
   --bodyTextColorWhite: #fff;
 }
 
-.brand-logo{
+.brand-logo {
+  height: 60px!important;  /* Increased from 40px to 60px */
+  width: 60px!important;   /* Increased from 40px to 60px */
   border-radius: 50%;
+  object-fit: cover;
 }
 
 /* User Styles */
@@ -106,76 +180,9 @@
   text-decoration: none;
 }
 
-.login-btn {
- position: relative;
- overflow: hidden;
- border: 1px solid #18181a;
- color: #18181a;
- display: inline-block;
- font-size: 15px;
- line-height: 15px;
- padding: 0.8em;
- text-decoration: none;
- cursor: pointer;
- background: transparent;
- user-select: none;
- -webkit-user-select: none;
- touch-action: manipulation;
- border-radius:1em;
-}
 
-.login-btn span:first-child {
- position: relative;
- transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
- z-index: 10;
-}
-
-.login-btn span:last-child {
-  color:black;
- display: block;
- position: absolute;
- bottom: 0;
- transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
- z-index: 100;
- opacity: 0;
- top: 50%;
- left: 50%;
- transform: translateY(225%) translateX(-50%);
- height: 14px;
- line-height: 13px;
-}
-
-.login-btn:after {
- content: "";
- position: absolute;
- bottom: -50%;
- left: 0;
- width: 100%;
- height: 100%;
- background-color: antiquewhite;
- transform-origin: bottom center;
- transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
- transform: skewY(9.3deg) scaleY(0);
- z-index: 50;
- color:black;
-}
-
-.login-btn:hover:after {
- transform-origin: bottom center;
- transform: skewY(9.3deg) scaleY(2);
-}
-
-.login-btn:hover span:last-child {
- transform: translateX(-50%) translateY(-50%);
- opacity: 1;
- transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
-}
 /* Responsive improvements */
 @media only screen and (max-width: 63.9375rem) {
-  .cs-phone .phone-number {
-    display: none;
-  }
-  
   .user-info {
     margin-left: auto;
   }
@@ -198,7 +205,8 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 900px) {
+
   .d-md-inline {
     display: inline !important;
   }
