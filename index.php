@@ -27,8 +27,8 @@
     z-index:2;
   }
 
-  .title-hero{
-    
+  .content-wrapper{
+    margin-top:10em;
   }
 </style>
  <link rel="stylesheet"  href="./inc/css/nav.css">

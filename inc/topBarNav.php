@@ -3,7 +3,7 @@
   <div class="cs-container">
     <!-- Logo -->
     <a href="./" class="cs-logo" aria-label="back to home">
-      <img src="<?php echo validate_image($_settings->info('logo')) ?>" alt="Site Logo">
+      <img class="brand-logo" src="<?php echo validate_image($_settings->info('logo')) ?>" alt="Site Logo">
       <span class="name ml-2"><?= $_settings->info('short_name') ?></span>
     </a>
     
@@ -15,6 +15,7 @@
           <span class="cs-line cs-line1" aria-hidden="true"></span>
           <span class="cs-line cs-line2" aria-hidden="true"></span>
           <span class="cs-line cs-line3" aria-hidden="true"></span>
+            <span class="cs-line cs-line3" aria-hidden="true"></span>
         </div>
       </button>
       
@@ -64,11 +65,8 @@
           <a href="<?= base_url . 'classes/Login.php?f=logout' ?>" class="btn btn-icon text-danger"><i class="fa fa-power-off"></i></a>
         </div>
       <?php else: ?>
-        <button onClick="window.location.href='./admin'" class="button">
-          Login
-          <div class="hoverEffect">
-            <div></div>
-          </div>
+        <button class="login-btn" onClick="window.location.href='./admin'">
+          <span class="text">Login</span><span>Now!</span>
         </button>
       <?php endif; ?>
     </div>
@@ -85,6 +83,9 @@
   --bodyTextColorWhite: #fff;
 }
 
+.brand-logo{
+  border-radius: 50%;
+}
 
 /* User Styles */
 .user-img {
@@ -105,85 +106,70 @@
   text-decoration: none;
 }
 
-.btn-icon {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.3s;
+.login-btn {
+ position: relative;
+ overflow: hidden;
+ border: 1px solid #18181a;
+ color: #18181a;
+ display: inline-block;
+ font-size: 15px;
+ line-height: 15px;
+ padding: 0.8em;
+ text-decoration: none;
+ cursor: pointer;
+ background: transparent;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ border-radius:1em;
 }
 
-.btn-icon:hover {
-  background-color: rgba(0,0,0,0.05);
+.login-btn span:first-child {
+ position: relative;
+ transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+ z-index: 10;
 }
 
-/* Button Styles */
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5em 2em;
-  border: 0;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  font-weight: bold;
-  cursor: pointer;
-  color: rgb(29, 15, 9)!important;
-  z-index: 0;
-  box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
+.login-btn span:last-child {
+  color:black;
+ display: block;
+ position: absolute;
+ bottom: 0;
+ transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+ z-index: 100;
+ opacity: 0;
+ top: 50%;
+ left: 50%;
+ transform: translateY(225%) translateX(-50%);
+ height: 14px;
+ line-height: 13px;
 }
 
-.button:hover {
-  background: rgb(228, 209, 163);
-  color: #5C4033;
+.login-btn:after {
+ content: "";
+ position: absolute;
+ bottom: -50%;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: antiquewhite;
+ transform-origin: bottom center;
+ transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+ transform: skewY(9.3deg) scaleY(0);
+ z-index: 50;
+ color:black;
 }
 
-.button:active {
-  transform: scale(0.97);
+.login-btn:hover:after {
+ transform-origin: bottom center;
+ transform: skewY(9.3deg) scaleY(2);
 }
 
-.hoverEffect {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: -1;
+.login-btn:hover span:last-child {
+ transform: translateX(-50%) translateY(-50%);
+ opacity: 1;
+ transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }
-
-.hoverEffect div {
-  background: linear-gradient(
-    90deg,
-    rgb(92, 77, 10) 0%,
-    rgb(235, 214, 146) 49%,
-    rgb(111, 97, 7) 100%
-  );
-  border-radius: 40rem;
-  width: 10rem;
-  height: 10rem;
-  transition: 0.4s;
-  filter: blur(20px);
-  animation: effect infinite 3s linear;
-  opacity: 0.5;
-}
-
-.button:hover .hoverEffect div {
-  width: 8rem;
-  height: 8rem;
-}
-
-@keyframes effect {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 /* Responsive improvements */
 @media only screen and (max-width: 63.9375rem) {
   .cs-phone .phone-number {
