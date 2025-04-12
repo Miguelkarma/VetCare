@@ -1,31 +1,11 @@
-/* Base styles */
-.navbar-brand {
-  font-weight: bold;
-  font-size: 24px;
-  color: #3366cc !important;
+body{
+  background-color: #F5EFE7 !important;
 }
 
-.navbar-brand img {
-  height: 30px;
-  margin-right: 5px;
-}
-
-.nav-link {
-  color: #333 !important;
-  font-weight: 500;
-  margin: 0 10px;
-}
-
-.btn-sign-in {
-  background-color: #3366cc;
-  color: white !important;
-  border-radius: 20px;
-  padding: 8px 25px;
-  font-weight: 500;
-}
 
 /* Hero Section */
-.hero-section {
+.hero-section  {
+  background-color: #F5EFE7 !important;
   padding: 80px 0;
   display: flex;
   justify-content: center;
@@ -38,11 +18,21 @@
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
+  background-image: linear-gradient(180deg, #645f5c,
+    #8b7260,#a08a79) !important;
+    /* Gradient colors */
+    background-clip: text;
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    /* Safari fix for clipping the background */
+    color: transparent;
+    /* Make the text color transparent so the gradient shows */
 }
 
 .hero-text {
   color: #666;
   margin-bottom: 30px;
+    font-size: 1.1rem;
 }
 
 .buttons {
@@ -53,25 +43,30 @@
 }
 
 .btn-appointment {
-  background-color: #3366cc;
-  color: white;
+  background: radial-gradient(65.28% 65.28% at 50% 100%,
+        rgba(247, 227, 202, 0.644) 0%,
+        /* Tan color */
+        rgba(210, 180, 140, 0) 100%),
+      linear-gradient(0deg, #f1d2bd, #ddc3b2);
+    /* Beige color */
+    color: rgb(75, 49, 12) !important;
   border-radius: 20px;
   padding: 10px 25px;
-  font-weight: 500;
+  font-weight:700;
   text-decoration: none;
   display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-appointment:hover{
+  background: radial-gradient(65.28% 65.28% at 50% 100%,
+        rgba(247, 227, 202, 0.644) 0%,
+        /* Tan color */
+        rgba(210, 180, 140, 0) 100%),
+      linear-gradient(0deg, #e6b592, #ddc3b2);
+    /* Beige color */
+      transform: scale(1.05);
 }
 
-.btn-download {
-  background-color: white;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 10px 25px;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-block;
-}
 
 .btn-download i {
   margin-left: 10px;

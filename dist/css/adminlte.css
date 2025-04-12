@@ -12146,23 +12146,27 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm
 
 .layout-top-nav .wrapper {
   margin-left: 0;
+  background-color:#F5EFE7!important;
 }
 
 .layout-top-nav .wrapper .main-header .brand-image {
   margin-top: -0.5rem;
   margin-right: 0.2rem;
   height: 33px;
+          background-color:#F5EFE7!important;
 }
 
 .layout-top-nav .wrapper .main-sidebar {
   bottom: inherit;
   height: inherit;
+          background-color:#F5EFE7!important;
 }
 
 .layout-top-nav .wrapper .content-wrapper,
 .layout-top-nav .wrapper .main-header,
 .layout-top-nav .wrapper .main-footer {
   margin-left: 0;
+          background-color: #F5EFE7 !important;
 }
 
 body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper,

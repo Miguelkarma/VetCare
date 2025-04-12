@@ -334,6 +334,23 @@
     display: block;
     font-size: small;
   }
+        #cs-navigation .cs-li-link.cs-active {
+          background: radial-gradient(65.28% 65.28% at 50% 100%,
+              rgba(247, 227, 202, 0.644) 0%,
+              /* Tan color */
+              rgba(210, 180, 140, 0) 100%),
+            linear-gradient(0deg, #f1d2bd, #ddc3b2);
+          /* Beige color */
+          padding: 0.5em;
+          border-radius: 1em;
+          box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
+          -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
+          -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
+          color: rgb(75, 49, 12) !important;
+        }
+                .cs-li-link{
+                        color: rgb(75, 49, 12) !important;
+                }
 }
 
 @media only screen and (max-width: 1070px) {
@@ -359,26 +376,31 @@
     justify-content: flex-start;
     align-items: center;
     z-index: 100;
-    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-      "Lucida Sans", Arial, sans-serif;
-    font-weight: 900;
-    background-image: linear-gradient(90deg, #7a4e2a, #e5ae80) !important;
-    /* Gradient colors */
-    background-clip: text;
-    /* Clip the background to the text */
-    -webkit-background-clip: text;
-    /* Safari fix for clipping the background */
-    color: transparent;
-    /* Make the text color transparent so the gradient shows */
-    font-size: x-large;
+
+    font-weight: 700;
+    background-image: linear-gradient(180deg, #000000,
+          #9c785d, #beb6b6) !important;
+      /* Gradient colors */
+      background-clip: text;
+      /* Clip the background to the text */
+      -webkit-background-clip: text;
+      /* Safari fix for clipping the background */
+      color: transparent;
+      /* Make the text color transparent so the gradient shows */
+
+  }
+  .cs-li-link{
+        color: #5C4033;
   }
 }
 /* Mobile - 1023px */
 @media only screen and (max-width: 63.9375rem) {
+  
   #cs-navigation .cs-li {
     text-align: center;
     width: 100%;
     display: block;
+
   }
 
   #cs-navigation .cs-dropdown {
@@ -392,6 +414,7 @@
     padding: 0.75rem 0;
     opacity: 1;
     visibility: visible;
+    color: #5C4033;
   }
   #cs-navigation .cs-logo {
     font-size: 1.3em;
@@ -614,7 +637,8 @@
     display: none;
   }
   .name {
-    background-image: linear-gradient(90deg, #7a4e2a, #e5ae80) !important;
+  background-image: linear-gradient(180deg, #000000,
+        #9c785d, #beb6b6) !important;
     /* Gradient colors */
     background-clip: text;
     /* Clip the background to the text */
@@ -638,6 +662,7 @@
 
     font-size: x-large;
   }
+  
 
   #cs-navigation .cs-logo img {
     width: auto;
@@ -746,7 +771,7 @@
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
-    color: rgb(112, 89, 46);
+color: rgb(75, 49, 12) !important;
     display: block;
     position: relative;
     transition: color 0.3s;
@@ -764,7 +789,11 @@
       ),
       linear-gradient(0deg, #f1d2bd, #ddc3b2); /* Beige color */
     padding: 0.5em;
-    border-radius: 0.5em;
+    border-radius: 1em;
+box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
+  -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
+  -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
+  color: rgb(75, 49, 12) !important;
   }
 
   #cs-navigation .cs-button-solid {

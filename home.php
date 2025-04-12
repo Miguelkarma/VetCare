@@ -1,6 +1,11 @@
 
 <style>
-    
+    .content {
+        background-color:#F5EFE7!important;
+    }
+     .content {
+        background-color:#F5EFE7!important;
+    }
     .car-cover{
         width:10em;
     }
@@ -39,17 +44,18 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="hero-title">Protect your health and take care of your health</h1>
-                    <p class="hero-text">Lorem ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum.</p>
+<h1 class="hero-title">Compassionate Care for Your Furry Friends</h1>
+<p class="hero-text">At Short Tail Vet Clinic, we provide expert veterinary services with a gentle touch. From routine check-ups to urgent care, your pet’s health is our top priority.</p>
+
                     <div class="buttons">
-                        <a href="#" class="btn btn-appointment">Book an Appointment <i class="fa-regular fa-bookmark"></i></a>
-                      
+                        <a href="http://localhost/ovas/?page=appointment" class="btn btn-appointment"><i class="fa-regular fa-bookmark"></i> Book an Appointment </a>
+                    
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="circle-image-container">
                         <div class="circle-image">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jLJHkaadoVDBniOeM14tSCm5CsrtE0.png" alt="Veterinarian examining a dog">
+                            <img src="./assets/hero.png" alt="Veterinarian examining a dog">
                         </div>
                         <div class="scissors-icon">
                             <i class="fas fa-cut"></i>
@@ -70,6 +76,7 @@
             </div>
         </div>
     </section>
+       <?php require_once('components/brief.php') ?>
 
   
 <script src="./inc/js/nav.js"></script>

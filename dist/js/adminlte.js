@@ -1514,7 +1514,7 @@
     var CLASS_NAME_CONTROL_SIDEBAR_OPEN$1 = 'control-sidebar-open';
     var CLASS_NAME_LAYOUT_TOP_NAV = 'layout-top-nav';
     var Default$6 = {
-        scrollbarTheme: 'os-theme-light',
+      
         scrollbarAutoHide: 'l',
         panelAutoHeight: true,
         panelAutoHeightMode: 'min-height',

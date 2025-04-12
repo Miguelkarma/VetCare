@@ -3,30 +3,9 @@
  
 <html lang="en" class="" >
 <style>
-
-  #header{
-    height:60vh;
-    width:calc(100%);
-    position:relative;
-    top:-1em;
-  }
-  #header:before{
-    content:"";
-    position:absolute;
-    height:calc(100%);
-    width:calc(100%);
-    background-image:url(<?= validate_image($_settings->info("cover")) ?>);
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position: center center;
-  }
-  #header>div{
-    position:absolute;
-    height:calc(100%);
-    width:calc(100%);
-    z-index:2;
-  }
-
+.layout-top-nav{
+   background-color:#F5EFE7!important;  
+}
   .content-wrapper{
     margin-top:10em;
   }
@@ -35,13 +14,14 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
- <link rel="stylesheet"  href="./inc/css/nav.css">
- <link rel="stylesheet"  href="./inc/css/button.css">
-<?php require_once('inc/header.php') ?>
-  <body class="layout-top-nav  mb-5" style="height: auto;">
+ <link rel="stylesheet"  href="./components/css/nav.css">
+ <link rel="stylesheet"  href="./components/css/button.css">
+<?php require_once('components/header.php') ?>
+  <body class="layout-top-nav  mb-5" style="height: auto; ">
     <div class="wrapper">
      <?php $page = isset($_GET['page']) ? $_GET['page'] : 'home';  ?>
-     <?php require_once('inc/topBarNav.php') ?>
+     <?php require_once('components/topBarNav.php') ?>
+          
      <?php if($_settings->chk_flashdata('success')): ?>
       <script>
         alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
@@ -54,7 +34,7 @@
         <?php endif; ?>
         <!-- Main content -->
          
-        <section class="content ">
+        <section class="main-content">
           <div class="container">
             <?php 
               if(!file_exists($page.".php") && !is_dir($page)){
@@ -67,7 +47,11 @@
 
               }
             ?>
+            
           </div>
+           <!-- <div class="container">
+          <?php //require_once('components/brief.php') ?>
+            </div> -->
         </section>
         <!-- /.content -->
   <div class="modal fade rounded-0" id="confirm_modal" role='dialog'>
@@ -125,10 +109,10 @@
   </div>
       </div>
       <!-- /.content-wrapper -->
-      <?php require_once('inc/footer.php') ?>
+     <?php require_once('components/footer.php') ?> 
   </body>
   <style>
-    body{
+    html{
       background-color:#F5EFE7!important;
 
     }
@@ -140,5 +124,5 @@
     }
    
   </style>
-  <script src="./inc/js/nav.js"></script>
+  <script src="./components/js/nav.js"></script>
 </html>
