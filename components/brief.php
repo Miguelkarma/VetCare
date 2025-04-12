@@ -2,10 +2,21 @@
  <link rel="stylesheet"  href="../../ovas/components/css/brief.css">
 
 
+
 <div class="container brief-container">
-  <div class="row with-gap align-items-center ">
+  <div class="row with-gap align-items-center  brief-row">
+    <div class="col-lg-4 col-md-12 mt-4 mt-lg-0 d-none d-lg-block  ">
+      <div class="img-content " >
+        
+          <div class="image-container">
+            <img src="../../ovas/assets/brief.png" alt="Pet care illustration" style="height: 700px;" class="brief-img">
+        
+        </div>
+      </div>
+    </div>
     <!-- Text Content -->
-    <div class="col-lg-12 col-md-12 ">
+   <div class="col-lg-8 col-md-12">
+    
         <div class="light">
       <div class="text-content ">
         <span class="text-uppercase font-weight-semibold">Explore More</span>
@@ -18,7 +29,7 @@
     <i class="fas fa-users h4 mt-1"></i>
   </div>
   <div class="ml-3">
-    <h4 class="mb-1">About Us</h4>
+    <h4 class="mb-1 font-weight-bold">About Us</h4>
     <p class="mb-2">
       Get to know our passionate team of animal lovers and professionals committed to providing
       the highest level of care for your pets. We believe every pet deserves love, attention, and
@@ -42,7 +53,7 @@
     <i class="fas fa-syringe h4 mt-1"></i>
   </div>
   <div class="ml-3">
-    <h4 class="mb-1">Our Services</h4>
+    <h4 class="mb-1 font-weight-bold">Our Services</h4>
     <p class="mb-2">
       From routine check-ups and vaccinations to advanced diagnostics and emergency interventions, 
       our clinic offers a full range of veterinary services tailored to your pet’s needs. 
@@ -66,7 +77,7 @@
     <i class="fas fa-envelope  h4 mt-1"></i>
   </div>
   <div class="ml-3">
-    <h4 class="mb-1">Contact Us</h4>
+    <h4 class="mb-1 font-weight-bold ">Contact Us</h4>
     <p class="mb-2">
       Whether you’re scheduling a visit, asking questions about your pet’s health, 
       or looking for advice on how to care for your furry companion, we’re here to help. 
@@ -83,6 +94,9 @@
 </a>
   </div>
 </div>
+
 </div>
+
   </div>
-</div>
+   
+</div>  

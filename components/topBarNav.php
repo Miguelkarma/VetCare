@@ -217,8 +217,8 @@
   }
 }
 </style>
-
-<script>
+<script src="../../ovas/components/js/nav.js"></script>
+<script >
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const toggle = document.querySelector('.cs-toggle');
@@ -242,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
+ 
+});
  
 </script>

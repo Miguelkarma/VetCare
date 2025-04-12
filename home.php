@@ -76,7 +76,11 @@
             </div>
         </div>
     </section>
+     <?php require_once('components/stats.php') ?>
+     <div class="brief-container">
        <?php require_once('components/brief.php') ?>
+      </div>
+
 
   
 <script src="./inc/js/nav.js"></script>

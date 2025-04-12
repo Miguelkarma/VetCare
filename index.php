@@ -49,9 +49,7 @@
             ?>
             
           </div>
-           <!-- <div class="container">
-          <?php //require_once('components/brief.php') ?>
-            </div> -->
+       
         </section>
         <!-- /.content -->
   <div class="modal fade rounded-0" id="confirm_modal" role='dialog'>
@@ -109,7 +107,9 @@
   </div>
       </div>
       <!-- /.content-wrapper -->
+       <div class="all-footer">
      <?php require_once('components/footer.php') ?> 
+     </div> 
   </body>
   <style>
     html{
@@ -124,5 +124,5 @@
     }
    
   </style>
-  <script src="./components/js/nav.js"></script>
+  <script src="../../ovas/components/js/nav.js"></script>
 </html>
