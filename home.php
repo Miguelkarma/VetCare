@@ -80,6 +80,12 @@
      <div class="brief-container">
        <?php require_once('components/brief.php') ?>
       </div>
+           <div class="review-container">
+       <?php require_once('components/testimonials.php') ?>
+      </div>
+      <div class="cta-container">
+       <?php require_once('components/CTA.php') ?>
+      </div>
 
 
   

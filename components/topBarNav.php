@@ -217,9 +217,8 @@
   }
 }
 </style>
-<script src="../../ovas/components/js/nav.js"></script>
-<script >
-document.addEventListener('DOMContentLoaded', function() {
+<script src="../../ovas/components/js/nav.js">
+  document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const toggle = document.querySelector('.cs-toggle');
   const nav = document.querySelector('#cs-navigation');
