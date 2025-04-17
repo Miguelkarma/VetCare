@@ -2,13 +2,11 @@
     .review-container{
          margin-top: 18em;
     }
-    .testimonial-card{
-     background: linear-gradient(180deg,rgba(231, 212, 175, 0.96), #ffffff, rgba(231, 212, 175, 0.96)); 
-      
-}
+    
 .carousel-inner{
     border-radius:1em;
      box-shadow: 0px 1rem 1.5rem -0.9rem #000000e1;  
+     border:1px solid rgb(8, 8, 8);
 }
 </style>
 <div class="container review-container">

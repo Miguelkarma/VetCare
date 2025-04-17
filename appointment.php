@@ -56,19 +56,44 @@ while($row = $appointments->fetch_assoc()){
     $appoinment_arr[$row['schedule']] += 1;
 }
 ?>
-<div class="content py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card card-outline rounded-0 shadow">
-                <div class="card-header rounded-0">
-                        <h4 class="card-title">Appointment Availablity</h4>
-                </div>
-                <div class="card-body">
-                   <div id="appointmentCalendar"></div>
-                </div>
+<div class="content ">
+  <div class="container">
+    <!-- Daily Schedule on top, full width -->
+    <div class="row ">
+      <div class="col-12">
+        <div class="card card-outline rounded-0 shadow p-3">
+          <div class="row">
+            <div class="col-md-6">
+              <dt class="text-muted">
+                <i class="fa fa-clock"></i> Daily Schedule
+              </dt>
+              <dd class="ps-4"><?= $_settings->info('clinic_schedule') ?></dd>
             </div>
+            <div class="col-md-6">
+              <dt class="text-muted">
+                <i class="fa fa-paw"></i> Maximum Daily Appointments
+              </dt>
+              <dd class="ps-4"><?= $_settings->info('max_appointment') ?></dd>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+
+    <!-- Calendar Section -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-outline rounded-0 shadow">
+          <div class="card-header rounded-0">
+            <h4 class="card-title">Appointment Availability</h4>
+          </div>
+          <div class="card-body">
+            <div id="appointmentCalendar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script>
     var calendar;
