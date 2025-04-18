@@ -377,6 +377,19 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 	}
 
+	function delete_petrecords(){
+		extract($_POST);
+		$del = $this->conn->query("UPDATE `pet_records` set delete_flag=1 where pet_id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Pet record has been deleted successfully.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+	}
+
 }
 
 $Master = new Master();
@@ -419,6 +432,9 @@ switch ($action) {
 	break;
 	case 'save_petrecords':
 		echo $Master->save_petrecords();
+	break;
+	case 'delete_petrecords':
+		echo $Master->delete_petrecords();
 	break;
 	default:
 		// echo $sysset->index();

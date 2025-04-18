@@ -35,45 +35,42 @@
 
 <style>
 .ezy__cta9 {
-  /* Bootstrap variables */
+
   --bs-body-color: #ffffff;
   
-  background: radial-gradient(
-        65.28% 65.28% at 50% 100%,
-        rgba(247, 227, 202, 0.644) 0%,
-        /* Tan color */ rgba(210, 180, 140, 0) 100%
-      ),
-      linear-gradient(0deg, #f1d2bd, #ddc3b2); /* Beige color */
-  /* Easy Frontend variables */
   --ezy-theme-color: rgb(13, 110, 253);
   --ezy-theme-color-rgb: 13, 110, 253;
   --ezy-form-card-bg: #eff4fd;
-
-
   overflow: hidden;
   padding: 0;
   border-radius:1em;
+  background: radial-gradient(
+        65.28% 65.28% at 50% 100%,
+        rgba(247, 227, 202, 0.644) 0%,
+        rgba(210, 180, 140, 0) 100%
+      ),
+      linear-gradient(0deg, #f1d2bd, #ddc3b2);
   color: rgb(75, 49, 12);
 }
 
-/* Gray Block Style */
+
 .gray .ezy__cta9,
 .ezy__cta9.gray {
-  /* Easy Frontend Variables */
+
   --ezy-form-card-bg: #e3ebfa;
 }
 
-/* Dark Gray Block Style */
+
 .dark-gray .ezy__cta9,
 .ezy__cta9.dark-gray {
-  /* Easy Frontend variables */
+
   --ezy-form-card-bg: #394656;
 }
 
-/* Dark Block Style */
+
 .dark .ezy__cta9,
 .ezy__cta9.dark {
-  /* Easy Frontend variables */
+ 
   --ezy-form-card-bg: #1c293a;
 }
 

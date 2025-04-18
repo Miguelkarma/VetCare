@@ -2,6 +2,12 @@
     #uni_modal .modal-footer{
         display:none;
     }
+    #uni_modal, .modal {
+        z-index: 1051 !important; 
+    }
+    .modal-backdrop {
+        z-index: 1050 !important;
+    }
 </style>
 
 <div class="container-fluid">

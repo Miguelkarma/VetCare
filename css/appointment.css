@@ -1,0 +1,134 @@
+.fc {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.fc-event-title-container {
+  background-color: rgb(212, 199, 181) !important;
+  text-align: center;
+  color: #5c4033 !important;
+  border: none !important;
+  padding: 4px;
+}
+
+.fc-daygrid-event {
+  border: none !important;
+  background-color: rgb(212, 199, 181) !important;
+  text-align: center;
+  color: #5c4033 !important;
+  border: none !important;
+}
+
+.fc-today-button {
+  background-color: #eacda3 !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+.fc-prev-button {
+  background-color: #eacda3 !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+.fc-next-button {
+  background-color: #eacda3 !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+.fc-event-title.fc-sticky {
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+
+.card-header {
+  background-color: #d6c5ae !important;
+  border-top-left-radius: 1em !important;
+  border-top-right-radius: 1em !important;
+  border: none !important;
+  color: rgb(75, 49, 12) !important;
+}
+
+.card {
+  border-radius: 1em !important;
+  background-color: rgba(243, 241, 239, 0.94) !important;
+}
+
+.card-title {
+  font-weight: 700;
+}
+
+/* Improved responsive design */
+@media (max-width: 991px) {
+  .fc-toolbar-title {
+    font-size: 1.5em !important;
+  }
+
+  .fc-event-title.fc-sticky {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .fc-event-title.fc-sticky {
+    font-size: 0.95em;
+  }
+
+  .fc-header-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fc-toolbar-chunk {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-body {
+    padding: 0.75rem;
+  }
+
+  .hide-on-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .fc-event-title.fc-sticky {
+    font-size: 0.8em;
+  }
+
+  .fc-daygrid-day-number {
+    font-size: 0.8em;
+    padding: 2px !important;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.1em !important;
+  }
+
+  .fc {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 400px) {
+  .fc-event-title.fc-sticky {
+    font-size: 0.7em;
+  }
+
+  .fc-daygrid-day {
+    min-width: 30px;
+  }
+
+  .fc {
+    font-size: 0.85em;
+  }
+
+  /* Improve touch target sizes */
+  .fc-button {
+    padding: 0.2em 0.4em !important;
+  }
+}
