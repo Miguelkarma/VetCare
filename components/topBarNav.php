@@ -175,16 +175,29 @@
 }
 
 .user-info {
-  color: #5C4033;
-  display: flex;
-  align-items: center;
-  gap: 5px!important;
+  display: flex !important;
+  align-items: center !important;
+
+  margin-left: auto;
+  flex-wrap: nowrap;
+  justify-content:center;
 }
 
 .user-info a {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 1115px) {
+
+ 
+  .user-info .btn {
+    padding: 0.25rem;
+    font-size: 0.9rem;
+  }
+  .cs-ul{
+    font-size:0.66em;
+  }
+}
 
 /* Responsive improvements */
 @media only screen and (max-width: 63.9375rem) {
@@ -216,6 +229,9 @@
     display: inline !important;
   }
 }
+
+
+
 </style>
 <script src="../../ovas/components/js/nav.js">
   document.addEventListener('DOMContentLoaded', function() {

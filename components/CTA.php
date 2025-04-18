@@ -49,7 +49,7 @@
   --ezy-theme-color-rgb: 13, 110, 253;
   --ezy-form-card-bg: #eff4fd;
 
-  color: var(--bs-body-color);
+
   overflow: hidden;
   padding: 0;
   border-radius:1em;

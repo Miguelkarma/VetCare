@@ -334,23 +334,24 @@
     display: block;
     font-size: small;
   }
-        #cs-navigation .cs-li-link.cs-active {
-          background: radial-gradient(65.28% 65.28% at 50% 100%,
-              rgba(247, 227, 202, 0.644) 0%,
-              /* Tan color */
-              rgba(210, 180, 140, 0) 100%),
-            linear-gradient(0deg, #f1d2bd, #ddc3b2);
-          /* Beige color */
-          padding: 0.5em;
-          border-radius: 1em;
-          box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
-          -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
-          -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
-          color: rgb(75, 49, 12) !important;
-        }
-                .cs-li-link{
-                        color: rgb(75, 49, 12) !important;
-                }
+  #cs-navigation .cs-li-link.cs-active {
+    background: radial-gradient(
+        65.28% 65.28% at 50% 100%,
+        rgba(247, 227, 202, 0.644) 0%,
+        /* Tan color */ rgba(210, 180, 140, 0) 100%
+      ),
+      linear-gradient(0deg, #f1d2bd, #ddc3b2);
+    /* Beige color */
+    padding: 0.5em;
+    border-radius: 1em;
+    box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
+    -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
+    -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
+    color: rgb(75, 49, 12) !important;
+  }
+  .cs-li-link {
+    color: rgb(75, 49, 12) !important;
+  }
 }
 
 @media only screen and (max-width: 1070px) {
@@ -378,29 +379,30 @@
     z-index: 100;
 
     font-weight: 700;
-    background-image: linear-gradient(180deg, #000000,
-          #9c785d, #beb6b6) !important;
-      /* Gradient colors */
-      background-clip: text;
-      /* Clip the background to the text */
-      -webkit-background-clip: text;
-      /* Safari fix for clipping the background */
-      color: transparent;
-      /* Make the text color transparent so the gradient shows */
-
+    background-image: linear-gradient(
+      180deg,
+      #000000,
+      #9c785d,
+      #beb6b6
+    ) !important;
+    /* Gradient colors */
+    background-clip: text;
+    /* Clip the background to the text */
+    -webkit-background-clip: text;
+    /* Safari fix for clipping the background */
+    color: transparent;
+    /* Make the text color transparent so the gradient shows */
   }
-  .cs-li-link{
-        color: #5C4033;
+  .cs-li-link {
+    color: #5c4033;
   }
 }
 /* Mobile - 1023px */
 @media only screen and (max-width: 63.9375rem) {
-  
   #cs-navigation .cs-li {
     text-align: center;
     width: 100%;
     display: block;
-
   }
 
   #cs-navigation .cs-dropdown {
@@ -414,7 +416,7 @@
     padding: 0.75rem 0;
     opacity: 1;
     visibility: visible;
-    color: #5C4033;
+    color: #5c4033;
   }
   #cs-navigation .cs-logo {
     font-size: 1.3em;
@@ -637,8 +639,12 @@
     display: none;
   }
   .name {
-  background-image: linear-gradient(180deg, #000000,
-        #9c785d, #beb6b6) !important;
+    background-image: linear-gradient(
+      180deg,
+      #000000,
+      #9c785d,
+      #beb6b6
+    ) !important;
     /* Gradient colors */
     background-clip: text;
     /* Clip the background to the text */
@@ -662,7 +668,6 @@
 
     font-size: x-large;
   }
-  
 
   #cs-navigation .cs-logo img {
     width: auto;
@@ -670,31 +675,6 @@
     /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
     border-radius: 1em;
-  }
-
-  #cs-navigation .cs-contact-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  #cs-navigation .cs-phone {
-    line-height: 1.5em;
-    text-decoration: none;
-    margin: 0;
-    color: var(--headerColor);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    transition: opacity 0.3s, color 0.3s;
-  }
-
-  #cs-navigation .cs-phone-icon {
-    width: 1.5rem;
-    height: auto;
-    display: block;
   }
 
   #cs-navigation .cs-social {
@@ -724,6 +704,7 @@
     background-color: var(--primary);
   }
 
+  
   #cs-navigation .cs-social-link:hover .cs-social-icon {
     opacity: 1;
     filter: grayscale(1) brightness(10000%);
@@ -771,7 +752,7 @@
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
-color: rgb(75, 49, 12) !important;
+    color: rgb(75, 49, 12) !important;
     display: block;
     position: relative;
     transition: color 0.3s;
@@ -790,10 +771,10 @@ color: rgb(75, 49, 12) !important;
       linear-gradient(0deg, #f1d2bd, #ddc3b2); /* Beige color */
     padding: 0.5em;
     border-radius: 1em;
-box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
-  -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
-  -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
-  color: rgb(75, 49, 12) !important;
+    box-shadow: 0px 1px 5px 10px rgba(230, 208, 175, 0.75);
+    -webkit-box-shadow: 0px 1px 1px 2px rgba(160, 137, 103, 0.75);
+    -moz-box-shadow: 0px 1px 5px 5px rgba(0, 0, 0, 0.75);
+    color: rgb(75, 49, 12) !important;
   }
 
   #cs-navigation .cs-button-solid {
