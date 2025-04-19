@@ -3,6 +3,12 @@
 	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
 </script>
 <?php endif;?>
+<?php if($_settings->chk_flashdata('error')): ?>
+<script>
+    alert_toast("<?php echo $_settings->flashdata('error') ?>",'error')
+</script>
+<?php endif;?>
+
 
 <style>
 	img#cimg{
@@ -67,15 +73,25 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 			<fieldset>
 				<legend>Other information</legend>
 				<div class="form-group">
-					<label for="email" class="control-label">Email</label>
-					<input type="email" class="form-control form-control-sm" name="email" id="email" value="<?php echo $_settings->info('email') ?>">
-				</div>
+    <label for="contact" class="control-label">Contact Number</label>
+    <input type="tel" class="form-control form-control-sm" name="contact" id="contact" 
+           value="<?php echo $_settings->info('contact') ?>"
+           maxlength="13" 
+           placeholder="09XXXXXXXXX or +639XXXXXXXX" 
+           oninput="this.value = this.value.replace(/[^0-9+]/g, '')">
+    <small id="contact-error" class="text-danger" style="display:none;"></small>
+</div>
+<div class="form-group">
+    <label for="contact2" class="control-label">Secondary Contact Number (Optional)</label>
+    <input type="tel" class="form-control form-control-sm" name="contact2" id="contact2" 
+           value="<?php echo $_settings->info('contact2') ?>"
+           maxlength="13" 
+           placeholder="09XXXXXXXXX or +639XXXXXXXX" 
+           oninput="this.value = this.value.replace(/[^0-9+]/g, '')">
+    <small id="contact2-error" class="text-danger" style="display:none;"></small>
+</div>
 				<div class="form-group">
-					<label for="contact" class="control-label">Contact Number</label>
-					<input type="text" class="form-control form-control-sm" name="contact" id="contact" value="<?php echo $_settings->info('contact') ?>">
-				</div>
-				<div class="form-group">
-					<label for="address" class="control-label">Office Address</label>
+					<label for="address" class="control-label">Clinic Address</label>
 					<textarea rows="3" class="form-control form-control-sm" name="address" id="address" style="resize:none"><?php echo $_settings->info('address') ?></textarea>
 				</div>
 			</fieldset>
@@ -151,5 +167,41 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		            [ 'view', [ 'undo', 'redo', 'fullscreen', 'codeview', 'help' ] ]
 		        ]
 		    })
+			
 	})
+	$(document).ready(function(){
+    $('#system-frm').submit(function(e){
+        e.preventDefault();
+        $('.err-msg').remove();
+        start_loader();
+        $.ajax({
+            url: _base_url_+"classes/SystemSettings.php?f=update_settings",
+            data: new FormData($(this)[0]),
+            cache: false,
+            contentType: false,
+            processData: false,
+            method: 'POST',
+            type: 'POST',
+            dataType: 'json',
+            error: function(err){
+                console.log(err)
+                alert_toast("An error occurred", 'error');
+                end_loader();
+            },
+            success: function(resp){
+                if(typeof resp =='object' && resp.status == 'success'){
+                    alert_toast(resp.msg, 'success');
+                    location.reload();
+                }else if(resp.status == 'failed' && !!resp.msg){
+                    // This is where you'd display the specific error message
+                    alert_toast(resp.msg, 'error');
+                }else{
+                    alert_toast("An error occurred", 'error');
+                }
+                end_loader();
+            }
+        })
+    })
+});
+
 </script>

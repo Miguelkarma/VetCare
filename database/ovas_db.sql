@@ -148,6 +148,7 @@ CREATE TABLE `system_info` (
 --
 -- Dumping data for table `system_info`
 --
+ALTER TABLE system_info ADD COLUMN contact2 VARCHAR(20) AFTER contact;
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 (1, 'name', 'Online Veterinary Appointment System - PHP'),

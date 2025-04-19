@@ -56,7 +56,7 @@
           <a href="<?= base_url . 'classes/Login.php?f=logout' ?>" class="btn btn-icon text-danger"><i class="fa fa-power-off"></i></a>
         </div>
       <?php else: ?>
-        <button type="button" class="button" onClick="window.location.href='./admin'">
+        <button type="button" class="button" onClick="window.location.href='./login.php'">
   <span class="fold"></span>
 
   <div class="points_wrapper">

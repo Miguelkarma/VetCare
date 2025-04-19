@@ -17,24 +17,60 @@ Class Users extends DBConnection {
 		extract($_POST);
 		$oid = $id;
 		$data = '';
-		if(isset($oldpassword)){
-			if(md5($oldpassword) != $this->settings->userdata('password')){
-				return 4;
+		
+		// Check if it's an existing user trying to update
+		if(!empty($id)) {
+			// Check if the user is trying to change their password
+			$changePassword = (!empty($current_password) && !empty($new_password));
+			
+			if($changePassword) {
+				// Get current password from database
+				$current = $this->conn->query("SELECT `password` FROM users WHERE id = '{$id}'")->fetch_array()['password'];
+				if(md5($current_password) != $current) {
+					return 2; // Current password is incorrect
+				}
+				
+				// Verify new password matches confirmation if provided
+				if($new_password != $confirm_password) {
+					return 4; // Passwords don't match
+				}
+				
+				// Use new_password for the update
+				$password = $new_password;
+			}
+		} else {
+			// For new users, confirm password must match
+			if($password != $confirm_password) {
+				return 4; // Passwords don't match
 			}
 		}
+		
+		// Check if username exists
 		$chk = $this->conn->query("SELECT * FROM `users` where username ='{$username}' ".($id>0? " and id!= '{$id}' " : ""))->num_rows;
 		if($chk > 0){
-			return 3;
+			return 3; // Username already exists
 			exit;
 		}
+		
+		// Validate contact information
+        if(isset($contact) && !empty($contact)) {
+            if(!(preg_match('/^09[0-9]{9}$/', $contact) || preg_match('/^\+639[0-9]{9}$/', $contact))) {
+                return 6; // Contact number validation failed
+            }
+        }
+		
+		// Build data for update/insert
 		foreach($_POST as $k => $v){
 			if(in_array($k,array('firstname','address','lastname','username','type','contact'))){
 				if(!empty($data)) $data .=" , ";
 				$data .= " {$k} = '{$v}' ";
 			}
 		}
-		if(!empty($password)){
-			$password = md5($password);
+		
+		// Hash password if provided (either new user or password change requested)
+		if((!empty($id) && !empty($new_password)) || (empty($id) && !empty($password))){
+			$pass = !empty($new_password) ? $new_password : $password;
+			$password = md5($pass);
 			if(!empty($data)) $data .=" , ";
 			$data .= " `password` = '{$password}' ";
 		}
@@ -46,7 +82,7 @@ Class Users extends DBConnection {
 				$this->settings->set_flashdata('success','User Details successfully saved.');
 				$resp['status'] = 1;
 			}else{
-				$resp['status'] = 2;
+				$resp['status'] = 5; // Database insert error
 			}
 
 		}else{
@@ -55,16 +91,19 @@ Class Users extends DBConnection {
 				$this->settings->set_flashdata('success','User Details successfully updated.');
 				if($id == $this->settings->userdata('id')){
 					foreach($_POST as $k => $v){
-						if($k != 'id'){
-							if(!empty($data)) $data .=" , ";
+						if($k != 'id' && !in_array($k, ['current_password', 'new_password', 'confirm_password'])){
 							$this->settings->set_userdata($k,$v);
 						}
 					}
 					
+					// Update password in session if it was changed
+					if(!empty($new_password)) {
+						$this->settings->set_userdata('password', md5($new_password));
+					}
 				}
 				$resp['status'] = 1;
 			}else{
-				$resp['status'] = 2;
+				$resp['status'] = 5; // Database update error
 			}
 			
 		}
@@ -106,9 +145,10 @@ Class Users extends DBConnection {
 		}
 		if(isset($resp['msg']))
 		$this->settings->set_flashdata('success',$resp['msg']);
-		return  $resp['status'];
+		return isset($resp['status']) ? $resp['status'] : 1;
 	}
 
+	// Rest of the class remains unchanged
 	public function change_password(){
 		extract($_POST);
 		$password = md5($password);

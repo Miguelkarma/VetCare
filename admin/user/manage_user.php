@@ -1,4 +1,3 @@
-
 <?php 
 if(isset($_GET['id']) && $_GET['id'] > 0){
     $user = $conn->query("SELECT * FROM users where id ='{$_GET['id']}'");
@@ -14,15 +13,17 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 <?php endif;?>
 
 <style>
-		
-	  	.card{
- background-color:rgb(255, 246, 235)!important;
-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
--webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
--moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
-   border-radius:0.5em!important;
+	.card{
+      background-color:rgb(255, 246, 235)!important;
+      box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+      -webkit-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+      -moz-box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
+      border-radius:0.5em!important;
 	}
-  
+	  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+            background-color:rgb(156, 140, 122);        
+            border-color: rgb(156, 140, 122);
+        }
 
 </style>
 <div class="card card-outline card-primary">
@@ -33,31 +34,68 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 				<input type="hidden" name="id" value="<?php echo isset($meta['id']) ? $meta['id']: '' ?>">
 				<div class="form-group col-6">
 					<label for="name">First Name</label>
-					<input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo isset($meta['firstname']) ? $meta['firstname']: '' ?>" required>
+					<input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo isset($meta['firstname']) ? $meta['firstname']: '' ?>">
 				</div>
 				<div class="form-group col-6">
 					<label for="name">Last Name</label>
-					<input type="text" name="lastname" id="lastname" class="form-control" value="<?php echo isset($meta['lastname']) ? $meta['lastname']: '' ?>" required>
+					<input type="text" name="lastname" id="lastname" class="form-control" value="<?php echo isset($meta['lastname']) ? $meta['lastname']: '' ?>" >
 				</div>
 				<div class="form-group col-6">
 					<label for="username">Username/email</label>
-					<input type="text" name="username" id="username" class="form-control" value="<?php echo isset($meta['username']) ? $meta['username']: '' ?>" required  autocomplete="off">
+					<input type="text" name="username" id="username" class="form-control" value="<?php echo isset($meta['username']) ? $meta['username']: '' ?>"   autocomplete="off">
 				</div>
 				<div class="form-group col-6">
-					<label for="contact">Contact Info</label>
-					<input type="text" name="contact" id="contact" class="form-control" value="<?php echo isset($meta['contact']) ? $meta['contact']: '' ?>" required>
-				</div>
+                    <label for="contact">Contact Info</label>
+                    <input type="tel" name="contact" id="contact" class="form-control" 
+                           maxlength="13" 
+                           placeholder="09XXXXXXXXX or +639XXXXXXXXX"
+                           oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
+                           value="<?php echo isset($meta['contact']) ? $meta['contact']: '' ?>">
+                    <small class="text-muted">Must be a valid Philippine mobile number (09XXXXXXXXX or +639XXXXXXXXX)</small>
+                    <small id="contact_error" class="text-danger" style="display:none;"></small>
+                </div>
 				<div class="form-group col-6">
 					<label for="address">Address</label>
 					<textarea class="form-control" name="address" id="address" row="5"><?php echo isset($meta['address']) ? $meta['address']: '' ?></textarea>
 				</div>
+				
+				<?php if(isset($_GET['id'])): ?>
+				<div class="password-section">
+					<div class="form-group col-6">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="changePassword">
+							<label class="custom-control-label" for="changePassword">Change Password</label>
+						</div>
+					</div>
+					<div id="password-fields" style="display:none">
+						<div class="form-group col-6">
+							<label for="current_password">Current Password</label>
+							<input type="password" name="current_password" id="current_password" class="form-control" autocomplete="off">
+							<small class="text-secondary"><strong><i>Enter your current password to authorize the password change.</i></strong></small>
+						</div>
+						<div class="form-group col-6">
+							<label for="new_password">New Password</label>
+							<input type="password" name="new_password" id="new_password" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group col-6">
+							<label for="confirm_password">Confirm New Password</label>
+							<input type="password" name="confirm_password" id="confirm_password" class="form-control" autocomplete="off">
+							<small id="password_match_msg"></small>
+						</div>
+					</div>
+				</div>
+				<?php else: ?>
 				<div class="form-group col-6">
 					<label for="password">Password</label>
-					<input type="password" name="password" id="password" class="form-control" value="" autocomplete="off" <?php echo isset($meta['id']) ? "": 'required' ?>>
-                    <?php if(isset($_GET['id'])): ?>
-					<small class="text-info"><i>Leave this blank if you dont want to change the password.</i></small>
-                    <?php endif; ?>
+					<input type="password" name="password" id="password" class="form-control" required autocomplete="off">
 				</div>
+				<div class="form-group col-6">
+					<label for="confirm_password">Confirm Password</label>
+					<input type="password" name="confirm_password" id="confirm_password" class="form-control" required autocomplete="off">
+					<small id="password_match_msg"></small>
+				</div>
+				<?php endif; ?>
+				
 				<div class="form-group col-6">
 					<label for="type">User Type</label>
 					<select name="type" id="type" class="custom-select"  required>
@@ -82,7 +120,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 	<div class="card-footer">
 			<div class="col-md-12">
 				<div class="row">
-					<button class="btn btn-sm btn-success mr-2" form="manage-user">Save</button>
+					<button class="btn btn-sm btn-success mr-2" form="manage-user" id="submit_btn">Save</button>
 					<a class="btn btn-sm btn-secondary" href="./?page=user/list">Cancel</a>
 				</div>
 			</div>
@@ -95,13 +133,84 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		object-fit: cover;
 		border-radius: 100% 100%;
 	}
+	.password-match {
+		color: green;
+		font-weight: bold;
+	}
+	.password-mismatch {
+		color: red;
+		font-weight: bold;
+	}
 </style>
 <script>
+	function validateContactInfo() {
+        var contactValue = $("#contact").val().trim();
+        
+        if (!(contactValue.match(/^09[0-9]{9}$/) || contactValue.match(/^\+639[0-9]{9}$/))) {
+            $('#msg').html('<div class="alert alert-danger">Please enter a valid Philippine mobile number (09XXXXXXXXX or +639XXXXXXXXX)</div>');
+            $("html, body").animate({ scrollTop: 0 }, "fast");
+            return false;
+        }
+        return true;
+    }
+    
 	$(function(){
 		$('.select2').select2({
 			width:'resolve'
 		})
+		
+		// Toggle password fields
+		$("#changePassword").on('change', function() {
+			if($(this).is(":checked")) {
+				$("#password-fields").slideDown();
+			} else {
+				$("#password-fields").slideUp();
+				// Clear password fields when unchecked
+				$("#current_password, #new_password, #confirm_password").val('');
+				$("#password_match_msg").html('');
+			}
+		});
+		
+		// Password matching validation
+		$("#confirm_password, #new_password, #password").on('keyup', function() {
+			validatePasswords();
+		});
 	})
+	
+	function validatePasswords() {
+		var isValid = true;
+		
+		<?php if(isset($_GET['id'])): ?>
+		if($("#changePassword").is(":checked")) {
+			var newPassword = $("#new_password").val();
+			var confirmPassword = $("#confirm_password").val();
+			
+			if(newPassword != "" || confirmPassword != "") {
+				if(newPassword != confirmPassword) {
+					$("#password_match_msg").html("Passwords do not match!").removeClass("password-match").addClass("password-mismatch");
+					isValid = false;
+				} else {
+					$("#password_match_msg").html("Passwords match!").removeClass("password-mismatch").addClass("password-match");
+				}
+			} else {
+				$("#password_match_msg").html("");
+			}
+		}
+		<?php else: ?>
+		var password = $("#password").val();
+		var confirmPassword = $("#confirm_password").val();
+		
+		if(password != confirmPassword) {
+			$("#password_match_msg").html("Passwords do not match!").removeClass("password-match").addClass("password-mismatch");
+			isValid = false;
+		} else {
+			$("#password_match_msg").html("Passwords match!").removeClass("password-mismatch").addClass("password-match");
+		}
+		<?php endif; ?>
+		
+		return isValid;
+	}
+	
 	function displayImg(input,_this) {
 	    if (input.files && input.files[0]) {
 	        var reader = new FileReader();
@@ -112,8 +221,39 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 	        reader.readAsDataURL(input.files[0]);
 	    }
 	}
+	
 	$('#manage-user').submit(function(e){
 		e.preventDefault();
+		
+		// validate contact information
+        if(!validateContactInfo()) {
+            return false;
+        }
+		
+		// validate passwords if being changed
+		<?php if(isset($_GET['id'])): ?>
+		if($("#changePassword").is(":checked")) {
+			if(!validatePasswords()) {
+				$('#msg').html('<div class="alert alert-danger">Please check your password entries</div>');
+				$("html, body").animate({ scrollTop: 0 }, "fast");
+				return false;
+			}
+			
+			// make sure current password is filled
+			if($("#current_password").val() == "") {
+				$('#msg').html('<div class="alert alert-danger">Please enter your current password</div>');
+				$("html, body").animate({ scrollTop: 0 }, "fast");
+				return false;
+			}
+		}
+		<?php else: ?>
+		if(!validatePasswords()) {
+			$('#msg').html('<div class="alert alert-danger">Please check your password entries</div>');
+			$("html, body").animate({ scrollTop: 0 }, "fast");
+			return false;
+		}
+		<?php endif; ?>
+		
 		var _this = $(this)
 		start_loader()
 		$.ajax({
@@ -125,15 +265,26 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		    method: 'POST',
 		    type: 'POST',
 			success:function(resp){
-				if(resp ==1){
+				if(resp == 1){
 					location.href = './?page=user/list';
-				}else{
-					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')
+				} else if(resp == 2) {
+					$('#msg').html('<div class="alert alert-danger">Current password is incorrect</div>')
+					$("html, body").animate({ scrollTop: 0 }, "fast");
+				} else if(resp == 3) {
+					$('#msg').html('<div class="alert alert-danger">Username already exists</div>')
+					$("html, body").animate({ scrollTop: 0 }, "fast");
+				} else if(resp == 4) {
+					$('#msg').html('<div class="alert alert-danger">New password and confirm password do not match</div>')
+					$("html, body").animate({ scrollTop: 0 }, "fast");
+				} else if(resp == 6) {
+                    $('#msg').html('<div class="alert alert-danger">Please enter a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)</div>')
+                    $("html, body").animate({ scrollTop: 0 }, "fast");
+                } else {
+					$('#msg').html('<div class="alert alert-danger">An error occurred</div>')
 					$("html, body").animate({ scrollTop: 0 }, "fast");
 				}
                 end_loader()
 			}
 		})
 	})
-
 </script>

@@ -176,6 +176,7 @@ body {
         <div class="col-md-4">
           <a class="btn-floating blue accent-1"><i class="fas fa-phone" style="  color: rgb(75, 49, 12);"></i> </a>
           <dd ><?= $_settings->info('contact') ?></dd>
+          <dd ><?= $_settings->info('contact2') ?></dd>
         </div>
         <div class="col-md-4">
           <a class="btn-floating blue accent-1"><i class="fas fa-envelope" style="  color: rgb(75, 49, 12);"></i></a>

@@ -16,6 +16,7 @@
 />
 
  <link rel="stylesheet"  href="./components/css/button.css">
+ <link rel="stylesheet"  href="./css/index.css">
 <?php require_once('components/header.php') ?>
   <body class="layout-top-nav  mb-5" style="height: auto; ">
     <div class="wrapper">
@@ -51,6 +52,17 @@
           </div>
        
         </section>
+        <div class="floating-contact-card">
+      <h4>Contact Us</h4>
+      <div class="contact-number">
+        <i class="fas fa-phone-alt"></i>
+        <a href="tel:+12345678901">(123) 456-7890</a>
+      </div>
+      <div class="contact-number">
+        <i class="fas fa-mobile-alt"></i>
+        <a href="tel:+19876543210">(987) 654-3210</a>
+      </div>
+    </div>
         <!-- /.content -->
   <div class="modal fade rounded-0" id="confirm_modal" role='dialog'>
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
