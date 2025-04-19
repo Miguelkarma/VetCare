@@ -9,6 +9,8 @@ foreach($user->fetch_array() as $k =>$v){
 	alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
 </script>
 <?php endif;?>
+
+<!-- still haven't added validation here -->
 <div class="card card-outline card-primary">
 	<div class="card-body">
 		<div class="container-fluid">
