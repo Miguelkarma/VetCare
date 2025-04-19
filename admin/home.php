@@ -135,7 +135,7 @@ while($row = $appointments->fetch_assoc()){
             <span class="info-box-text">Cancelled Request</span>
             <span class="info-box-number text-right">
                 <?php 
-                    echo $conn->query("SELECT * FROM `appointment_list` where `status` = 2 ")->num_rows;
+                    echo $conn->query("SELECT * FROM `appointment_list` where `status` = 3 ")->num_rows;
                 ?>
             </span>
             </div>

@@ -77,8 +77,8 @@
         }
 
         .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background-color:rgb(156, 140, 122);        
+            border-color: rgb(156, 140, 122);
         }
 
         .custom-control-label {
@@ -242,7 +242,7 @@
                         <div class="collapse" id="service_<?= $row['id'] ?>">
                             <hr>
                             <div class="d-flex justify-content-end mb-3">
-                                <span class="service-fee"><i class="fas fa-dollar-sign mr-1"></i><?= number_format($row['fee'],2) ?></span>
+                                <span class="service-fee"><i class="fas fa-peso-sign mr-1"></i><?= number_format($row['fee'],2) ?></span>
                             </div>
                             <div class="service-description">
                                 <?= html_entity_decode($row['description']) ?>
