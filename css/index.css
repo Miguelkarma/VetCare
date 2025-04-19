@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #fff;
+  background-color: #ddd1b9;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 15px;
@@ -30,17 +30,17 @@
 }
 
 /* For very small screens */
-@media (max-width: 320px) {
+@media (max-width: 340px) {
   .floating-contact-card {
     padding: 8px;
   }
 
-  .floating-contact-card h4 {
-    font-size: 16px;
+  .contact-number dd {
+    font-size: 14px;
   }
 
-  .contact-number a {
-    font-size: 14px;
+  .contact-number dd {
+    font-size: 10px !important;
   }
 }
 
@@ -52,14 +52,16 @@
   margin-top: 0;
   margin-bottom: 10px;
   color: #333;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
 }
 
 .contact-number {
   display: flex;
   align-items: center;
+
   margin-bottom: 8px;
+  justify-content: start;
 }
 
 .contact-number i {
@@ -68,13 +70,14 @@
   flex-shrink: 0; /* Prevents icon from shrinking */
 }
 
-.contact-number a {
-  color: #555;
+.contact-number dd {
+  color: #383737;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 13px;
   word-break: break-word; /* Ensures text wraps properly */
+  margin-top: 8px;
 }
 
-.contact-number a:hover {
+.contact-number:hover {
   color: rgb(75, 49, 12);
 }

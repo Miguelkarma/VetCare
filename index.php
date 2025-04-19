@@ -56,11 +56,11 @@
       <h4>Contact Us</h4>
       <div class="contact-number">
         <i class="fas fa-phone-alt"></i>
-        <a href="tel:+12345678901">(123) 456-7890</a>
+        <dd ><?= $_settings->info('contact') ?></dd>
       </div>
       <div class="contact-number">
-        <i class="fas fa-mobile-alt"></i>
-        <a href="tel:+19876543210">(987) 654-3210</a>
+        <i class="fas fa-mobile-alt"></i> 
+          <dd ><?= $_settings->info('contact2') ?></dd>
       </div>
     </div>
         <!-- /.content -->

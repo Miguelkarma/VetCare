@@ -9,8 +9,6 @@ if(isset($_GET['id'])){
                 $$k = $v;
             }
         }
-    }else{
-    echo "<script>alert('No Records Found'); location.replace('./?page=pet_records');</script>";
     }
 }
 else{
