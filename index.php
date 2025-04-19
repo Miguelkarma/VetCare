@@ -14,7 +14,7 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
- <link rel="stylesheet"  href="./components/css/nav.css">
+
  <link rel="stylesheet"  href="./components/css/button.css">
 <?php require_once('components/header.php') ?>
   <body class="layout-top-nav  mb-5" style="height: auto; ">

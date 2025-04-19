@@ -1,3 +1,4 @@
+<link rel="stylesheet"  href="../ovas/components/css/nav.css">
 <!-- Main Navbar -->
 <nav id="cs-navigation">
   <div class="cs-container">
@@ -172,35 +173,55 @@
   width: 30px;
   object-fit: cover;
   border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
 .user-info {
   display: flex !important;
   align-items: center !important;
-
   margin-left: auto;
   flex-wrap: nowrap;
-  justify-content:center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.user-info a {
-  text-decoration: none;
+.username {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  transition: all 0.3s ease;
 }
 
-@media only screen and (max-width: 1115px) {
+@media screen and (max-width: 1200px) {
+  .username {
+    max-width: 100px;
+    font-size: 0.8rem;
+  }
 
+  .cs-li-link{
+    font-size: 0.9rem!important;
+  }
  
   .user-info .btn {
     padding: 0.25rem;
     font-size: 0.9rem;
   }
-  .cs-ul{
-    font-size:0.66em;
+
+}
+@media screen and (max-width: 1100px) {
+.cs-li-link {
+    margin-left: 1em;
+    gap:1em;
+    font-size: 0.8em!important;
   }
 }
 
 /* Responsive improvements */
-@media only screen and (max-width: 63.9375rem) {
+@media only screen and (max-width: 72.0625rem) {
   .user-info {
     margin-left: auto;
   }
@@ -224,7 +245,10 @@
 }
 
 @media (max-width: 900px) {
-
+  .username {
+    max-width: 80px;
+    font-size: 0.75rem;
+  }
   .d-md-inline {
     display: inline !important;
   }
@@ -234,7 +258,8 @@
 
 </style>
 <script src="../../ovas/components/js/nav.js">
-  document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const toggle = document.querySelector('.cs-toggle');
   const nav = document.querySelector('#cs-navigation');
@@ -259,5 +284,4 @@
   });
  
 });
- 
 </script>
