@@ -99,10 +99,14 @@ box-shadow: 0px 4px 17px 4px rgba(0,0,0,0.75);
 
             <!-- Password input -->
             <div class="form-outline mb-3">
-              <label class="form-label" for="password">Password</label>
-              <input type="password" id="password" name="password" class="form-control form-control-lg"
-                placeholder="Enter password" />
-            </div>
+  <label class="form-label" for="password">Password</label>
+  <div class="position-relative">
+    <input type="password" id="password" name="password" class="form-control form-control-lg"
+      placeholder="Enter password" />
+    <i class="fas fa-eye position-absolute" id="togglePassword" onclick="togglePassword()" 
+      style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+  </div>
+</div>
 
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
@@ -142,6 +146,17 @@ box-shadow: 0px 4px 17px 4px rgba(0,0,0,0.75);
   $(document).ready(function(){
     end_loader();
   })
+
+  function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const icon = document.getElementById("togglePassword");
+
+    const isHidden = passwordInput.type === "password";
+    passwordInput.type = isHidden ? "text" : "password";
+
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+  }
 </script>
 </body>
 </html>
