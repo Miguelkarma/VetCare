@@ -48,7 +48,7 @@ foreach($user->fetch_array() as $k =>$v){
                            placeholder="09XXXXXXXXX or +639XXXXXXXXX"
                            oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
                            value="<?php echo isset($meta['contact']) ? $meta['contact']: '' ?>">
-                    <small class="text-muted">Must be a valid Philippine mobile number (09XXXXXXXXX or +639XXXXXXXXX)</small>
+                    <small class="text-muted">Must be a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)</small>
                     <small id="contact_error" class="text-danger" style="display:none;"></small>
                 </div>
 				<div class="form-group col-6">
@@ -123,7 +123,7 @@ foreach($user->fetch_array() as $k =>$v){
         var contactValue = $("#contact").val().trim();
         
         if (!(contactValue.match(/^09[0-9]{9}$/) || contactValue.match(/^\+639[0-9]{9}$/))) {
-            $('#msg').html('<div class="alert alert-danger">Please enter a valid Philippine mobile number (09XXXXXXXXX or +639XXXXXXXXX)</div>');
+            $('#msg').html('<div class="alert alert-danger">Please enter a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)</div>');
             $("html, body").animate({ scrollTop: 0 }, "fast");
             return false;
         }

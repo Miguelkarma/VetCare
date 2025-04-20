@@ -42,7 +42,7 @@ class SystemSettings extends DBConnection{
 			
 			if(!(preg_match('/^09[0-9]{9}$/', $contact2) || preg_match('/^\+639[0-9]{9}$/', $contact2))) {
 				$this->set_flashdata('error', 'Please enter a valid mobile number for Contact #2 (09XXXXXXXXX or +639XXXXXXXX).');
-				return json_encode(['status' => 'failed', 'msg' => 'Please enter a valid Philippine mobile number for Contact #2 (09XXXXXXXXX or +639XXXXXXXX).']);
+				return json_encode(['status' => 'failed', 'msg' => 'Please enter a valid mobile number for Contact #2 (09XXXXXXXXX or +639XXXXXXXX).']);
 			}
 		}
 		
