@@ -25,6 +25,7 @@ if ($conn->connect_error) {
 }
 
 // Define vaccination schedules for common pets
+//customizable if needed
 $vaccineSchedule = [
     "Canine Distemper" => ["intervals" => [0, 21, 365]], // Days after initial dose
     "Rabies" => ["intervals" => [0, 365]], // Days after initial dose

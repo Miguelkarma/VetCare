@@ -100,8 +100,8 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 				<colgroup>
 					<col width="5%">
 					<col width="20%">
-					<col width="20%">
-                    <col width="20%">
+					<col width="10%">
+                    <col width="15%">
 					<col width="15%">
 					<col width="15%">
 				</colgroup>

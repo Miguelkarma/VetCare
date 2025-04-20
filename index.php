@@ -52,49 +52,7 @@
           </div>
        
         </section>
-        <div class="floating-contact-card">
-      <h4>Contact Us</h4>
-      <div class="contact-number">
-        <i class="fas fa-phone-alt"></i>
-        <dd ><?= $_settings->info('contact') ?></dd>
-      </div>
-      <div class="contact-number">
-        <i class="fas fa-mobile-alt"></i> 
-          <dd ><?= $_settings->info('contact2') ?></dd>
-      </div>
-    </div>
-        <!-- /.content -->
-  <div class="modal fade rounded-0" id="confirm_modal" role='dialog'>
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header rounded-0">
-        <h5 class="modal-title">Confirmation</h5>
-      </div>
-      <div class="modal-body rounded-0">
-        <div id="delete_content"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" id='confirm' onclick="">Continue</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade rounded-0" id="uni_modal" role='dialog'>
-    <div class="modal-dialog modal-md modal-dialog-centered rounded-0" role="document">
-      <div class="modal-content rounded-0">
-        <div class="modal-header rounded-0">
-        <h5 class="modal-title"></h5>
-      </div>
-      <div class="modal-body rounded-0">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      </div>
-      </div>
-    </div>
-  </div>
+       
   <div class="modal fade rounded-0" id="uni_modal_right" role='dialog'>
     <div class="modal-dialog modal-full-height  modal-md" role="document">
       <div class="modal-content">
