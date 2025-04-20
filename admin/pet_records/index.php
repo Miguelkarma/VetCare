@@ -40,6 +40,52 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
   font-weight: 400;
   font-style: normal;
   }
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #675640;
+  border-collapse: collapse;
+  color: rgb(37, 24, 6) !important;
+}
+
+.table th, .table td {
+  border: 1px solid #675640;
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+
+@media (max-width: 767.98px) {
+  
+  .table img {
+    max-width: 80px;
+    max-height: 60px;
+  }
+  
+ 
+  .table {
+    font-size: 0.85rem;
+  }
+  
+
+  @media (max-width: 575.98px) {
+    .table .mobile-hide {
+      display: none;
+    }
+  }
+}
+
+
+.dropdown-menu {
+  position: relative;
+}
 </style>
 <div class="card card-outline rounded-0 ">
 	<div class="card-header">
@@ -82,7 +128,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 							<td class="text-center"><?php echo $i++; ?></td>
 							<td class="px-2 py-1 text-center">
 								<div class="border rounded">
-									<img src="<?= validate_image($row['image_path']) ?>" alt="<?= $row['name'] ?>" style="width:100px;height:100px;">
+									<img src="<?= validate_image($row['image_path']) ?>" alt="<?= $row['name'] ?>" style="width:150px;height:100px;">
 								</div>
 							</td>
 							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>

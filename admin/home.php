@@ -1,40 +1,40 @@
+<link rel="stylesheet"  href="../css/appointment.css">
 <style>
-	.fc-event-title-container{
-       background-color:rgb(212, 199, 181)!important;
-        text-align:center;
-        color:#5C4033 !important;
-       border: none !important;
-      
-    }
-    .fc-daygrid-event{
-        border: none !important;
-    }
- 
+  
+.card-body {
+    width: 100% !important;
+    padding: 1rem;
+    transition: width 0.3s ease;
+}
 
-    .fc-today-button{
-          background-color: #eacda3!important;
-          color: #000 !important;
-          border: none !important;
-    }
-    .fc-prev-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-          border: none !important;
-    }
-     .fc-next-button{
-          background-color: #eacda3!important;
-           color: #000 !important;
-           border: none !important;
-    }
-    .fc-event-title.fc-sticky{
-        font-size:2em;
-      
-    }
-   
-    .fc-event-title.fc-sticky{
-        font-size:2em;
-    }
-    .info-box {
+#appointmentCalendar {
+    width: 100% !important;
+    min-height: 500px;
+    transition: all 0.3s ease;
+}
+
+
+.fc {
+    width: 100% !important;
+}
+
+.fc-view-container {
+    width: 100% !important;
+}
+
+
+.fc-day-grid-container,
+.fc-scroller,
+.fc-row,
+.fc-content-skeleton {
+    width: 100% !important;
+}
+
+.fc-view > table {
+    width: 100% !important;
+}
+
+.info-box {
     background-color: #ebe5dd !important;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
         color:rgb(75, 49, 12) !important;
@@ -44,26 +44,7 @@
     background-color:#E3D6C2 !important;
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-     body{
-        font-family: "Abel", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  }
-  .card-header{
-     background-color:#D6C5AE!important;
-  border-top-left-radius: 1em !important;
-  border-top-right-radius: 1em !important;
-  border:none!important;
-      color:rgb(75, 49, 12) !important;
-  }
-  .card{
-    border-radius:1em!important;
-        background-color:rgba(243, 241, 239, 0.94) !important;
-  }
 
-.btn{
-    background-color:#C7B299;
-}
 </style>
 <?php 
 
@@ -198,10 +179,33 @@ while($row = $appointments->fetch_assoc()){
 </div>
 <?php endif; ?>
 <hr>
+
+<!-- Daily Schedule Section -->
+<div class="row">
+  <div class="col-12">
+    <div class="card card-outline rounded-0 shadow p-3">
+      <div class="row">
+        <div class="col-md-6">
+          <dt class="text-muted">
+            <i class="fa fa-clock"></i> Daily Schedule
+          </dt>
+          <dd class="ps-4"><?= $_settings->info('clinic_schedule') ?></dd>
+        </div>
+        <div class="col-md-6">
+          <dt class="text-muted">
+            <i class="fa fa-paw"></i> Maximum Daily Appointments
+          </dt>
+          <dd class="ps-4"><?= $_settings->info('max_appointment') ?></dd>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2): ?>
-<div class="card card-outline  rounded-0 shadow">
+<div class="card card-outline rounded-0 shadow">
     <div class="card-header rounded-0">
-            <h4 class="card-title" style="font-weight:bold;">Appointment Requests</h4>
+            <h4 class="card-title" style="font-weight:bold;">Appointment Availability</h4>
     </div>
     <div class="card-body">
         <div id="appointmentCalendar"></div>
@@ -209,6 +213,34 @@ while($row = $appointments->fetch_assoc()){
 </div>
 
 <script>
+    //resizing of calendar when collapsed
+    $(document).on('collapsed.lte.pushmenu expanded.lte.pushmenu', function() {
+    if(calendar) {
+ 
+        setTimeout(function() {
+            calendar.updateSize();
+        }, 350);
+    }
+});
+
+
+$('[data-widget="pushmenu"]').on('click', function() {
+    if(calendar) {
+        setTimeout(function() {
+            calendar.updateSize();
+           
+            $('.card-body').css('width', '100%');
+        }, 350);
+    }
+});
+
+// Handle window resize events
+$(window).resize(function() {
+    if(calendar) {
+        calendar.updateSize();
+    }
+});
+    
     var calendar;
     var appointment = $.parseJSON('<?= json_encode($appoinment_arr) ?>') || {};
     start_loader();
@@ -226,29 +258,46 @@ while($row = $appointments->fetch_assoc()){
             },
             selectable: true,
             themeSystem: 'bootstrap',
-            //Random default events
+            
             events: [
                 {
-                    daysOfWeek: [0,1,2,3,4,5,6], // these recurrent events move separately
-                    title:0,
+                    daysOfWeek: [0,1,2,3,4,5,6],
+                    title:'<?= $_settings->info('max_appointment') ?>',
                     allDay: true,
-                    }
+                }
             ],
+            
+            showNonCurrentDates: false,
+            fixedWeekCount: false,
+
+            eventClick: function(info) {
+                var availableCount = info.event.title;
+                if(!!appointment[info.event.startStr]) {
+                    availableCount = parseInt(info.event.title) - parseInt(appointment[info.event.startStr]);
+                }
+                
+                if(availableCount > 0) {
+                    uni_modal("Set an Appointment", "add_appointment.php?schedule=" + info.event.startStr, "mid-large");
+                }
+            },
+            
             validRange:{
                 start: moment(date).format("YYYY-MM-DD"),
             },
-            eventDidMount:function(info){
-                // console.log(appointment)
-                if(!!appointment[info.event.startStr]){
-                    var available = parseInt(info.event.title) + parseInt(appointment[info.event.startStr]);
-                     $(info.el).find('.fc-event-title.fc-sticky').text(available)
+            eventDidMount: function(info) {
+                if(!!appointment[info.event.startStr]) {
+                    var available = parseInt(info.event.title) - parseInt(appointment[info.event.startStr]);
+                    $(info.el).find('.fc-event-title.fc-sticky').html('<i class="fa fa-paw"></i> <span class="hide-on-sm"><strong>Available</strong></span><br><strong>' + available + '</strong>');
+                } else {
+                    $(info.el).find('.fc-event-title.fc-sticky').html('<i class="fa fa-paw"></i> <span class="hide-on-sm"><strong>Available</strong></span><br><b>' + info.event.title + '</b>');
                 }
-                end_loader()
+                
+                end_loader();
             },
-            editable  : true
+            editable: true
         });
 
-    calendar.render();
+        calendar.render();
     })
 </script>
 <?php endif; ?>

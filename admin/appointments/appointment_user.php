@@ -6,6 +6,51 @@
 	border-radius:0.5em!important;
 	      color:rgb(10, 7, 2) !important;
 	}
+	.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #675640;
+  border-collapse: collapse;
+  color: rgb(37, 24, 6) !important;
+}
+
+.table th, .table td {
+  border: 1px solid #675640;
+  padding: 0.5rem;
+  vertical-align: middle;
+}
+
+
+@media (max-width: 767.98px) {
+  
+  .table img {
+    max-width: 80px;
+    max-height: 60px;
+  }
+  
+ 
+  .table {
+    font-size: 0.85rem;
+  }
+  
+
+  @media (max-width: 575.98px) {
+    .table .mobile-hide {
+      display: none;
+    }
+  }
+}
+
+
+.dropdown-menu {
+  position: relative;
+}
 	</style>
 
 <div class="card card-outline ">

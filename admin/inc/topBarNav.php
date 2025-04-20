@@ -25,7 +25,7 @@ border:1px solid #F5EFE7 !important;
           <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color:#333;"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?php echo base_url ?>" class="nav-link"><b><?php echo (!isMobileDevice()) ? $_settings->info('name'):$_settings->info('short_name'); ?> </b></a>
+            <a href="<?php echo base_url ?>admin" class="nav-link"><b><?php echo (!isMobileDevice()) ? $_settings->info('name'):$_settings->info('short_name'); ?> </b></a>
           </li>
         </ul>
         <!-- Right navbar links -->
