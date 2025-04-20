@@ -59,6 +59,7 @@ while($row = $appointments->fetch_assoc()){
 ?>
 
 <?php if($_settings->userdata('type') == 1): ?>
+    
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
         <div class="info-box distinct">
@@ -126,7 +127,8 @@ while($row = $appointments->fetch_assoc()){
     </div>
 </div>
 <?php endif; ?>
-<?php if($_settings->userdata('type') == 3): ?>
+<?php if($_settings->userdata('type') == 3 || $_settings->userdata('type') == 2) :?> 
+ 
 <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-3">
         <div class="info-box ">
@@ -168,7 +170,7 @@ while($row = $appointments->fetch_assoc()){
             <span class="info-box-text">Cancelled Request</span>
             <span class="info-box-number text-right">
                 <?php 
-                    echo $conn->query("SELECT * FROM `appointment_list` where email = '$email' and  `status` = 2 ")->num_rows;
+                    echo $conn->query("SELECT * FROM `appointment_list` where email = '$email' and  `status` = 3 ")->num_rows;
                 ?>
             </span>
             </div>

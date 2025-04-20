@@ -57,7 +57,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointment_user" class="nav-link nav-appointment_user">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                          Admin Booking Logs
+                          Your Appointments
                         </p>
                       </a>
                     </li>
@@ -92,7 +92,7 @@
                       <a href="<?php echo base_url ?>admin/?page=appointments" class="nav-link nav-appointments">
                         <i class="nav-icon fas fa-calendar-day"></i>
                         <p>
-                         Appointments
+                         Clients Appointments
                         </p>
                       </a>
                     </li>

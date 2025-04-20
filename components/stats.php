@@ -20,7 +20,7 @@
         <div class="mb-3">
           <i class="fas fa-clock fa-2x "></i>
         </div>
-        <h2 class="mb-1">7AM – 9PM</h2>
+        <h2 class="mb-1"><?= $_settings->info('clinic_schedule') ?></h2>  
         <span>Daily Operating Hours</span>
       </div>
       

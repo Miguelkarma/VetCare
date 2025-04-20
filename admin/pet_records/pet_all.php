@@ -128,7 +128,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 							<td class="text-center"><?php echo $i++; ?></td>
 							<td class="px-2 py-1 text-center">
 								<div class="border rounded">
-									<img src="<?= validate_image($row['image_path']) ?>" alt="<?= $row['name'] ?>" style="width:50px;height:50px;">
+									<img src="<?= validate_image($row['image_path']) ?>" alt="<?= $row['name'] ?>" style="width:200px;height:100px;">
 								</div>
 							</td>
 							<td class=""><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
