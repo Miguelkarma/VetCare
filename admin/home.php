@@ -182,6 +182,10 @@ while($row = $appointments->fetch_assoc()){
 <?php endif; ?>
 <hr>
 
+
+<?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2): ?>
+
+    
 <!-- Daily Schedule Section -->
 <div class="row">
   <div class="col-12">
@@ -204,7 +208,6 @@ while($row = $appointments->fetch_assoc()){
   </div>
 </div>
 
-<?php if($_settings->userdata('type') == 1 || $_settings->userdata('type') == 2): ?>
 <div class="card card-outline rounded-0 shadow">
     <div class="card-header rounded-0">
             <h4 class="card-title" style="font-weight:bold;">Appointment Availability</h4>
@@ -272,16 +275,7 @@ $(window).resize(function() {
             showNonCurrentDates: false,
             fixedWeekCount: false,
 
-            eventClick: function(info) {
-                var availableCount = info.event.title;
-                if(!!appointment[info.event.startStr]) {
-                    availableCount = parseInt(info.event.title) - parseInt(appointment[info.event.startStr]);
-                }
-                
-                if(availableCount > 0) {
-                    uni_modal("Set an Appointment", "add_appointment.php?schedule=" + info.event.startStr, "mid-large");
-                }
-            },
+          
             
             validRange:{
                 start: moment(date).format("YYYY-MM-DD"),
