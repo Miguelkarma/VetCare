@@ -134,12 +134,20 @@ $schedule = $_GET['schedule'];
                     
                     <div class="form-group">
                         <label for="contact" class="control-label">Contact #</label>
-                        <input type="text" name="contact" id="contact" class="form-control" placeholder="09xxxxxxxx" value ="<?php echo isset($contact) ? $contact : '' ?>" required>
+                        <input type="tel" name="contact" id="contact" class="form-control" 
+                               maxlength="13" 
+                               placeholder="09XXXXXXXXX or +639XXXXXXXXX"
+                               oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
+                               value ="<?php echo isset($contact) ? $contact : '' ?>" required>
+                        <small class="text-muted">Must be a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)</small>
+                        <small id="contact_error" class="text-danger" style="display:none;"></small>
                     </div>
                     
                     <div class="form-group">
                         <label for="email" class="control-label">Email</label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="jsmith@sample.com" value ="<?php echo isset($email) ? $email : '' ?>" required>
+                        <small class="text-muted">Example: Sample@gmail.com</small>
+                        <small id="email_error" class="text-danger" style="display:none;"></small>
                     </div>
                     
                     <div class="form-group">
@@ -228,10 +236,9 @@ $schedule = $_GET['schedule'];
         </div>
         
         <div class="form-actions">
- 
-    <button type="submit" class="btn btn-submit-appointment" style="border-radius: 0.5rem;">Submit Appointment</button>
-    <button class="btn btn-secondary mr-2" type="button" data-dismiss="modal" style="border-radius: 0.5rem; ">Cancel</button>
-</div>
+            <button type="submit" class="btn btn-submit-appointment" style="border-radius: 0.5rem;">Submit Appointment</button>
+            <button class="btn btn-secondary mr-2" type="button" data-dismiss="modal" style="border-radius: 0.5rem; ">Cancel</button>
+        </div>
     </form>
 </div>
 
@@ -268,6 +275,31 @@ $schedule = $_GET['schedule'];
 
     var service = $.parseJSON('<?= json_encode($service_arr) ?>') || {};
     
+    // Function to validate contact information
+    function validateContactInfo() {
+        var contactValue = $("#contact").val().trim();
+        
+        if (!(contactValue.match(/^09[0-9]{9}$/) || contactValue.match(/^\+639[0-9]{9}$/))) {
+            $('#contact_error').text('Please enter a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)').show();
+            return false;
+        }
+        $('#contact_error').hide();
+        return true;
+    }
+    
+    // Function to validate email
+    function validateEmail() {
+        var emailValue = $("#email").val().trim();
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+        if (!emailRegex.test(emailValue)) {
+            $('#email_error').text('Please enter a valid email address').show();
+            return false;
+        }
+        $('#email_error').hide();
+        return true;
+    }
+    
     $(function(){
         $('#uni_modal').on('shown.bs.modal',function(){
             $('#category_id').select2({
@@ -281,6 +313,16 @@ $schedule = $_GET['schedule'];
                 width:'100%',
                 dropdownParent:$('#uni_modal')
             });
+        });
+        
+        // Add event handler for contact field to validate on blur
+        $('#contact').on('blur', function() {
+            validateContactInfo();
+        });
+        
+        // Add event handler for email field to validate on blur
+        $('#email').on('blur', function() {
+            validateEmail();
         });
         
         $('#category_id').change(function(){
@@ -308,6 +350,13 @@ $schedule = $_GET['schedule'];
         
         $('#uni_modal #appointment-form').submit(function(e){
             e.preventDefault();
+            
+            // Validate contact number and email before submitting
+            if(!validateContactInfo() || !validateEmail()) {
+                $('html,body,.modal').animate({scrollTop:0},'fast');
+                return false;
+            }
+            
             var _this = $(this)
             $('.pop-msg').remove()
             var el = $('<div>')

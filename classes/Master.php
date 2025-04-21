@@ -260,6 +260,27 @@ Class Master extends DBConnection {
 		}
 		$_POST['service_ids'] = implode(",", $_POST['service_id']);
 		extract($_POST);
+	
+		// Email validation
+		if(isset($_POST['email']) && !empty($_POST['email'])) {
+			$email = $_POST['email'];
+			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$resp['status'] = 'failed';
+				$resp['msg'] = 'Please enter a valid email address';
+				return json_encode($resp);
+			}
+		}
+	
+		// Contact validation (existing code)
+		if(isset($_POST['contact']) && !empty($_POST['contact'])) {
+			$contact = $_POST['contact'];
+			if(!(preg_match('/^09[0-9]{9}$/', $contact) || preg_match('/^\+639[0-9]{9}$/', $contact))) {
+				$resp['status'] = 'failed';
+				$resp['msg'] = 'Please enter a valid mobile number (09XXXXXXXXX or +639XXXXXXXXX)';
+				return json_encode($resp);
+			}
+		}
+		
 		$data = "";
 		foreach($_POST as $k =>$v){
 			if(!in_array($k,array('id')) && !is_array($_POST[$k])){
@@ -296,7 +317,7 @@ Class Master extends DBConnection {
 				$resp['err'] = $this->conn->error."[{$sql}]";
 			}
 		}
-
+	
 		if($resp['status'] =='success')
 		$this->settings->set_flashdata('success',$resp['msg']);
 		return json_encode($resp);
