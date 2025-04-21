@@ -52,17 +52,7 @@
           </div>
        
         </section>
-        <div class="floating-contact-card">
-      <h4>Contact Us</h4>
-      <div class="contact-number">
-        <i class="fas fa-phone-alt"></i>
-        <dd ><?= $_settings->info('contact') ?></dd>
-      </div>
-      <div class="contact-number">
-        <i class="fas fa-mobile-alt"></i> 
-          <dd ><?= $_settings->info('contact2') ?></dd>
-      </div>
-    </div>
+  
         <!-- /.content -->
   <div class="modal fade rounded-0" id="confirm_modal" role='dialog'>
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
