@@ -327,10 +327,12 @@ Class Master extends DBConnection {
 			$resp['id'] = $rid;
 			$resp['code'] = $code;
 			$resp['status'] = 'success';
+
 			if(empty($id))
 				$resp['msg'] = "New Appointment Details has successfully added.</b>.";
 			else
 				$resp['msg'] = "Appointment Details has been updated successfully.";
+		
 			
 		}else{
 			$resp['status'] = 'failed';
@@ -355,6 +357,19 @@ Class Master extends DBConnection {
 		}
 		return json_encode($resp);
 	}
+	function delete_appointment(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `appointment_list` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Appointment has been deleted successfully.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+	}
+	
 
 	function update_appointment_status(){
 		extract($_POST);
@@ -367,6 +382,7 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
+		
 		if(isset($time_sched) && !empty($time_sched) && ($status == 0 || $status == 1)) {
 			$time_conflict = $this->conn->query("SELECT * FROM `appointment_list` 
 				WHERE date(schedule) = '{$schedule}' 
@@ -381,13 +397,13 @@ Class Master extends DBConnection {
 				return json_encode($resp);
 			}
 		}
-	
+
 		$del = $this->conn->query("UPDATE `appointment_list` set status = '{$status}', time_sched = '$time_sched', schedule = '$schedule' where id = '{$id}'");
 		
 		if($del){
 			$resp['status'] = 'success';
 			$this->settings->set_flashdata('success',"Appointment Request status has successfully updated.");
-
+			
 		}else{
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
@@ -433,7 +449,7 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 	}
 
-}
+	
 
 function check_time_availability(){
     extract($_POST);
@@ -454,6 +470,7 @@ function check_time_availability(){
     }
     
     return json_encode($resp);
+}
 }
 
 $Master = new Master();
