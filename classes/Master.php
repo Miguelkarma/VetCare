@@ -295,43 +295,51 @@ Class Master extends DBConnection {
 		}else{
 			$sql = "UPDATE `appointment_list` set {$data} where id = '{$id}' ";
 		}
+		
+		// Check if the day is fully booked
 		$slot_taken = $this->conn->query("SELECT * FROM `appointment_list` where date(schedule) = '{$schedule}' and `status` in (0,1)")->num_rows;
 		if($slot_taken >= $this->settings->info('max_appointment')){
 			$resp['status'] = 'failed';
 			$resp['msg'] = "Sorry, the Appointment Schedule is already full.";
-		}else{
-			$save = $this->conn->query($sql);
-			if($save){
-				$rid = !empty($id) ? $id : $this->conn->insert_id;
-				$resp['id'] = $rid;
-				$resp['code'] = $code;
-				$resp['status'] = 'success';
-				if(empty($id))
-					$resp['msg'] = "New Appointment Details has successfully added.</b>.";
-				else
-					$resp['msg'] = "Appointment Details has been updated successfully.";
-				
-			}else{
+			return json_encode($resp);
+		}
+		
+		// Check for time slot conflict
+		if(isset($time_sched) && !empty($time_sched)) {
+			$time_conflict = $this->conn->query("SELECT * FROM `appointment_list` 
+				WHERE date(schedule) = '{$schedule}' 
+				AND time_sched = '{$time_sched}' 
+				AND `status` in (0,1)
+				" . (empty($id) ? "" : " AND id != '{$id}'") . "
+			")->num_rows;
+			
+			if($time_conflict > 0) {
 				$resp['status'] = 'failed';
-				$resp['msg'] = "An error occured.";
-				$resp['err'] = $this->conn->error."[{$sql}]";
+				$resp['msg'] = "Sorry, this time slot is already booked. Please choose another time.";
+				return json_encode($resp);
 			}
+		}
+		
+		// If we've passed all checks, save the appointment
+		$save = $this->conn->query($sql);
+		if($save){
+			$rid = !empty($id) ? $id : $this->conn->insert_id;
+			$resp['id'] = $rid;
+			$resp['code'] = $code;
+			$resp['status'] = 'success';
+			if(empty($id))
+				$resp['msg'] = "New Appointment Details has successfully added.</b>.";
+			else
+				$resp['msg'] = "Appointment Details has been updated successfully.";
+			
+		}else{
+			$resp['status'] = 'failed';
+			$resp['msg'] = "An error occured.";
+			$resp['err'] = $this->conn->error."[{$sql}]";
 		}
 	
 		if($resp['status'] =='success')
-		$this->settings->set_flashdata('success',$resp['msg']);
-		return json_encode($resp);
-	}
-	function delete_appointment(){
-		extract($_POST);
-		$del = $this->conn->query("DELETE FROM `appointment_list` where id = '{$id}'");
-		if($del){
-			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Appointment Details has been deleted successfully.");
-		}else{
-			$resp['status'] = 'failed';
-			$resp['error'] = $this->conn->error;
-		}
+			$this->settings->set_flashdata('success',$resp['msg']);
 		return json_encode($resp);
 	}
 
@@ -357,6 +365,20 @@ Class Master extends DBConnection {
 					$v = $this->conn->real_escape_string($v);
 				if(!empty($data)) $data .=",";
 				$data .= " `{$k}`='{$v}' ";
+			}
+		}
+		if(isset($time_sched) && !empty($time_sched) && ($status == 0 || $status == 1)) {
+			$time_conflict = $this->conn->query("SELECT * FROM `appointment_list` 
+				WHERE date(schedule) = '{$schedule}' 
+				AND time_sched = '{$time_sched}' 
+				AND `status` in (0,1)
+				AND id != '{$id}'
+			")->num_rows;
+			
+			if($time_conflict > 0) {
+				$resp['status'] = 'failed';
+				$resp['msg'] = "Cannot schedule at this time. Another appointment is already booked for this time slot.";
+				return json_encode($resp);
 			}
 		}
 	
@@ -413,6 +435,27 @@ Class Master extends DBConnection {
 
 }
 
+function check_time_availability(){
+    extract($_POST);
+    
+    // Check if there's a conflict with another appointment
+    $where = "date(schedule) = '{$schedule}' AND time_sched = '{$time_sched}' AND `status` in (0,1)";
+    if(!empty($id)) {
+        $where .= " AND id != '{$id}'";
+    }
+    
+    $check = $this->conn->query("SELECT id FROM `appointment_list` WHERE {$where}");
+    $time_conflict = $check->num_rows > 0;
+    
+    if($time_conflict) {
+        $resp['available'] = false;
+    } else {
+        $resp['available'] = true;
+    }
+    
+    return json_encode($resp);
+}
+
 $Master = new Master();
 $action = !isset($_GET['f']) ? 'none' : strtolower($_GET['f']);
 $sysset = new SystemSettings();
@@ -456,6 +499,9 @@ switch ($action) {
 	break;
 	case 'delete_petrecords':
 		echo $Master->delete_petrecords();
+	break;
+	case 'check_time_availability':
+		echo $Master->check_time_availability();
 	break;
 	default:
 		// echo $sysset->index();
