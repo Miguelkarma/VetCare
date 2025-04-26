@@ -107,19 +107,23 @@ $schedule = $_GET['schedule'];
             </div>
         </div>
         <div class="form-group">
-    <label for="time_sched" class="control-label">Appointment Time</label>
+    <label for="time_sched" class="control-label">Appointment Time Block</label>
+    <?php
+    // Get business hours from settings
+    $business_start = $_settings->info('business_hours_start') ?: '07:00';
+    $business_end = $_settings->info('business_hours_end') ?: '19:00';
+    $lunch_start = $_settings->info('lunch_break_start') ?: '11:00';
+    $lunch_end = $_settings->info('lunch_break_end') ?: '13:00';
+    
+    // Format times for display
+    $morning_block = date('h:i A', strtotime($business_start)) . ' - ' . date('h:i A', strtotime($lunch_start));
+    $afternoon_block = date('h:i A', strtotime($lunch_end)) . ' - ' . date('h:i A', strtotime($business_end));
+    ?>
     <select name="time_sched" id="time_sched" class="form-control" required>
-        <option value="08:00:00">8:00 AM</option>
-        <option value="09:00:00">9:00 AM</option>
-        <option value="10:00:00">10:00 AM</option>
-        <option value="11:00:00">11:00 AM</option>
-        <option value="13:00:00">1:00 PM</option>
-        <option value="14:00:00">2:00 PM</option>
-        <option value="15:00:00">3:00 PM</option>
-        <option value="16:00:00">4:00 PM</option>
-        <option value="17:00:00">5:00 PM</option>
+        <option value="morning">Morning (<?= $morning_block ?>)</option>
+        <option value="afternoon">Afternoon (<?= $afternoon_block ?>)</option>
     </select>
-    <small class="text-muted">Please select your preferred appointment time slot</small>
+    <small class="text-muted">Please select your preferred appointment time block</small>
 </div>
         
         <div class="row">
@@ -258,6 +262,48 @@ $schedule = $_GET['schedule'];
 </div>
 
 <script>
+    $(document).ready(function(){
+    // Function to update the display schedule
+    function updateDisplaySchedule() {
+        var start = $('#business_hours_start').val();
+        var end = $('#business_hours_end').val();
+        var lunchStart = $('#lunch_break_start').val();
+        var lunchEnd = $('#lunch_break_end').val();
+        
+        if(start && end && lunchStart && lunchEnd) {
+            // Format times for display
+            var formattedStart = formatTime(start);
+            var formattedEnd = formatTime(end);
+            var formattedLunchStart = formatTime(lunchStart);
+            var formattedLunchEnd = formatTime(lunchEnd);
+            
+            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' & ' + 
+                                 formattedLunchEnd + ' - ' + formattedEnd + 
+                                 ' (Lunch Break: ' + formattedLunchStart + ' - ' + formattedLunchEnd + ')';
+            
+            $('#clinic_schedule').val(displaySchedule);
+        }
+    }
+    
+    // Format time from 24h to 12h format
+    function formatTime(time) {
+        var timeParts = time.split(':');
+        var hours = parseInt(timeParts[0]);
+        var minutes = timeParts[1];
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        return hours + ':' + minutes + ' ' + ampm;
+    }
+    
+    // Update display schedule on change of any time input
+    $('#business_hours_start, #business_hours_end, #lunch_break_start, #lunch_break_end').on('change', function() {
+        updateDisplaySchedule();
+    });
+    
+    // Initialize on page load
+    updateDisplaySchedule();
+});
     // Initialize Select2 with AJAX
     $('#user-select').select2({
         ajax: {

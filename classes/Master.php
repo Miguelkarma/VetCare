@@ -271,7 +271,7 @@ Class Master extends DBConnection {
 			}
 		}
 	
-		// Contact validation (existing code)
+		// Contact validation
 		if(isset($_POST['contact']) && !empty($_POST['contact'])) {
 			$contact = $_POST['contact'];
 			if(!(preg_match('/^09[0-9]{9}$/', $contact) || preg_match('/^\+639[0-9]{9}$/', $contact))) {
@@ -296,28 +296,21 @@ Class Master extends DBConnection {
 			$sql = "UPDATE `appointment_list` set {$data} where id = '{$id}' ";
 		}
 		
-		// Check if the day is fully booked
-		$slot_taken = $this->conn->query("SELECT * FROM `appointment_list` where date(schedule) = '{$schedule}' and `status` in (0,1)")->num_rows;
-		if($slot_taken >= $this->settings->info('max_appointment')){
-			$resp['status'] = 'failed';
-			$resp['msg'] = "Sorry, the Appointment Schedule is already full.";
-			return json_encode($resp);
-		}
+		// Get max appointments per block
+		$max_per_block = ceil($this->settings->info('max_appointment') / 2);
 		
-		// Check for time slot conflict
-		if(isset($time_sched) && !empty($time_sched)) {
-			$time_conflict = $this->conn->query("SELECT * FROM `appointment_list` 
-				WHERE date(schedule) = '{$schedule}' 
-				AND time_sched = '{$time_sched}' 
-				AND `status` in (0,1)
-				" . (empty($id) ? "" : " AND id != '{$id}'") . "
-			")->num_rows;
-			
-			if($time_conflict > 0) {
-				$resp['status'] = 'failed';
-				$resp['msg'] = "Sorry, this time slot is already booked. Please choose another time.";
-				return json_encode($resp);
-			}
+		// Check if the time block is fully booked
+		$block_query = $this->conn->query("SELECT COUNT(*) as count FROM `appointment_list` 
+										  WHERE date(schedule) = '{$schedule}' 
+										  AND time_sched = '{$time_sched}' 
+										  AND `status` in (0,1)" . (empty($id) ? "" : " AND id != '{$id}'"));
+		$block_result = $block_query->fetch_assoc();
+		$slot_taken = $block_result['count'];
+		
+		if($slot_taken >= $max_per_block){
+			$resp['status'] = 'failed';
+			$resp['msg'] = "Sorry, the selected time block is already fully booked.";
+			return json_encode($resp);
 		}
 		
 		// If we've passed all checks, save the appointment
@@ -327,7 +320,7 @@ Class Master extends DBConnection {
 			$resp['id'] = $rid;
 			$resp['code'] = $code;
 			$resp['status'] = 'success';
-
+	
 			if(empty($id))
 				$resp['msg'] = "New Appointment Details has successfully added.</b>.";
 			else
@@ -451,26 +444,32 @@ Class Master extends DBConnection {
 
 	
 
-function check_time_availability(){
-    extract($_POST);
-    
-    // Check if there's a conflict with another appointment
-    $where = "date(schedule) = '{$schedule}' AND time_sched = '{$time_sched}' AND `status` in (0,1)";
-    if(!empty($id)) {
-        $where .= " AND id != '{$id}'";
-    }
-    
-    $check = $this->conn->query("SELECT id FROM `appointment_list` WHERE {$where}");
-    $time_conflict = $check->num_rows > 0;
-    
-    if($time_conflict) {
-        $resp['available'] = false;
-    } else {
-        $resp['available'] = true;
-    }
-    
-    return json_encode($resp);
-}
+	function check_time_availability(){
+		extract($_POST);
+		
+		// Check if there's a conflict with another appointment in the same block
+		$where = "date(schedule) = '{$schedule}' AND time_sched = '{$time_sched}' AND `status` in (0,1)";
+		if(!empty($id)) {
+			$where .= " AND id != '{$id}'";
+		}
+		
+		// Count how many appointments are in this time block
+		$check = $this->conn->query("SELECT COUNT(*) as count FROM `appointment_list` WHERE {$where}");
+		$row = $check->fetch_assoc();
+		$count = $row['count'];
+		
+		// Get the maximum appointments allowed from settings
+		$max_per_block = ceil($this->settings->info('max_appointment') / 2); // Split max between 2 blocks
+		
+		if($count >= $max_per_block) {
+			$resp['available'] = false;
+			$resp['msg'] = "This time block is already fully booked. Please choose another time or date.";
+		} else {
+			$resp['available'] = true;
+		}
+		
+		return json_encode($resp);
+	}
 }
 
 $Master = new Master();

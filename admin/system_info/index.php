@@ -96,16 +96,51 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 				</div>
 			</fieldset>
 			<fieldset>
-				<legend>Appointment information</legend>
-				<div class="form-group">
-					<label for="max_appointment" class="control-label">Maximum Patient a day</label>
-					<input type="number" class="form-control form-control-sm col-sm-3" name="max_appointment" id="max_appointment" value="<?php echo $_settings->info('max_appointment') ?>">
-				</div>
-				<div class="form-group">
-					<label for="clinic_schedule" class="control-label">Clinic Daily Schedule <small><em>i.e.(8:00 AM - 5:30 PM)</em></small></label>
-					<input type="text" class="form-control form-control-sm col-sm-3" name="clinic_schedule" id="clinic_schedule" value="<?php echo $_settings->info('clinic_schedule') ?>">
-				</div>
-			</fieldset>
+    <legend>Appointment information</legend>
+    <div class="form-group">
+        <label for="max_appointment" class="control-label">Maximum Patient a day</label>
+        <input type="number" class="form-control form-control-sm col-sm-3" name="max_appointment" id="max_appointment" value="<?php echo $_settings->info('max_appointment') ?>">
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="business_hours_start" class="control-label">Business Hours - Start</label>
+                <input type="time" class="form-control form-control-sm" name="business_hours_start" id="business_hours_start" 
+                       value="<?php echo $_settings->info('business_hours_start') ?: '07:00' ?>">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="business_hours_end" class="control-label">Business Hours - End</label>
+                <input type="time" class="form-control form-control-sm" name="business_hours_end" id="business_hours_end" 
+                       value="<?php echo $_settings->info('business_hours_end') ?: '19:00' ?>">
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="lunch_break_start" class="control-label">Lunch Break - Start</label>
+                <input type="time" class="form-control form-control-sm" name="lunch_break_start" id="lunch_break_start" 
+                       value="<?php echo $_settings->info('lunch_break_start') ?: '11:00' ?>">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="lunch_break_end" class="control-label">Lunch Break - End</label>
+                <input type="time" class="form-control form-control-sm" name="lunch_break_end" id="lunch_break_end" 
+                       value="<?php echo $_settings->info('lunch_break_end') ?: '13:00' ?>">
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="clinic_schedule" class="control-label">Display Schedule <small>(automatically generated)</small></label>
+        <input type="text" class="form-control form-control-sm" name="clinic_schedule" id="clinic_schedule" value="<?php echo $_settings->info('clinic_schedule') ?>" readonly>
+    </div>
+</fieldset>
 			</form>
 		</div>
 		<div class="card-footer">
@@ -169,6 +204,48 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		    })
 			
 	})
+	$(document).ready(function(){
+    // Function to update the display schedule
+    function updateDisplaySchedule() {
+        var start = $('#business_hours_start').val();
+        var end = $('#business_hours_end').val();
+        var lunchStart = $('#lunch_break_start').val();
+        var lunchEnd = $('#lunch_break_end').val();
+        
+        if(start && end && lunchStart && lunchEnd) {
+            // Format times for display
+            var formattedStart = formatTime(start);
+            var formattedEnd = formatTime(end);
+            var formattedLunchStart = formatTime(lunchStart);
+            var formattedLunchEnd = formatTime(lunchEnd);
+            
+            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' & ' + 
+                                 formattedLunchEnd + ' - ' + formattedEnd + 
+                                 ' (Lunch Break: ' + formattedLunchStart + ' - ' + formattedLunchEnd + ')';
+            
+            $('#clinic_schedule').val(displaySchedule);
+        }
+    }
+    
+    // Format time from 24h to 12h format
+    function formatTime(time) {
+        var timeParts = time.split(':');
+        var hours = parseInt(timeParts[0]);
+        var minutes = timeParts[1];
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        return hours + ':' + minutes + ' ' + ampm;
+    }
+    
+    // Update display schedule on change of any time input
+    $('#business_hours_start, #business_hours_end, #lunch_break_start, #lunch_break_end').on('change', function() {
+        updateDisplaySchedule();
+    });
+    
+    // Initialize on page load
+    updateDisplaySchedule();
+});
 	$(document).ready(function(){
     $('#system-frm').submit(function(e){
         e.preventDefault();
