@@ -255,9 +255,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
     updateDisplaySchedule();
 });
     
-    // Initialize on page load
-    updateDisplaySchedule();
-});
+
 	$(document).ready(function(){
     $('#system-frm').submit(function(e){
         e.preventDefault();
