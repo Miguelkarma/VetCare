@@ -123,19 +123,25 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 							<td><?php echo ($row['code']) ?></td>
 							<td class=""><p class="truncate-1"><?php echo ucwords($row['owner_name']) ?></p></td>
 							<td class="text-center">
-								<?php 
-									switch ($row['status']){
-										case 0:
-											echo '<span class="rounded-pill badge badge-warning">Pending</span>';
-											break;
-										case 1:
-											echo '<span class="rounded-pill badge badge-success">Confirmed</span>';
-											break;
-										case 3:
-											echo '<span class="rounded-pill badge badge-danger">Cancelled</span>';
-											break;
-									}
-								?>
+							<?php 
+    switch ($row['status']){
+        case 0:
+            echo '<span class="rounded-pill badge badge-warning">Pending</span>';
+            break;
+        case 1:
+            echo '<span class="rounded-pill badge badge-success">Confirmed</span>';
+            break;
+        case 2:
+            echo '<span class="rounded-pill badge badge-info">Completed</span>';
+            break;
+        case 3:
+            echo '<span class="rounded-pill badge badge-danger">Cancelled</span>';
+            break;
+        case 4:
+            echo '<span class="rounded-pill badge badge-dark">No Show</span>';
+            break;
+    }
+?>
 							</td>
 							<td align="center">
 								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">

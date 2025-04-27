@@ -471,6 +471,39 @@ Class Master extends DBConnection {
 		
 		return json_encode($resp);
 	}
+
+
+	function auto_update_appointment_status(){
+    global $conn;
+    
+    // Get current date and time
+    $today = date('Y-m-d');
+    $now = date('H:i:s');
+    
+    // Get business hours from settings
+    $business_end = $_settings->info('business_hours_end') ?: '19:00';
+    
+    // Convert to 24-hour format for comparison
+    $end_time = date('H:i:s', strtotime($business_end));
+    
+    // Update confirmed appointments to completed
+    $update_query = "UPDATE `appointment_list` SET `status` = 2 
+                    WHERE `status` = 1 
+                    AND ((`schedule` < '$today') 
+                        OR (`schedule` = '$today' AND '$now' > '$end_time'))";
+    
+    $update = $conn->query($update_query);
+    
+    // Optional: Identify no-shows (appointments from yesterday that weren't completed/cancelled)
+    $yesterday = date('Y-m-d', strtotime('-1 day'));
+    $no_show_query = "UPDATE `appointment_list` SET `status` = 4 
+                      WHERE `status` = 1 
+                      AND `schedule` = '$yesterday'";
+    
+    $no_show = $conn->query($no_show_query);
+    
+    return true;
+}
 }
 
 $Master = new Master();

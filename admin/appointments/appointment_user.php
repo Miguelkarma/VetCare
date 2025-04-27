@@ -92,19 +92,25 @@
 							<td><?php echo ($row['code']) ?></td>
 							<td class=""><p class="truncate-1"><?php echo ucwords($row['owner_name']) ?></p></td>
 							<td class="text-center">
-								<?php 
-									switch ($row['status']){
-										case 0:
-											echo '<span class="rounded-pill badge badge-warning">Pending</span>';
-											break;
-										case 1:
-											echo '<span class="rounded-pill badge badge-success">Confirmed</span>';
-											break;
-										case 3:
-											echo '<span class="rounded-pill badge badge-danger">Cancelled</span>';
-											break;
-									}
-								?>
+							<?php 
+    switch ($row['status']){
+        case 0:
+            echo '<span class="rounded-pill badge badge-warning">Pending</span>';
+            break;
+        case 1:
+            echo '<span class="rounded-pill badge badge-success">Confirmed</span>';
+            break;
+        case 2:
+            echo '<span class="rounded-pill badge badge-info">Completed</span>';
+            break;
+        case 3:
+            echo '<span class="rounded-pill badge badge-danger">Cancelled</span>';
+            break;
+        case 4:
+            echo '<span class="rounded-pill badge badge-dark">No Show</span>';
+            break;
+    }
+?>
 							</td>
 				
 						</tr>

@@ -163,18 +163,24 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
                                 <div class="form-group col-md-4">
                                     <small class=" px-2">Status</small><br>
                                     <?php 
-									switch ($status){
-										case 0:
-											echo '<span class="ml-4 rounded-pill badge badge-primary">Pending</span>';
-											break;
-										case 1:
-											echo '<span class="ml-4 rounded-pill badge badge-success">Confirmed</span>';
-											break;
-										case 3:
-											echo '<span class="ml-4 rounded-pill badge badge-danger">Cancelled</span>';
-											break;
-									}
-								?>
+    switch ($status){
+        case 0:
+            echo '<span class="rounded-pill badge badge-warning">Pending</span>';
+            break;
+        case 1:
+            echo '<span class="rounded-pill badge badge-success">Confirmed</span>';
+            break;
+        case 2:
+            echo '<span class="rounded-pill badge badge-info">Completed</span>';
+            break;
+        case 3:
+            echo '<span class="rounded-pill badge badge-danger">Cancelled</span>';
+            break;
+        case 4:
+            echo '<span class="rounded-pill badge badge-dark">No Show</span>';
+            break;
+    }
+?>
                                 </div>
                             </div>
                     </fieldset>
