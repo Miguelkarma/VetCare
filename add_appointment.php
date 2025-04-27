@@ -115,13 +115,18 @@ $schedule = $_GET['schedule'];
     $lunch_start = $_settings->info('lunch_break_start') ?: '11:00';
     $lunch_end = $_settings->info('lunch_break_end') ?: '13:00';
     
-    // Format times for display
-    $morning_block = date('h:i A', strtotime($business_start)) . ' - ' . date('h:i A', strtotime($lunch_start));
-    $afternoon_block = date('h:i A', strtotime($lunch_end)) . ' - ' . date('h:i A', strtotime($business_end));
+    // Format times for display without leading zeros
+    $morning_start = date('g:i A', strtotime($business_start)); 
+    $morning_end = date('g:i A', strtotime($lunch_start));
+    $afternoon_start = date('g:i A', strtotime($lunch_end));
+    $afternoon_end = date('g:i A', strtotime($business_end));
+    
+    $morning_block = $morning_start . ' - ' . $morning_end;
+    $afternoon_block = $afternoon_start . ' - ' . $afternoon_end;
     ?>
     <select name="time_sched" id="time_sched" class="form-control" required>
-        <option value="morning">Morning (<?= $morning_block ?>)</option>
-        <option value="afternoon">Afternoon (<?= $afternoon_block ?>)</option>
+        <option value="<?= $morning_block ?>">Morning (<?= $morning_block ?>)</option>
+        <option value="<?= $afternoon_block ?>">Afternoon (<?= $afternoon_block ?>)</option>
     </select>
     <small class="text-muted">Please select your preferred appointment time block</small>
 </div>
@@ -277,9 +282,8 @@ $schedule = $_GET['schedule'];
             var formattedLunchStart = formatTime(lunchStart);
             var formattedLunchEnd = formatTime(lunchEnd);
             
-            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' & ' + 
-                                 formattedLunchEnd + ' - ' + formattedEnd + 
-                                 ' (Lunch Break: ' + formattedLunchStart + ' - ' + formattedLunchEnd + ')';
+            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' | ' + 
+                                 formattedLunchEnd + ' - ' + formattedEnd;
             
             $('#clinic_schedule').val(displaySchedule);
         }
@@ -292,11 +296,10 @@ $schedule = $_GET['schedule'];
         var minutes = timeParts[1];
         var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
+        hours = hours ? hours : 12; 
         return hours + ':' + minutes + ' ' + ampm;
     }
     
-    // Update display schedule on change of any time input
     $('#business_hours_start, #business_hours_end, #lunch_break_start, #lunch_break_end').on('change', function() {
         updateDisplaySchedule();
     });

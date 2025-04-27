@@ -245,6 +245,7 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 	}
 	function save_appointment(){
+		
 		if(empty($_POST['id'])){
 			$prefix="OVAS-".date("Ym");
 			$code = sprintf("%'.04d",1);

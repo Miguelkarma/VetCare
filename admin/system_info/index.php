@@ -204,8 +204,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		    })
 			
 	})
-	$(document).ready(function(){
-    // Function to update the display schedule
+	$(document).ready(function(){   
     function updateDisplaySchedule() {
         var start = $('#business_hours_start').val();
         var end = $('#business_hours_end').val();
@@ -219,9 +218,8 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
             var formattedLunchStart = formatTime(lunchStart);
             var formattedLunchEnd = formatTime(lunchEnd);
             
-            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' & ' + 
-                                 formattedLunchEnd + ' - ' + formattedEnd + 
-                                 ' (Lunch Break: ' + formattedLunchStart + ' - ' + formattedLunchEnd + ')';
+            var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' | ' + 
+                                 formattedLunchEnd + ' - ' + formattedEnd;
             
             $('#clinic_schedule').val(displaySchedule);
         }
@@ -242,6 +240,20 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
     $('#business_hours_start, #business_hours_end, #lunch_break_start, #lunch_break_end').on('change', function() {
         updateDisplaySchedule();
     });
+    
+    // Display max appointments distribution
+    $('#max_appointment').on('change', function() {
+        var maxAppointments = parseInt($(this).val());
+        var morningMax = Math.ceil(maxAppointments / 2);  // Morning gets priority (rounded up)
+        var afternoonMax = Math.floor(maxAppointments / 2); // Afternoon gets remainder
+        
+        // You could display this information somewhere if needed
+        console.log('Morning max: ' + morningMax + ', Afternoon max: ' + afternoonMax);
+    });
+    
+    // Initialize on page load
+    updateDisplaySchedule();
+});
     
     // Initialize on page load
     updateDisplaySchedule();

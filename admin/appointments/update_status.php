@@ -96,17 +96,27 @@ $service = (empty($service)) ? "N/A" : $service;
                         <input type="date" name="schedule" id="schedule" class="form-control form-control-border" value ="<?php echo isset($row['schedule']) ? $row['schedule'] : '' ?>" required>
                     </div>
                     <div class="form-group">
-    <label for="time_sched" class="control-label">Schedule Time</label>
+    <label for="time_sched" class="control-label">Appointment Time Block</label>
+    <?php
+    // Get business hours from settings
+    $business_start = $_settings->info('business_hours_start') ?: '07:00';
+    $business_end = $_settings->info('business_hours_end') ?: '19:00';
+    $lunch_start = $_settings->info('lunch_break_start') ?: '11:00';
+    $lunch_end = $_settings->info('lunch_break_end') ?: '13:00';
+    
+    $morning_start = date('g:i A', strtotime($business_start)); // g instead of h removes leading zero
+    $morning_end = date('g:i A', strtotime($lunch_start));
+    $afternoon_start = date('g:i A', strtotime($lunch_end));
+    $afternoon_end = date('g:i A', strtotime($business_end));
+    
+    // Format times for display
+       
+    $morning_block = $morning_start . ' - ' . $morning_end;
+    $afternoon_block = $afternoon_start . ' - ' . $afternoon_end;
+    ?>
     <select name="time_sched" id="time_sched" class="form-control form-control-border" required>
-        <option value="08:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '08:00:00' ? 'selected' : ''; ?>>8:00 AM</option>
-        <option value="09:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '09:00:00' ? 'selected' : ''; ?>>9:00 AM</option>
-        <option value="10:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '10:00:00' ? 'selected' : ''; ?>>10:00 AM</option>
-        <option value="11:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '11:00:00' ? 'selected' : ''; ?>>11:00 AM</option>
-        <option value="13:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '13:00:00' ? 'selected' : ''; ?>>1:00 PM</option>
-        <option value="14:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '14:00:00' ? 'selected' : ''; ?>>2:00 PM</option>
-        <option value="15:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '15:00:00' ? 'selected' : ''; ?>>3:00 PM</option>
-        <option value="16:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '16:00:00' ? 'selected' : ''; ?>>4:00 PM</option>
-        <option value="17:00:00" <?php echo isset($row['time_sched']) && $row['time_sched'] == '17:00:00' ? 'selected' : ''; ?>>5:00 PM</option>
+        <option value="<?= $morning_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'morning' ? 'selected' : ''; ?>>Morning (<?= $morning_block ?>)</option>
+        <option value="<?= $afternoon_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'afternoon' ? 'selected' : ''; ?>>Afternoon (<?= $afternoon_block ?>)</option>
     </select>
 </div>
 
