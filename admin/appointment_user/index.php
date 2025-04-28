@@ -149,6 +149,8 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 				                  <div class="dropdown-menu" role="menu">
 								  <a class="dropdown-item" href="./?page=appointment_user/view_details&id=<?php echo $row['id'] ?>" data-id=""><span class="fa fa-window-restore text-gray"></span> View</a>
 								  <?php if($row['status'] <= 1): ?> 
+				                    <div class="dropdown-divider"></div>
+									<a class="dropdown-item edit_data" href="javascript:void(0)" data-id ="<?php echo $row['id'] ?>"><span class="fa fa-edit text-warning"></span> Edit</a>
 								  <div class="dropdown-divider"></div>
 				                  <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Cancel</a>
 									<?php endif; ?>  
@@ -166,6 +168,9 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 </div>
 <script>
 	$(document).ready(function(){
+		$('.edit_data').click(function(){
+			uni_modal("Update Category Details","appointments/add_note.php?id="+$(this).attr('data-id'))
+		})
 		$('.delete_data').click(function(){
 			_conf("Are you sure to cancel this appointment permanently?","delete_appointment",[$(this).attr('data-id')])
 		})

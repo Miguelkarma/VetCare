@@ -47,17 +47,9 @@ CREATE TABLE `appointment_list` (
   `time_sched` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `appointment_list`
---
+ALTER TABLE appointment_list 
+CHANGE time_sched time_sched VARCHAR(50);
 
-INSERT INTO `appointment_list` (`id`, `code`, `schedule`, `owner_name`, `contact`, `email`, `address`, `category_id`, `breed`, `age`, `service_ids`, `status`, `date_created`, `date_updated`, `pet_id`, `owner_id`, `time_sched`) VALUES
-(1, 'OVAS-2022010001', '2022-01-04', 'John D Smith', '0912345789', 'jsmith@sample.com', 'Here City', 1, 'German Shepherd', '5 mos. old', '3,1', 3, '2022-01-04 15:55:21', '2025-04-19 22:55:11', 0, 0, '00:00:00'),
-(2, 'OVAS-2022010002', '2022-01-05', 'Claire Blake', '09123456897', 'cblake@sample.com', 'There City', 1, 'Pug', '6 mos. old', '3,1', 3, '2022-01-04 15:56:55', '2025-04-19 23:02:25', 0, 0, '00:00:00'),
-(3, 'OVAS-2022010003', '2022-01-05', 'Mark Cooper', '094567894152', 'mcooper@gmail.com', 'Here', 2, 'Persian Cat', '1 yr. old', '5,3', 0, '2022-01-04 15:58:23', NULL, 0, 0, NULL),
-(23, 'OVAS-2025040001', '2025-04-19', 'Adminstrator Admin', '09929122', 'admin@mail.com', 'Quezon City Manila', 7, 'Sample', '2', '7', 1, '2025-04-19 00:36:26', '2025-04-19 22:55:00', 6, 1, '00:00:00');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `category_list`

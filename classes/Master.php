@@ -377,21 +377,29 @@ Class Master extends DBConnection {
 			}
 		}
 		
-		if(isset($time_sched) && !empty($time_sched) && ($status == 0 || $status == 1)) {
-			$time_conflict = $this->conn->query("SELECT * FROM `appointment_list` 
+		// Get max appointments per block
+		$max_appointment = $this->settings->info('max_appointment') ?: 10;
+		$max_per_block = ceil($max_appointment / 2);
+		
+		// Only check for time conflicts if status is pending or confirmed
+		if($status == 0 || $status == 1) {
+			// Count how many appointments are already in this time block
+			$count_query = $this->conn->query("SELECT COUNT(*) as count FROM `appointment_list` 
 				WHERE date(schedule) = '{$schedule}' 
 				AND time_sched = '{$time_sched}' 
 				AND `status` in (0,1)
-				AND id != '{$id}'
-			")->num_rows;
+				AND id != '{$id}'");
 			
-			if($time_conflict > 0) {
+			$count_result = $count_query->fetch_assoc();
+			$current_count = $count_result['count'];
+			
+			if($current_count >= $max_per_block) {
 				$resp['status'] = 'failed';
-				$resp['msg'] = "Cannot schedule at this time. Another appointment is already booked for this time slot.";
+				$resp['msg'] = "This time block has reached its maximum capacity of {$max_per_block} appointments.";
 				return json_encode($resp);
 			}
 		}
-
+	
 		$del = $this->conn->query("UPDATE `appointment_list` set status = '{$status}', time_sched = '$time_sched', schedule = '$schedule' where id = '{$id}'");
 		
 		if($del){
@@ -404,7 +412,6 @@ Class Master extends DBConnection {
 		}
 		return json_encode($resp);
 	}
-
 	function add_doctor_note(){
 		extract($_POST);
 		$data = "";
@@ -443,14 +450,18 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 	}
 
-	
-
 	function check_time_availability(){
 		extract($_POST);
 		
-		// Check if there's a conflict with another appointment in the same block
-		$where = "date(schedule) = '{$schedule}' AND time_sched = '{$time_sched}' AND `status` in (0,1)";
-		if(!empty($id)) {
+		// Get max appointments per block
+		$max_appointment = $this->settings->info('max_appointment') ?: 10;
+		$max_per_block = ceil($max_appointment / 2);
+		
+		// Only check if status is pending or confirmed (0 or 1)
+		$status_check = isset($status) && in_array($status, [0,1]) ? " AND `status` in (0,1)" : "";
+		
+		$where = "date(schedule) = '{$schedule}' AND time_sched = '{$time_sched}' {$status_check}";
+		if(isset($id) && !empty($id)) {
 			$where .= " AND id != '{$id}'";
 		}
 		
@@ -459,19 +470,16 @@ Class Master extends DBConnection {
 		$row = $check->fetch_assoc();
 		$count = $row['count'];
 		
-		// Get the maximum appointments allowed from settings
-		$max_per_block = ceil($this->settings->info('max_appointment') / 2); // Split max between 2 blocks
-		
 		if($count >= $max_per_block) {
 			$resp['available'] = false;
-			$resp['msg'] = "This time block is already fully booked. Please choose another time or date.";
+			$resp['max_per_block'] = $max_per_block;
+			$resp['msg'] = "This time block has reached its maximum capacity of {$max_per_block} appointments.";
 		} else {
 			$resp['available'] = true;
 		}
 		
 		return json_encode($resp);
 	}
-
 
 	function auto_update_appointment_status(){
     global $conn;

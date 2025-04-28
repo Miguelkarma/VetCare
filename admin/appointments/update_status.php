@@ -116,10 +116,10 @@ $service = (empty($service)) ? "N/A" : $service;
     $morning_block = $morning_start . ' - ' . $morning_end;
     $afternoon_block = $afternoon_start . ' - ' . $afternoon_end;
     ?>
-    <select name="time_sched" id="time_sched" class="form-control form-control-border" required>
-        <option value="<?= $morning_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'morning' ? 'selected' : ''; ?>>Morning (<?= $morning_block ?>)</option>
-        <option value="<?= $afternoon_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'afternoon' ? 'selected' : ''; ?>>Afternoon (<?= $afternoon_block ?>)</option>
-    </select>
+<select name="time_sched" id="time_sched" class="form-control form-control-border" required>
+    <option value="<?= $morning_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'morning' ? 'selected' : ''; ?>>Morning (<?= $morning_block ?>)</option>
+    <option value="<?= $afternoon_block ?>" <?php echo isset($row['time_sched']) && $row['time_sched'] == 'afternoon' ? 'selected' : ''; ?>>Afternoon (<?= $afternoon_block ?>)</option>
+</select>
 </div>
 
 
@@ -145,44 +145,47 @@ $service = (empty($service)) ? "N/A" : $service;
         notification.style.display = 'none';
     }
 
-    // Check time availability before submitting
     function checkTimeAvailability(formData, callback) {
-        var id = formData.get('id');
-        var schedule = formData.get('schedule');
-        var time_sched = formData.get('time_sched');
-        var status = formData.get('status');
-        
-        // Only check conflicts if confirming or pending, not when cancelling
-        if (status == '3') {
-            callback(true); // Skip check for cancelled appointments
-            return;
-        }
-        
-        $.ajax({
-            url: _base_url_ + "classes/Master.php?f=check_time_availability",
-            data: {
-                id: id,
-                schedule: schedule,
-                time_sched: time_sched
-            },
-            method: 'POST',
-            dataType: 'json',
-            success: function(resp) {
-                if (resp.available) {
-                    callback(true); // Time is available
-                } else {
-                    showConflictNotification();
-                    callback(false); // Time is not available
-                }
-            },
-            error: function(err) {
-                console.error(err);
-                // Fail safely - prevent submission
-                showConflictNotification();
-                callback(false);
-            }
-        });
+    var id = formData.get('id');
+    var schedule = formData.get('schedule');
+    var time_sched = formData.get('time_sched');
+    var status = formData.get('status');
+    
+    // Only check conflicts if confirming or pending, not when cancelling or other statuses
+    if (status != '0' && status != '1') {
+        callback(true); // Skip check for non-pending/confirmed appointments
+        return;
     }
+    
+    $.ajax({
+        url: _base_url_ + "classes/Master.php?f=check_time_availability",
+        data: {
+            id: id,
+            schedule: schedule,
+            time_sched: time_sched,
+            status: status // Pass the status to the server
+        },
+        method: 'POST',
+        dataType: 'json',
+        success: function(resp) {
+            if (resp.available) {
+                callback(true); // Time is available
+            } else {
+                // Update the notification message to reflect max capacity
+                document.querySelector('.conflict-notification-body p').textContent = 
+                    "This time block has reached its maximum capacity of " + resp.max_per_block + " appointments.";
+                showConflictNotification();
+                callback(false); // Time is not available
+            }
+        },
+        error: function(err) {
+            console.error(err);
+            // Fail safely - prevent submission
+            showConflictNotification();
+            callback(false);
+        }
+    });
+}
 
     $(function(){
         $('#update-form').submit(function(e){
