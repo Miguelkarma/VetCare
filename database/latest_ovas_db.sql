@@ -223,12 +223,12 @@ INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 (15, 'content', 'Array'),
 (16, 'email', 'short-tail@vetclinic.com'),
 (17, 'contact', '+639152820168'),
-(25, 'contact2', '+639XXXXXXXXX'),
+(25, 'contact2', '+639164586466'),
 (18, 'from_time', '11:00'),
 (19, 'to_time', '21:30'),
 (20, 'address', 'General Tinio Street, Cabanatuan City, 3100 Nueva Ecija'),
 (23, 'max_appointment', '15'),
-(24, 'clinic_schedule', '10:00 AM - 5:00 PM');
+(24, 'clinic_schedule', '9:00 AM - 12:00 AM | 1:00 PM - 5:00 PM');
 
 -- --------------------------------------------------------
 

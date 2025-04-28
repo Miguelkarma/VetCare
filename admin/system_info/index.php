@@ -204,7 +204,7 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
 		    })
 			
 	})
-	$(document).ready(function(){   
+	$(document).ready(function(){
     function updateDisplaySchedule() {
         var start = $('#business_hours_start').val();
         var end = $('#business_hours_end').val();
@@ -212,11 +212,11 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
         var lunchEnd = $('#lunch_break_end').val();
         
         if(start && end && lunchStart && lunchEnd) {
-            // Format times for display
-            var formattedStart = formatTime(start);
-            var formattedEnd = formatTime(end);
-            var formattedLunchStart = formatTime(lunchStart);
-            var formattedLunchEnd = formatTime(lunchEnd);
+            // Convert 24-hour time to 12-hour format
+            var formattedStart = convertTo12HourFormat(start);
+            var formattedEnd = convertTo12HourFormat(end);
+            var formattedLunchStart = convertTo12HourFormat(lunchStart);
+            var formattedLunchEnd = convertTo12HourFormat(lunchEnd);
             
             var displaySchedule = formattedStart + ' - ' + formattedLunchStart + ' | ' + 
                                  formattedLunchEnd + ' - ' + formattedEnd;
@@ -225,21 +225,26 @@ box-shadow: 6px 7px 28px -11px rgba(0,0,0,1);
         }
     }
     
-    // Format time from 24h to 12h format
-    function formatTime(time) {
+    // Convert 24-hour time to 12-hour format with AM/PM
+    function convertTo12HourFormat(time) {
         var timeParts = time.split(':');
         var hours = parseInt(timeParts[0]);
         var minutes = timeParts[1];
         var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
+        hours = hours ? hours : 12;
         return hours + ':' + minutes + ' ' + ampm;
     }
-    
-    // Update display schedule on change of any time input
+
+    // Call the updateDisplaySchedule function on page load
+    updateDisplaySchedule();
+
+    // Update the schedule whenever any time field changes
     $('#business_hours_start, #business_hours_end, #lunch_break_start, #lunch_break_end').on('change', function() {
         updateDisplaySchedule();
     });
+});
+
     
     // Display max appointments distribution
     $('#max_appointment').on('change', function() {
