@@ -228,9 +228,16 @@ INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
 (19, 'to_time', '21:30'),
 (20, 'address', 'General Tinio Street, Cabanatuan City, 3100 Nueva Ecija'),
 (23, 'max_appointment', '15'),
-(24, 'clinic_schedule', '9:00 AM - 12:00 AM | 1:00 PM - 5:00 PM');
+(24, 'clinic_schedule', '9:00 AM - 12:00 AM | 1:00 PM - 5:00 PM'),
+(26,'business_hours_start', '07:00'),
+(27,'business_hours_end', '19:00'),
+(28,'lunch_break_start', '11:30'),
+(29,'lunch_break_end', '13:00');
 
 -- --------------------------------------------------------
+
+
+
 
 --
 -- Table structure for table `users`
