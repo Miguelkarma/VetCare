@@ -245,7 +245,8 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 	}
 	function save_appointment(){
-		
+		require_once(__DIR__ . '/../email_functions.php');
+			
 		if(empty($_POST['id'])){
 			$prefix="OVAS-".date("Ym");
 			$code = sprintf("%'.04d",1);
@@ -322,8 +323,60 @@ Class Master extends DBConnection {
 			$resp['code'] = $code;
 			$resp['status'] = 'success';
 	
+			// Get the category name instead of just the ID for the email
+			$category_query = $this->conn->query("SELECT name FROM category_list WHERE id = '{$category_id}'");
+			$category_result = $category_query->fetch_assoc();
+			$category_name = $category_result['name'];
+			
+			// Get service names
+			$service_names = [];
+			if(!empty($_POST['service_ids'])) {
+				$service_query = $this->conn->query("SELECT name FROM service_list WHERE id IN ({$_POST['service_ids']})");
+				while($service_row = $service_query->fetch_assoc()) {
+					$service_names[] = $service_row['name'];
+				}
+			}
+			$service_names_str = implode(", ", $service_names);
+			
+			// Create appointment array for email
+			$appointment = [
+				'code' => $code,
+				'owner_name' => $owner_name,
+				'schedule' => $schedule,
+				'time_sched' => $time_sched,
+				'category_id' => $category_name, // Use the name instead of ID
+				'breed' => $breed,
+				'age' => $age,
+				'contact' => $contact,
+				'service_ids' => $_POST['service_ids'],
+				'service_names' => $service_names_str,
+				'email' => $email
+			];
+			
+			// Send confirmation email if email is provided
+			if(!empty($email)) {
+				$email_sent = send_appointment_confirmation($email, $owner_name, $appointment);
+				if($email_sent) {
+					$resp['email_status'] = 'sent';
+					
+					// If email to client was sent successfully, now send admin notification
+					$admin_notified = send_admin_notification($appointment);
+					if($admin_notified) {
+						$resp['admin_email_status'] = 'sent';
+					} else {
+						$resp['admin_email_status'] = 'failed';
+						// Log admin email failure
+						error_log("Failed to send admin notification for appointment {$code}");
+					}
+				} else {
+					$resp['email_status'] = 'failed';
+					// Log email failure but continue with success response
+					error_log("Failed to send confirmation email to {$email} for appointment {$code}");
+				}
+			}
+	
 			if(empty($id))
-				$resp['msg'] = "New Appointment Details has successfully added.</b>.";
+				$resp['msg'] = "New Appointment Details has successfully added.</b>";
 			else
 				$resp['msg'] = "Appointment Details has been updated successfully.";
 		
@@ -338,7 +391,6 @@ Class Master extends DBConnection {
 			$this->settings->set_flashdata('success',$resp['msg']);
 		return json_encode($resp);
 	}
-
 	function cancel_appointment(){
 		extract($_POST);
 		$del = $this->conn->query("UPDATE `appointment_list` SET status = 3 where id = '{$id}'");
@@ -365,14 +417,16 @@ Class Master extends DBConnection {
 	}
 	
 
-	function update_appointment_status(){
+	function update_appointment_status() {
+		require_once(__DIR__ . '/../email_functions.php');
+		
 		extract($_POST);
 		$data = "";
-		foreach($_POST as $k =>$v){
-			if(!in_array($k,array('id')) && !is_array($_POST[$k])){
+		foreach($_POST as $k => $v) {
+			if(!in_array($k, array('id')) && !is_array($_POST[$k])) {
 				if(!is_numeric($v))
 					$v = $this->conn->real_escape_string($v);
-				if(!empty($data)) $data .=",";
+				if(!empty($data)) $data .= ",";
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
@@ -399,17 +453,73 @@ Class Master extends DBConnection {
 				return json_encode($resp);
 			}
 		}
-	
-		$del = $this->conn->query("UPDATE `appointment_list` set status = '{$status}', time_sched = '$time_sched', schedule = '$schedule' where id = '{$id}'");
 		
-		if($del){
+		// Get the old status before updating
+		$old_status_query = $this->conn->query("SELECT status FROM `appointment_list` WHERE id = '{$id}'");
+		$old_status_result = $old_status_query->fetch_assoc();
+		$old_status = $old_status_result['status'];
+		
+		// Update the appointment
+		$update = $this->conn->query("UPDATE `appointment_list` set status = '{$status}', time_sched = '{$time_sched}', schedule = '{$schedule}' where id = '{$id}'");
+		
+		if($update) {
 			$resp['status'] = 'success';
-			$this->settings->set_flashdata('success',"Appointment Request status has successfully updated.");
+			$this->settings->set_flashdata('success', "Appointment Request status has successfully updated.");
 			
-		}else{
+			// Check if status has changed (not just schedule/time update)
+			if($status != $old_status) {
+				// Get appointment details for email
+				$appointment_query = $this->conn->query("SELECT a.*, c.name as category_name FROM `appointment_list` a 
+					LEFT JOIN category_list c ON a.category_id = c.id 
+					WHERE a.id = '{$id}'");
+				
+				if($appointment_query->num_rows > 0) {
+					$appointment_data = $appointment_query->fetch_assoc();
+					
+					// Get service names
+					$service_names = [];
+					if(!empty($appointment_data['service_ids'])) {
+						$service_query = $this->conn->query("SELECT name FROM service_list WHERE id IN ({$appointment_data['service_ids']})");
+						while($service_row = $service_query->fetch_assoc()) {
+							$service_names[] = $service_row['name'];
+						}
+					}
+					$service_names_str = implode(", ", $service_names);
+					
+					// Create appointment array for email
+					$appointment = [
+						'code' => $appointment_data['code'],
+						'owner_name' => $appointment_data['owner_name'],
+						'schedule' => $appointment_data['schedule'],
+						'time_sched' => $appointment_data['time_sched'],
+						'category_id' => $appointment_data['category_name'], // Use the name instead of ID
+						'breed' => $appointment_data['breed'],
+						'age' => $appointment_data['age'],
+						'contact' => $appointment_data['contact'],
+						'service_ids' => $appointment_data['service_ids'],
+						'service_names' => $service_names_str,
+						'email' => $appointment_data['email'],
+						'status' => $status // Include the new status
+					];
+					
+					// Send status update email if email is provided
+					if(!empty($appointment_data['email'])) {
+						$email_sent = send_status_update_email($appointment_data['email'], $appointment_data['owner_name'], $appointment);
+						if($email_sent) {
+							$resp['email_status'] = 'sent';
+						} else {
+							$resp['email_status'] = 'failed';
+							// Log email failure but continue with success response
+							error_log("Failed to send status update email to {$appointment_data['email']} for appointment {$appointment_data['code']}");
+						}
+					}
+				}
+			}
+		} else {
 			$resp['status'] = 'failed';
 			$resp['error'] = $this->conn->error;
 		}
+		
 		return json_encode($resp);
 	}
 	function add_doctor_note(){
