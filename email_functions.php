@@ -33,11 +33,11 @@ define('BREVO_ENCRYPTION', 'tls');
 
 // Email sender settings
 define('EMAIL_FROM_ADDRESS', 'BREVO_EMAIL'); 
-define('EMAIL_FROM_NAME', 'Short Tail');
+define('EMAIL_FROM_NAME', 'VET_NAME');
 define('EMAIL_REPLY_TO', 'BREVO_EMAIL'); 
 
 // Email content settings
-define('EMAIL_SUBJECT_PREFIX', '[Short Tail] '); 
+define('EMAIL_SUBJECT_PREFIX', '[VET_NAME] '); 
  */
         $mail->isSMTP();
         $mail->Host       = BREVO_HOST;
