@@ -25,6 +25,8 @@ function send_appointment_confirmation($recipient_email, $recipient_name, $appoi
 /**
  * Create email_config.php for this at the same level of email_functions.php (ROOT) 
  * it should be like this 
+ 
+ <?php
 define('BREVO_HOST', 'BREVO_HOST');
 define('BREVO_PORT', BREVO_PORT);
 define('BREVO_USERNAME', 'BREVO_LOGIN_IN_STMP_PAGE'); 
@@ -181,7 +183,7 @@ function get_appointment_email_template($appointment) {
                     ' . $services_html . '
                 </table>
                 
-                <p>Our staff will review your appointment and contact you at ' . $appointment['contact'] . ' to confirm the exact time of your appointment.</p>
+                <p>Our staff will review your appointment  ' . $appointment['contact'] . ' to confirm the exact time of your appointment.</p>
                 
                 <p>If you need to reschedule or cancel your appointment, please contact us as soon as possible.</p>
                 
